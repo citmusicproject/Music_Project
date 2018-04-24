@@ -43,15 +43,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align:center;
 }
-#playlist1Name{
-    position:relative;
-    background-color:white;
-    height:35px;
-    width:180px;
-    top:-5px; 
-    padding:10px;
-}
-#playlist2Name{
+#playlistName{
     position:relative;
     background-color:white;
     height:35px;
@@ -61,9 +53,10 @@
 }
 
 #playlist1contents{
+    display:block;
     height:0px;
     width:0px;
     background-color:white;
+    transition:1s;
     Position:absolute;
-    z-index: 10;
 }
