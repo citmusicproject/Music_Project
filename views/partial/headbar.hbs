@@ -1,0 +1,16 @@
+﻿<link rel="stylesheet" type="text/css" href="..\\headbar.css">
+<div id="headbar">
+    <div style="left:0px;width:15vw;" class="ib"></div>
+    <div id="headbar_icon"></div>
+    <div class="headbar_item"><a id="headbar_title" href="index">Music_Project_Name</a> | <a href="discover">Discover</a> | <a href="playlist">Playlist</a></div>
+    <input id="search_input" type="text" placeholder="Enter keyword of what you want" />
+    <div id="search_result"></div>
+    <script type="text/javascript">//Placeholder... It should be some code to fix the position but I'm gonna hard code it.</script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.getElementById("search_input").addEventListener("change", () => {
+            // A youtube search code should be here. I'm going to search by "https://www.youtube.com/results?search_query=" + escape(input_text)
+        });
+    </script>
+</div>
