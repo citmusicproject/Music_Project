@@ -1,0 +1,39 @@
+﻿#headbar {
+    width: 100vw;
+    height: 80px;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 255, 0.5);
+    color: aliceblue;
+    display: inline-block;
+    position: absolute;
+}
+.ib { 
+    display: inline-block;
+}
+#search_input {
+    position: absolute;
+    right: 10%;
+    top: 20px;
+    height: 40px;
+    width: 300px;
+    background-color: black;
+    display: inline-block;
+    color: white;
+}
+#headbar_icon {
+    position: relative;
+    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
+    width: 64px;
+    height: 64px;
+    top: 8px;
+    display: inline-block;
+    cursor: pointer;
+}
+.headbar_item {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 32px;
+    top: -10px;
+    position: relative;
+}
