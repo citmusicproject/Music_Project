@@ -1,0 +1,28 @@
+{
+  "name": "music_project",
+  "version": "1.0.0",
+  "description": "music project",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "hbs": "^4.0.1",
+    "pouchdb": "^6.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexphan1024/Music_Project.git"
+  },
+  "author": "Alex PHan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexphan1024/Music_Project/issues"
+  },
+  "homepage": "https://github.com/Alexphan1024/Music_Project#readme"
+}

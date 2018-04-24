@@ -9,8 +9,8 @@
 
 <body>
     <h1 id="title">{{title}}</h1>
-    <form method="POST" action="/top">
-        <input id=songname type="hidden" name="song" value="{{song}}">{{song}}</input>
+    <form method="POST" action="/">
+        <input id=songname type="hidden" name="song" value="{{data.song}}">{{data.song}}</input>
         <input type="radio" id="favourite" name="favourite" value="1" />
         <div id="ratingsongs">
         <label>1</label>
