@@ -33,6 +33,11 @@ app.get('/search', function(req, res) {
         title: "Search"
     });
 });
+app.get('/index', function (req, res) {
+    res.render('index.hbs', {
+        title: "Uhhh"
+    });
+});
 
 app.post('/rating', function(req, res) {
     res.render('rating.hbs', {
