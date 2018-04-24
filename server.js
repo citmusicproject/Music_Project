@@ -41,5 +41,8 @@ app.post('/rating', function(req, res) {
     });
     // console.log(req.body);
 });
-
+app.get('/login', function(req, res) {
+    res.render('login.hbs');
+    // console.log(req.body);
+});
 app.listen(8080)
