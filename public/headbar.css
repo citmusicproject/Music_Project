@@ -20,6 +20,20 @@
     background-color: black;
     display: inline-block;
     color: white;
+    border: none;
+    border-radius: 18px;
+}
+#headbar_icon:hover {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
 }
 #headbar_icon {
     position: relative;
@@ -29,6 +43,7 @@
     top: 8px;
     display: inline-block;
     cursor: pointer;
+    border-radius: 50%;
 }
 .headbar_item {
     display: inline-block;
