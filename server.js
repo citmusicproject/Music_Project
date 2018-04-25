@@ -19,7 +19,7 @@ String.prototype.format = function() {
 }
 
 app.get('/', function(req, res) {
-    res.send('<a href="/search">Search</a>')
+    res.send('<a href="/search">Search</a><p></p><a href="/index">Home</a><p></p><a href="/login">Login</a><p></p><a href="/Playlist">Playlist</a>')
 });
 
 app.post('/', function(req, res) {
