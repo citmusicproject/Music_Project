@@ -49,6 +49,21 @@
 }
 
 #addbutton{
-    height:100px;
-    width:100px;
+    height:50px;
+    width:50px;
+    position:relative;
+    top:35px;
+    border-radius:50px;
+    font-size:16pt;
+    color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(181,181,181);
+    opacity: 0.7;
+    transition: 0.3s;
+    border:none;
+}
+#addbutton:hover {opacity: 1}
+#addbutton:active {
+  box-shadow: 0 0px #666;
+  transform: translateY(2px);
 }
