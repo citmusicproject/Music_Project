@@ -3,6 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser')
 const app = express();
+const login = require('./login.js')
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -35,7 +36,6 @@ app.get('/search', function(req, res) {
 });
 app.get('/index', function (req, res) {
     res.render('index.hbs', {
-        title: "Uhhh"
     });
 });
 
@@ -50,6 +50,18 @@ app.post('/rating', function(req, res) {
 app.get('/login', function(req, res) {
     res.render('login.hbs');
 });
+
+app.post('/login',function(req,res){
+    var userId = req.body.email
+    var userPw = req.body.pw
+    var login_info = login.loadDatabase()
+    for(i = 0; i<login_info.length;i++){
+        if(userId == login_info[i].email && userPw == login_info[i].pw){
+            res.redirect('/index')
+        }
+    }
+    res.render('login.hbs')
+})
 
 app.get('/Playlist', function(req, res) {
     res.render('Playlist.hbs')
