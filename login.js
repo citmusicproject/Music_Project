@@ -8,9 +8,14 @@ var loadDatabase = ()=>{
 }   
 
 var addUser = (accdata)=>{
+    var valid = true
+    console.log("accountdata:",accdata)
     fs.writeFile('accdata.json', JSON.stringify(accdata), (error) =>{
-        console.log(error)
+        if(error){
+            valid = false
+        }
     });
+    return valid
 }
 
 

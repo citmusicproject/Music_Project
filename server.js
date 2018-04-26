@@ -1,9 +1,12 @@
+// import { notDeepEqual } from 'assert';
+
 const fs = require('fs');
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser')
 const app = express();
 const login = require('./login.js')
+const alert = require('alert-node')
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -20,7 +23,7 @@ String.prototype.format = function() {
 }
 
 app.get('/', function(req, res) {
-    res.send('<a href="/search">Search</a><p></p><a href="/index">Home</a><p></p><a href="/login">Login</a><p></p><a href="/Playlist">Playlist</a>')
+    res.render('index.hbs');
 });
 
 app.post('/', function(req, res) {
@@ -35,9 +38,7 @@ app.get('/search', function(req, res) {
     });
 });
 app.get('/index', function (req, res) {
-    res.render('index.hbs', {
-        numberoflist : 5
-    });
+    res.render('index.hbs');
 });
 
 app.post('/rating', function(req, res) {
@@ -52,30 +53,50 @@ app.get('/login', function(req, res) {
     res.render('login.hbs');
 });
 
+app.get('/signup', function(req, res) {
+    res.render('signup.hbs');
+});
+
 app.post('/login',function(req,res){
     var userId = req.body.email
     var userPw = req.body.pw
     var login_info = login.loadDatabase()
     for(i = 0; i<login_info.length;i++){
         if(userId == login_info[i].email && userPw == login_info[i].pw){
+            alert("Login Success")
             res.redirect('/index')
+        }else{
+            var valid = false
         }
     }
-    res.render('login.hbs')
+    if(!valid){
+        alert("Login Failed")
+    }
 })
 
-app.get('/registration',function(req,res){
-    res.render('registration.hbs')
+app.get('/signup',function(req,res){
+    res.render('signup.hbs')
 })
 
-app.post('/registration',function(req,res){
+app.post('/signup',function(req,res){
+    var id = req.body.email;
+    var pw = req.body.pass;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
     var user = {
-        id:req.body.email,
-        pw:req.body.pw
+        id : id,
+        pw : pw,
+        first: fname,
+        last: lname
     }
     var login_info = login.loadDatabase()
     login_info.push(user)
-    login.addUser(login_info)
+    var valid = login.addUser(login_info)
+    if(valid){
+        alert('Successfully registered')
+        res.redirect('/login')
+    }
+    
 })
 
 app.get('/Playlist', function(req, res) {
