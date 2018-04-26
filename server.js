@@ -3,6 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser')
 const app = express();
+const login = require('./login.js')
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -19,7 +20,7 @@ String.prototype.format = function() {
 }
 
 app.get('/', function(req, res) {
-    res.send('<a href="/search">Search</a>')
+    res.send('<a href="/search">Search</a><p></p><a href="/index">Home</a><p></p><a href="/login">Login</a><p></p><a href="/Playlist">Playlist</a>')
 });
 
 app.post('/', function(req, res) {
@@ -33,6 +34,10 @@ app.get('/search', function(req, res) {
         title: "Search"
     });
 });
+app.get('/index', function (req, res) {
+    res.render('index.hbs', {
+    });
+});
 
 app.post('/rating', function(req, res) {
     res.render('rating.hbs', {
@@ -41,8 +46,24 @@ app.post('/rating', function(req, res) {
     });
     // console.log(req.body);
 });
+
+app.get('/login', function(req, res) {
+    res.render('login.hbs');
+});
+
+app.post('/login',function(req,res){
+    var userId = req.body.email
+    var userPw = req.body.pw
+    var login_info = login.loadDatabase()
+    for(i = 0; i<login_info.length;i++){
+        if(userId == login_info[i].email && userPw == login_info[i].pw){
+            res.redirect('/index')
+        }
+    }
+    res.render('login.hbs')
+})
+
 app.get('/Playlist', function(req, res) {
     res.render('Playlist.hbs')
-    // console.log(req.body);
 });
 app.listen(800)
