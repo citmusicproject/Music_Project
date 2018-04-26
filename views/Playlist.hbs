@@ -1,70 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Project Theme</title>
-        <link href="project.css" type="text/css" rel="stylesheet"/>
-    </head>
-    
-    <body>
-        <div id="bg">
-            <div id="title">My Playlists</div>
-            <div id="display">
-                <div id="playlist1contents">
-                    
-                </div>
-                
-                <div class="playlist" id="playlist1">
-                    <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px/> 
-                    <div id="playlist1Name">Workout Music Playlist</div>
-                </div>
+<head>
+    <title>Project Theme</title>
+    <link href="project.css" type="text/css" rel="stylesheet" />
+</head>
 
-                <div class="playlist" id="playlist2">
-                    <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px/> 
-                    <div id="playlist2Name">Driving Music Playlist</div>
-                </div>
+<body>
+    <div id="bg">
+        <div id="title">My Playlists</div>
+        <div id="display">
+            <div id="playlistcontent">
+            </div>
+            <div class="playlist">
+                <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px />
+                <div class="playlistName">Workout Music Playlist</div>
+            </div>
+
+            <div class="playlist">
+                <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px />
+                <div class="playlistName">Driving Music Playlist</div>
             </div>
         </div>
-        <script>
-        var playlist1 = document.getElementById("playlist1"),
-    playlist2 = document.getElementById("playlist2"),
-    bg = document.getElementById("bg"),
-    display = document.getElementById("display"),
-    playlist1contents = document.getElementById("playlist1contents");
-    
+    </div>
+    <script>
+        var pl = document.getElementsByClassName("playlist"),
+            bg = document.getElementById("bg"),
+            display = document.getElementById("display"),
+            playlistcontent = document.getElementById("playlistcontent");
 
-playlist1.addEventListener("mouseover", function(){
-    playlist1.style.filter = "brightness(80%)";
-});
-playlist1.addEventListener("mouseout", function(){
-    playlist1.style.filter = "brightness(100%)";
-});
-playlist2.addEventListener("mouseover", function(){
-    playlist2.style.filter = "brightness(80%)";
-});
-playlist2.addEventListener("mouseout", function(){
-    playlist2.style.filter = "brightness(100%)";
-});
-playlist2.addEventListener("click", function(){
-    playlist2.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-    playlist1contents.style.left = "414px";
-    playlist1contents.style.height = "500px";
-    playlist1contents.style.width = "500px";
-    playlist1contents.style.display = "block";
-    playlist1contents.style.transition = "1s";
-    playlist1contents.innerHTML = document.getElementById("playlist2Name").innerHTML;
-});
-playlist1.addEventListener("click", function(){
-    playlist1.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-    playlist1contents.style.left = "200px";
-    playlist1contents.style.height = "500px";
-    playlist1contents.style.width = "500px";
-    playlist1contents.style.display = "block";
-    playlist1contents.style.transition = "1s";
-    playlist1contents.innerHTML = document.getElementById("playlist1Name").innerHTML;
-});
-
-
-        </script>
-    </body>
-
+        for (let index = 0; index < pl.length; index++) {
+            const element = pl[index];
+            element.addEventListener("mouseover", function () {
+                element.style.filter = "brightness(80%)";
+            });
+            element.addEventListener("mouseout", function () {
+                element.style.filter = "brightness(100%)";
+            });
+            element.addEventListener("click", function () {
+                if (playlistcontent.style.left != "") {
+                    element.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+                    playlistcontent.style.cssText = "";
+                    playlistcontent.innerHTML = "";
+                } else {
+                    element.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
+                    playlistcontent.style.left = (200 * index + 200).toString() + "px";
+                    playlistcontent.style.height = "500px";
+                    playlistcontent.style.width = "500px";
+                    playlistcontent.style.display = "block";
+                    playlistcontent.style.transition = "1s";
+                    playlistcontent.innerHTML = element.children[1].innerHTML;
+                }
+            });
+        }
+    </script>
+</body>
 </html>
