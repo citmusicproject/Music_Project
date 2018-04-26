@@ -7,8 +7,14 @@ var loadDatabase = ()=>{
     return data
 }   
 
+var addUser = (accdata)=>{
+    fs.writeFile('accdata.json', JSON.stringify(accdata), (error) =>{
+        console.log(error)
+    });
+}
 
 
 module.exports = {
-    loadDatabase
+    loadDatabase,
+    addUser
 }
