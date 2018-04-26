@@ -3,7 +3,7 @@
     height: 80px;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 255, 0.5);
+    background-color: rgba(127, 0, 0, 0.5);
     color: aliceblue;
     display: inline-block;
     position: absolute;
@@ -51,4 +51,5 @@
     font-size: 32px;
     top: -10px;
     position: relative;
+    color: white;
 }
