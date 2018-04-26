@@ -36,6 +36,7 @@ app.get('/search', function(req, res) {
 });
 app.get('/index', function (req, res) {
     res.render('index.hbs', {
+        numberoflist : 5
     });
 });
 
@@ -61,6 +62,20 @@ app.post('/login',function(req,res){
         }
     }
     res.render('login.hbs')
+})
+
+app.get('/registration',function(req,res){
+    res.render('registration.hbs')
+})
+
+app.post('/registration',function(req,res){
+    var user = {
+        id:req.body.email,
+        pw:req.body.pw
+    }
+    var login_info = login.loadDatabase()
+    login_info.push(user)
+    login.addUser(login_info)
 })
 
 app.get('/Playlist', function(req, res) {
