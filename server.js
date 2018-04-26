@@ -20,7 +20,7 @@ String.prototype.format = function() {
 }
 
 app.get('/', function(req, res) {
-    res.send('<a href="/search">Search</a><p></p><a href="/index">Home</a><p></p><a href="/login">Login</a><p></p><a href="/Playlist">Playlist</a>')
+    res.render('index.hbs');
 });
 
 app.post('/', function(req, res) {
@@ -35,8 +35,7 @@ app.get('/search', function(req, res) {
     });
 });
 app.get('/index', function (req, res) {
-    res.render('index.hbs', {
-    });
+    res.render('index.hbs');
 });
 
 app.post('/rating', function(req, res) {
