@@ -1,0 +1,107 @@
+#main{
+    width:100vw;
+    height:100vh;
+    background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+
+#signupContainer{
+    width:450px;
+    height:520px;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    position: absolute;
+    background-color: rgba(183, 172, 172, 0.3);
+    border-radius: 10px;
+
+
+}
+
+#closeButton{
+    position: absolute;
+    width:20px;
+    height:20px;
+    border-radius: 15px;
+    background-color: rgba(183, 172, 172, 0.3);
+    left: 10px;
+    top: 10px;    
+    
+    
+}
+
+#signupInputs{
+    width:350px;
+    height:370px;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    position:absolute;
+    background-color: white;
+    opacity: 0.8;
+    font-family: calibri;
+
+}
+
+.signupDivs{
+    width: 346px;
+    height: 40px;
+    position:relative;
+    font-size: large;
+    text-align: center;
+
+}
+
+#disclosure{
+    font-size:small;
+  
+}
+
+
+#signUpButton{
+    left: 0px;
+    right: 0px;
+    bottom: 100px;
+    margin: auto;
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    font-size: large;
+    font-family: calibri;
+    color: white;
+    background-color: rgba(255,0,0, 0.8);
+    
+    
+}
+
+#orSeparator{
+    left: 0px;
+    right: 0px;
+    bottom: 55px;
+    margin: auto;
+    position: absolute;
+    text-align: center;
+}
+
+
+#logInButton{
+    left: 0px;
+    right: 0px;
+    bottom: 25px;
+    margin: auto;
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    font-size: large;
+    font-family: calibri;
+    color: white;
+    background-color: rgba(17,15, 40, 0.8);
+ 
+}

@@ -23,17 +23,7 @@
     width:95vw;
     font-family: sans-serif;
 }
-#playlist1{
-    position:relative;
-    margin-right:10px;
-    height:250px;
-    width:200px;
-    display:inline-grid;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align:center;
-    
-}
-#playlist2{
+.playlist{
     position:relative;
     margin-right:10px;
     height:250px;
@@ -42,7 +32,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align:center;
 }
-#playlist1Name{
+.playlistName{
     position:relative;
     background-color:white;
     height:35px;
@@ -50,16 +40,7 @@
     top:-5px; 
     padding:10px;
 }
-#playlist2Name{
-    position:relative;
-    background-color:white;
-    height:35px;
-    width:180px;
-    top:-5px; 
-    padding:10px;
-}
-
-#playlist1contents{
+#playlistcontent{
     height:0px;
     width:0px;
     background-color:white;
