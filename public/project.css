@@ -22,7 +22,6 @@
     height:85vh;
     width:95vw;
     font-family: sans-serif;
-    
 }
 #playlist1{
     position:relative;
@@ -66,4 +65,9 @@
     background-color:white;
     Position:absolute;
     z-index: 10;
+}
+
+#addbutton{
+    height:100px;
+    width:100px;
 }
