@@ -9,14 +9,14 @@
         <div id="signupContainer">
             <button id="closeButton"></button>
             <div id="signupInputs">
-                <input type="text" id="firstName" placeholder="First Name"/ class="signupDivs">
-                <input type="text" id="lastName" placeholder="Last Name" class="signupDivs"/>
-                <input type="email" id="email" placeholder="Email" class="signupDivs"/>
-                <input type="password" id="password" placeholder="Password" class="signupDivs"/>
-                <div id="disclosure" class="signupDivs">By clicking Sign Up, you agree to MusicP's User Agreement, Privacy Policy, and Cookie Policy</div>
-                <button id="signUpButton" type="submit" class="signupDivs">SIGN UP</button>
-                <div id="orSeparator" class="signupDivs">- or -</div>
-                <button id="logInButton" type="submit" class="signupDivs">LOG IN</button>
+                <form action = "/signup" method='post' name="singup">
+                    <input type="text" id="firstName" name="fname" placeholder="First Name"/ class="signupDivs">
+                    <input type="text" id="lastName" name="lname"placeholder="Last Name" class="signupDivs"/>
+                    <input type="email" id="email" name="email" placeholder="Email" class="signupDivs"/>
+                    <input type="password" id="password" name="pass" placeholder="Password" class="signupDivs"/>
+                    <div id="disclosure" class="signupDivs">By clicking Sign Up, you agree to MusicP's User Agreement, Privacy Policy, and Cookie Policy</div>
+                    <button id="signUpButton" type="submit" class="signupDivs">SIGN UP</button>
+                </form>
             </div>
         </div>
     </div>
