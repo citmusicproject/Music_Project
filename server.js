@@ -50,6 +50,10 @@ app.get('/login', function(req, res) {
     res.render('login.hbs');
 });
 
+app.get('/signup', function(req, res) {
+    res.render('signup.hbs');
+});
+
 app.post('/login',function(req,res){
     var userId = req.body.email
     var userPw = req.body.pw
