@@ -45,22 +45,39 @@ playlist2.addEventListener("mouseout", function(){
     playlist2.style.filter = "brightness(100%)";
 });
 playlist2.addEventListener("click", function(){
-    playlist2.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-    playlist1contents.style.left = "414px";
-    playlist1contents.style.height = "500px";
-    playlist1contents.style.width = "500px";
-    playlist1contents.style.display = "block";
-    playlist1contents.style.transition = "1s";
-    playlist1contents.innerHTML = document.getElementById("playlist2Name").innerHTML;
+
+    if(playlist1contents.style.left == "414px"){
+        playlist2.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+        playlist1contents.style.cssText = "";
+        playlist1contents.innerHTML = "";
+    }
+    else{
+        playlist2.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
+        playlist1contents.style.left = "414px";
+        playlist1contents.style.height = "500px";
+        playlist1contents.style.width = "500px";
+        playlist1contents.style.display = "block";
+        playlist1contents.style.transition = "1s";
+        playlist1contents.innerHTML = document.getElementById("playlist2Name").innerHTML;
+    }
+    
 });
 playlist1.addEventListener("click", function(){
-    playlist1.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-    playlist1contents.style.left = "200px";
-    playlist1contents.style.height = "500px";
-    playlist1contents.style.width = "500px";
-    playlist1contents.style.display = "block";
-    playlist1contents.style.transition = "1s";
-    playlist1contents.innerHTML = document.getElementById("playlist1Name").innerHTML;
+    if(playlist1contents.style.left == "200px"){
+        playlist1.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+        playlist1contents.style.cssText = "";
+        playlist1contents.innerHTML = "";
+    }
+    
+    else{
+        playlist1.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
+        playlist1contents.style.left = "200px";
+        playlist1contents.style.height = "500px";
+        playlist1contents.style.width = "500px";
+        playlist1contents.style.display = "block";
+        playlist1contents.style.transition = "1s";
+        playlist1contents.innerHTML = document.getElementById("playlist1Name").innerHTML;
+    }
 });
 
 
