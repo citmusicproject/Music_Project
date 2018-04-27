@@ -1,5 +1,3 @@
-// import { notDeepEqual } from 'assert';
-
 const fs = require('fs');
 const express = require('express');
 const hbs = require('hbs');
@@ -63,14 +61,16 @@ app.post('/login',function(req,res){
     var login_info = login.loadDatabase()
     for(i = 0; i<login_info.length;i++){
         if(userId == login_info[i].email && userPw == login_info[i].pw){
-            alert("Login Success")
-            res.redirect('/index')
+            var valid = true
         }else{
             var valid = false
         }
     }
-    if(!valid){
+    if(valid == false){
         alert("Login Failed")
+    }else{
+        alert("Login Success")
+        res.redirect('/index')
     }
 })
 
@@ -84,7 +84,7 @@ app.post('/signup',function(req,res){
     var fname = req.body.fname;
     var lname = req.body.lname;
     var user = {
-        id : id,
+        email : id,
         pw : pw,
         first: fname,
         last: lname
