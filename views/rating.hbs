@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="rating_music.css">
 
@@ -8,21 +8,21 @@
 </head>
 
 <body>
-    <h1 id="title">{{title}}</h1>
+    <h1 id="title">{{title}} for {{data.song}}</h1>
     <form method="POST" action="/">
-        <input id=songname type="hidden" name="song" value="{{data.song}}">{{data.song}}</input>
-        <input type="radio" id="favourite" name="favourite" value="1" />
+        <input id=songname type="hidden" name="song" value="{{data.song}}">Facourite
+        <input type="checkbox" id="favourite" name="favourite"/>
         <div id="ratingsongs">
         <label>1</label>
-        <input type="radio" id="star5" name="rating" value="1" />
+        <input type="radio" name="rating" value="1" />
         <label>2</label>
-        <input type="radio" id="star4" name="rating" value="2"/>
+        <input type="radio" name="rating" value="2"/>
         <label>3</label>
-        <input type="radio" id="star3" name="rating" value="3"/>
+        <input type="radio" name="rating" value="3"/>
         <label>4</label>
-        <input type="radio" id="star2" name="rating" value="4"/>
+        <input type="radio" name="rating" value="4"/>
         <label>5</label>
-        <input type="radio" id="star1" name="rating" value="5"/>
+        <input type="radio" name="rating" value="5" checked="checked"/>
         <input type="submit" value="OK">
     </div>
     </form>
