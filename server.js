@@ -53,7 +53,7 @@ app.get('/login', function(req, res) {
 
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
-});
+})
 
 app.post('/login',function(req,res){
     var userId = req.body.email

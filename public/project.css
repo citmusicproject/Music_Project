@@ -1,9 +1,13 @@
 #bg{
-    background-color:rgb(0,40,50);
+    background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
     height:100vh;
     width:100vw;
-    background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
-    margin:-20px;
+    margin:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 }
 #title{
     position:absolute;
@@ -16,16 +20,18 @@
     font-weight:550;
 }
 #display{
-    position:absolute;
-    bottom:0px;
-    right:0px;
-    height:85vh;
-    width:95vw;
+    position:relative;
+    top:100px;
+    left:0px;
+    height:auto;
+    width:auto;
     font-family: sans-serif;
+    display: inline-block;
+    
 }
 .playlist{
     position:relative;
-    margin-right:10px;
+    margin:10px;
     height:250px;
     width:200px;
     display:inline-grid;
@@ -49,10 +55,9 @@
 }
 
 #addbutton{
+    position:relative;
     height:50px;
     width:50px;
-    position:relative;
-    top:35px;
     border-radius:50px;
     font-size:16pt;
     color:white;
@@ -66,4 +71,7 @@
 #addbutton:active {
   box-shadow: 0 0px #666;
   transform: translateY(2px);
+}
+.textfield{
+    border:none;
 }
