@@ -25,8 +25,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    res.send("Song: {0}\nFavourite: {1}\nRating: {2}/5\n"
-        .format(req.body.song, req.body.favourite, req.body.rating)+"<a href='/'>Back</a>")
+    res.send("Song: {0}<br>Favourite: {1}<br>Rating: {2}/5<br>"
+        .format(req.body.song, req.body.favourite=="on", req.body.rating)+"<a href='/'>Back</a>")
     // console.log(req.body);
 });
 

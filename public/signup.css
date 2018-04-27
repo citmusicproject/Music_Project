@@ -5,7 +5,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;  
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
 }
@@ -19,7 +19,7 @@
     top:0px;
     bottom:0px;
     margin:auto;
-    position: absolute;
+    position: fixed;
     background-color: rgba(183, 172, 172, 0.3);
     border-radius: 10px;
 
