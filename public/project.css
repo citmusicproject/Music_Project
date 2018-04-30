@@ -1,77 +1,86 @@
-#bg{
+#bg {
     background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
-    height:100vh;
-    width:100vw;
-    margin:auto;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
-#title{
-    position:absolute;
-    width:95vw;
-    top:40px;
-    right:0px;
-    font-size:12pt;
+
+#title {
+    position: absolute;
+    width: 95vw;
+    top: 40px;
+    right: 0px;
+    font-size: 12pt;
     font-family: sans-serif;
-    color:white;
-    font-weight:550;
+    color: white;
+    font-weight: 550;
 }
-#display{
-    position:relative;
-    top:100px;
-    left:0px;
-    height:auto;
-    width:auto;
+
+#display {
+    position: relative;
+    top: 100px;
+    left: 0;
+    height: auto;
+    width: 100%;
     font-family: sans-serif;
     display: inline-block;
-    
 }
-.playlist{
-    position:relative;
-    margin:10px;
-    height:250px;
-    width:200px;
-    display:inline-grid;
+
+.playlist {
+    position: relative;
+    margin: 0.5%;
+    height: 40%;
+    width: 12%;
+    display: inline-grid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align:center;
+    text-align: center;
 }
-.playlistName{
-    position:relative;
-    background-color:white;
-    height:35px;
-    width:180px;
-    top:-5px; 
-    padding:10px;
+
+.playlistName {
+    position: relative;
+    background-color: white;
+    height: 35px;
+    width: 180px;
+    top: -5px;
+    padding: 10px;
 }
-#playlistcontent{
-    height:0px;
-    width:0px;
-    background-color:white;
-    Position:absolute;
+
+#playlistcontent {
+    height: 0px;
+    width: 0px;
+    background-color: white;
+    Position: absolute;
     z-index: 10;
 }
 
-#addbutton{
-    position:relative;
-    height:50px;
-    width:50px;
-    border-radius:50px;
-    font-size:16pt;
-    color:white;
+#addbutton {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    font-size: 16pt;
+    color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: rgb(181,181,181);
     opacity: 0.7;
     transition: 0.3s;
-    border:none;
+    border: none;
 }
-#addbutton:hover {opacity: 1}
-#addbutton:active {
-  box-shadow: 0 0px #666;
-  transform: translateY(2px);
-}
-.textfield{
-    border:none;
+
+    #addbutton:hover {
+        opacity: 1
+    }
+
+    #addbutton:active {
+        box-shadow: 0 0px #666;
+        transform: translateY(2px);
+    }
+
+.textfield {
+    border: none;
 }
