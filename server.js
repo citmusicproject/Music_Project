@@ -32,11 +32,13 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
+	var num = '/index'+req.body.acct
     res.send("<br>Song: {0}</br><br>Favourite: {1}</br><br>Rating: {2}/5</br>"
-        .format(req.body.song, req.body.favourite == "on", req.body.rating) + "<a href='/'>Back</a>")
+        .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct ";>Back</button>`)
 });
 
 app.post('/rating', function(req, res) {
+	console.log(req.body);
     res.render('rating.hbs', {
         title: "Rating",
         data: req.body
@@ -63,9 +65,13 @@ app.post('/login', function(req, res) {
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover",
-                    playlist: "/Playlist",
-                    index: "1"
+                    playlist: "/Playlist"+i.toString(),
+                    index: "1",
+                    acct: i
                 });
+            });
+            app.get('/Playlist' + i.toString(), function(req, res) {
+                res.render('Playlist.hbs')
             });
             var valid = true
             res.redirect('/index' + i.toString())
@@ -110,9 +116,5 @@ app.post('/signup', function(req, res) {
     }
 
 })
-
-app.get('/Playlist', function(req, res) {
-    res.render('Playlist.hbs')
-});
 
 app.listen(8080)
