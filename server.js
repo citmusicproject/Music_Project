@@ -60,24 +60,21 @@ app.post('/login', function (req, res) {
             var last_name = login_info[i].last;
             // console.log(first_name);
             // alert("Login Success")
-            app.get('/index' + i.toString(),
-                function (req, res) {
-                    res.render('index.hbs',
-                        {
-                            login: `Hi, ${first_name} ${last_name} ${userId}`,
-                            home: "/index" + i.toString(),
-                            link: "",
-                            discover: "/discover",
-                            playlist: "/Playlist" + i.toString(),
-                            index: "1",
-                            acct: i
-                        });
+            app.get('/index' + i.toString(), function (req, res) {
+                res.render('index.hbs', {
+                    login: `Hi, ${first_name} ${last_name} ${userId}`,
+                    home: "/index" + i.toString(),
+                    link: "",
+                    discover: "/discover",
+                    playlist: "/Playlist" + i.toString(),
+                    index: "1",
+                    acct: i
                 });
-            app.get('/Playlist' + i.toString(),
-                function (req, res) {
-                    res.render('Playlist.hbs');
-                });
-            var valid = true
+            });
+            app.get('/Playlist' + i.toString(), function (req, res) {
+                res.render('Playlist.hbs');
+            });
+            var valid = true;
             res.redirect('/index' + i.toString());
             break;
         } else {
@@ -120,4 +117,4 @@ app.post('/signup', function (req, res) {
     }
 });
 
-app.listen(8080)
+app.listen(8080);
