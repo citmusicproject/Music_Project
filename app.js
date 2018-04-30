@@ -1,14 +1,17 @@
 var search = require('youtube-search');
 var keyWord = '';
+var secret = require('./keys');
+
+var password = secret.api_key;
 
  
 var opts = {
-  maxResults: 25,
-  key: 'AIzaSyA-HLMdUs5ve4uldOOTcfT7BtfWELHfJL8 '
+  maxResults: 1,
+  key: password
 };
  
-search(keyWord, opts, function(err, results) {
+search('jsconf', opts, function(err, results) {
   if(err) return console.log(err);
  
-  console.dir(results[0].id);
+  console.dir(results);
 });
