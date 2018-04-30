@@ -2,11 +2,13 @@
 <div id="headbar">
     <div style="left:0px;width:15vw;" class="ib"></div>
     <div id="headbar_icon"></div>
-    <div class="headbar_item"><a id="headbar_title" class="hbunder" href="index" style="color:white">Music_Project_Name</a> | <a href="ranking.html" class="hbunder" style="color:white">Discover</a> | <a href="playlist" class="hbunder" style="color:white">Playlist</a></div>
+    <div class="headbar_item"><a id="headbar_title" class="hbunder" href="{{home}}" style="color:white">Music World</a> | <a href="{{discover}}" class="hbunder" style="color:white">Discover</a> | <a href="{{playlist}}" class="hbunder" style="color:white">Playlist</a></div>
     <form method="POST" action="/rating">
-        <input id="search_input" type="text" name="song" placeholder="Enter keyword of what you want" />
+        <input id="search_input" type="text" name="song" placeholder="Enter Keyword" />
+        <input type="hidden" name="acct" value="{{acct}}"/>
     </form>
-    <button id="headbar_login" style="display:inline-block;height:40px;border-radius:15px;right:2%;position:absolute;top:23px;border:none;background-color:royalblue;" onclick="location.href = 'login';">Log in or Sign in</button>
+    <button id="headbar_login" style="display:inline-block;height:40px;border-radius:15px;right:9%;position:absolute;top:20px;border:none;background-color:royalblue;width:10%" onclick="location.href = '{{link}}';">{{login}}</button>
+    <button id="headbar_logout" style="display:inline-block;height:40px;border-radius:15px;right:2%;position:absolute;top:20px;border:none;background-color:royalblue;z-index: {{index}};width: 6%" onclick="location.href = '/';">Log out</button>
     <div id="search_result"></div>
     <script type="text/javascript">
     function TestFunction() { console.log("You can run JavaScript here."); } TestFunction();
