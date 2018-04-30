@@ -7,11 +7,11 @@
     <body>
     <div id="main">
         <div id= "loginContainer">
-            <button id="closeButton"></button>
+            <button id="closeButton" onclick="location.href = '/'";></button>
             <div id="loginInputs">
-               <form action='/login' method='post' name='login'>
+               <form id="logindata" action='/login' method='post' name='login'>
                     <input type="email" id="signInEmail" name="email" placeholder="Email Address" class="signInCredentials"/>
-                    <input type="password" id="signInPassword" name="pw" placeholder="Password"class="signInCredentials" />
+                    <input type="password" id="signInPassword" name="pw" placeholder="Password" class="signInCredentials" />
                     <button id="logInButton" type="submit">LOG IN</button>
                     <div id="orSeparator">- or -</div>
                 </form>
@@ -21,10 +21,6 @@
             </div>
         </div>
     </div>
-    
-    
-    
-    
     <script></script>
     </body>
 </html>
