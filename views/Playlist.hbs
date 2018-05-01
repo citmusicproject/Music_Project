@@ -7,32 +7,17 @@
 
 <body>
     <div id="bg"></div>
-        <div id="title">My Playlists
-                <button id="addbutton">+♪</button></div>
-        <div id="display">
-            <div id="playlistcontent"></div>
-            {{> newplaylist }}
-            <!-- <div class="playlist">
-                <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px />
-                <div class="playlistName"><input class="textfield" type="text" value="Workout Music Playlist" /></div>
-            </div>
-
-            <div class="playlist">
-                <img id="img1" src=http://isaiaruvy.com/uploads/songs/default.png height=200px width=200px />
-                <div class="playlistName"><input class="textfield" type="text" value="Driving Music Playlist" /></div>
-            </div>
-            --> 
-        </div>
+    <div id="title">
+        My Playlists
+        <button id="addbutton">+♪</button>
+    </div>
+    <div id="display">
+        <div id="playlistcontent"></div>
+        {{> newplaylist }}
+    </div>
     <script>
-        var pl = document.getElementsByClassName("playlist"),
-            bg = document.getElementById("bg"),
-            display = document.getElementById("display"),
-            playlistcontent = document.getElementById("playlistcontent"), 
-            addbutton = document.getElementById("addbutton");
-
-        for (let index = 0; index < pl.length; index++) {
-            const element = pl[index];
-            console.log(pl);
+        function addDetailEvent(index) {
+            const element = document.getElementsByClassName("playlist")[index];
             element.addEventListener("mouseover", function () {
                 element.style.filter = "brightness(80%)";
             });
@@ -46,35 +31,28 @@
                     playlistcontent.innerHTML = "";
                 } else {
                     element.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-                    playlistcontent.style.left = (200 * index + 200).toString() + "px";
-                    playlistcontent.style.height = "500px";
-                    playlistcontent.style.width = "500px";
+                    playlistcontent.style.left = (13.25 * index + 13).toString() + "%";
+                    playlistcontent.style.height = "60vh";
+                    playlistcontent.style.width = "30vw";
                     playlistcontent.style.display = "block";
                     playlistcontent.style.transition = "1s";
                     playlistcontent.innerHTML = element.children[1].innerHTML;
                 }
             });
         }
-        addbutton.addEventListener("click", function(){
+        var bg = document.getElementById("bg"),
+            display = document.getElementById("display"),
+            playlistcontent = document.getElementById("playlistcontent"),
+            addbutton = document.getElementById("addbutton");
+        for (let index = 0; index < document.getElementsByClassName("playlist").length; index++) {
+            addDetailEvent(index);
+        }
+        addbutton.addEventListener("click", function () {
             var newplaylist = document.createElement("div");
-            newplaylist.className = "playlist";
-            display.appendChild(newplaylist);
-            var newimg = document.createElement("img");
-            newimg.src = "http://isaiaruvy.com/uploads/songs/default.png";
-            newimg.style.height = "200px";
-            newimg.style.width = "200px";
-            newplaylist.appendChild(newimg);
-            var newname = document.createElement("div");
-            newname.className = "playlistName";
-            var newtextfield = document.createElement("input");
-            newtextfield.setAttribute = ("type", "text");
-            newtextfield.value = "new playlist";
-            newtextfield.className = "textfield";
-            newname.appendChild(newtextfield);
-            newplaylist.appendChild(newname);
-            
+            newplaylist.innerHTML = String.raw`{{>newplaylist}}`;
+            display.appendChild(newplaylist.firstChild);
+            addDetailEvent(document.getElementsByClassName("playlist").length - 1);
         });
-        
     </script>
 </body>
 </html>
