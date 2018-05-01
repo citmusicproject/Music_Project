@@ -104,6 +104,9 @@ app.post('/login', function(req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup.hbs')
 })
+app.get('/searchpage', function(req, res) {
+    res.render('searchpage.hbs')
+})
 
 app.post('/signup', function(req, res) {
     var id = req.body.email;
