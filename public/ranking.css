@@ -1,0 +1,142 @@
+#backgroundImage{
+    background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
+    height:100vh;
+    width: 100vw;
+    margin:auto;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    background-size: cover;
+    
+    
+}
+
+
+
+#main{
+    width:100vw;
+    height:auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+}
+
+#banner{
+    width: 100vw;
+    height: 200px;
+    top: 100px;
+    background-color: rgba(183, 172, 172, 0.3);
+    position: absolute;
+
+}
+
+#musicWorldImage{
+    position: absolute;
+    width: 200px;
+    height:200px;
+    left: 20px;
+    bottom: -40px;
+    background-image: url(http://icons.iconarchive.com/icons/robsonbillponte/sinem/512/File-Music-icon.png);
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+    
+}
+
+
+#bannerTitle{
+    font-family: tahoma;
+    color: white;
+    font-style: bold;
+    font-size: 50px;
+    position: absolute;
+    left: 220px;
+    top: 70px;
+ 
+}
+
+#bannerDescription{
+    font-family: tahoma;
+    color: rgba(41, 61, 122, 1);
+    font-size: 20px;
+    position: absolute;
+    left: 220px;
+    top: 127px;
+    
+}
+
+#rankedContent{
+    background-color: rgba(183, 172, 172, 0.3);
+    width: 100vw;
+    height: auto;
+    top: 350px;
+    position: relative;
+    font-family: tahoma;
+}
+
+.rc{
+    width: 100vw;
+    height: 100px;
+    background-color: rgba(183, 172, 172, 0.3);
+    opacity: 0.7;
+
+}
+
+.rc:hover{opacity: 1}
+
+.playImage{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 31px;
+    left: -50px;
+    transition: 0.2s;
+    
+}
+
+
+
+.rankNum{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 50px;
+    top: 40px;
+    text-align: center;
+    color: white;
+ 
+}
+
+.rankImage{
+    width: 75px;
+    height: 75px;
+    left: 100px;
+    top: -27px;
+    position: relative;
+    
+}
+
+.songTitle{
+    width: 500px;
+    height: 25px;
+    left: 210px;
+    top: -90px;
+    position: relative;
+    font-size: 20px;
+    font-style: bold;
+    color: white;
+    
+}
+
+.songArtist{
+    width: 500px;
+    height: 25px;
+    left: 210px;
+    top: -88px;
+    position: relative;
+    color: rgba(41, 61, 122, 1);
+    
+}
