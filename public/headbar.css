@@ -8,9 +8,11 @@
     display: inline-block;
     position: absolute;
 }
-.ib { 
+
+.ib {
     display: inline-block;
 }
+
 #search_input {
     position: absolute;
     right: 20%;
@@ -24,6 +26,7 @@
     border-radius: 18px;
     text-align: center;
 }
+
 #headbar_icon:hover {
     animation-play-state: running;
 }
@@ -32,10 +35,12 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
 }
+
 #headbar_icon {
     position: relative;
     background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
@@ -48,6 +53,7 @@
     border-radius: 50%;
     animation-play-state: paused;
 }
+
 .headbar_item {
     display: inline-block;
     cursor: pointer;
@@ -57,6 +63,6 @@
     color: white;
 }
 
-.hbunder{
+.hbunder {
     text-decoration: none;
 }
