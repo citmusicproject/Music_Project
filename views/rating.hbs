@@ -8,24 +8,27 @@
 </head>
 
 <body>
-    <h1 id="title">{{title}} for {{data.song}}</h1>
+    <h1 id="title">{{title}} for {{data}}</h1>
     <form method="POST" action="/">
-        <input id=songname type="hidden" name="song" value="{{data.song}}">Favourite
-        <input type="hidden" name="acct" value="{{data.acct}}">
-        <input type="checkbox" id="favourite" name="favourite"/>
+        <input id=songname type="hidden" name="song" value="{{data.link}}">Favourite
+        <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
+        <input type="checkbox" id="favourite" name="favourite" />
         <div id="ratingsongs">
-        <label>1</label>
-        <input type="radio" name="rating" value="1" />
-        <label>2</label>
-        <input type="radio" name="rating" value="2"/>
-        <label>3</label>
-        <input type="radio" name="rating" value="3"/>
-        <label>4</label>
-        <input type="radio" name="rating" value="4"/>
-        <label>5</label>
-        <input type="radio" name="rating" value="5" checked="checked"/>
-        <input type="submit" value="OK">
-    </div>
+            <label>1</label>
+            <input type="radio" name="rating" value="1" />
+            <label>2</label>
+            <input type="radio" name="rating" value="2" />
+            <label>3</label>
+            <input type="radio" name="rating" value="3" />
+            <label>4</label>
+            <input type="radio" name="rating" value="4" />
+            <label>5</label>
+            <input type="radio" name="rating" value="5" checked="checked" />
+            <input type="submit" value="OK">
+        </div>
     </form>
+    <iframe width="500" height="315" src={{data}}>
+    </iframe>
 </body>
+
 </html>
