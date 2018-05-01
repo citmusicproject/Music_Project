@@ -3,10 +3,10 @@
     height: 80px;
     left: 0;
     top: 0;
-    background-color: rgba(127, 0, 0, 0.5);
-    color: aliceblue;
+    background-color: white;
     display: inline-block;
     position: absolute;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .ib {
@@ -18,13 +18,12 @@
     right: 20%;
     top: 20px;
     height: 40px;
-    width: 300px;
-    background-color: black;
+    width: 150px;
     display: inline-block;
-    color: white;
-    border: none;
-    border-radius: 18px;
+    border:none;
+    border-radius: 5px;
     text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 #headbar_icon:hover {
@@ -52,6 +51,7 @@
     animation: rotation 2s infinite linear;
     border-radius: 50%;
     animation-play-state: paused;
+    color:black;
 }
 
 .headbar_item {
@@ -60,9 +60,16 @@
     font-size: 32px;
     top: -10px;
     position: relative;
-    color: white;
 }
 
 .hbunder {
-    text-decoration: none;
+    text-decoration:none;
+    color:rgb(181,181,181);
+ 
 }
+.hbunder:hover{
+    text-shadow: 1px 1px 1px;
+    text-decoration: none;
+    color: rgb(181,181,181);
+}
+
