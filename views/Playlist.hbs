@@ -16,8 +16,10 @@
         {{> newplaylist }}
     </div>
     <script>
+        displayDetails = -1;
         function addDetailEvent(index) {
-            const element = document.getElementsByClassName("playlist")[index];
+            let idd = index;
+            let element = document.getElementsByClassName("playlist")[index];
             element.addEventListener("mouseover", function () {
                 element.style.filter = "brightness(80%)";
             });
@@ -25,13 +27,16 @@
                 element.style.filter = "brightness(100%)";
             });
             element.addEventListener("click", function () {
-                if (playlistcontent.style.left != "") {
+                if (displayDetails == idd) {
                     element.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
                     playlistcontent.style.cssText = "";
                     playlistcontent.innerHTML = "";
+                    displayDetails = false;
                 } else {
+                    displayDetails = idd;
                     element.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-                    playlistcontent.style.left = (13.25 * index + 13).toString() + "%";
+                    playlistcontent.style.left = parseInt(element.getBoundingClientRect().right).toString() + "px";
+                    playlistcontent.style.top = parseInt(element.getBoundingClientRect().top).toString() + "px";
                     playlistcontent.style.height = "60vh";
                     playlistcontent.style.width = "30vw";
                     playlistcontent.style.display = "block";
@@ -49,7 +54,7 @@
         }
         addbutton.addEventListener("click", function () {
             var newplaylist = document.createElement("div");
-            newplaylist.innerHTML = String.raw`{{>newplaylist}}`;
+            newplaylist.innerHTML = `{{>newplaylist}}`;
             display.appendChild(newplaylist.firstChild);
             addDetailEvent(document.getElementsByClassName("playlist").length - 1);
         });
