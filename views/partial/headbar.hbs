@@ -5,10 +5,6 @@
         <div id="headbar_icon"></div>
         <div class="headbar_item"><a id="headbar_title" class="hbunder" href="/">music world</a> | <a href="{{ranking}}" class="hbunder">ranking</a> | <a href="{{playlist}}" class="hbunder">playlist</a> |
         <a href="/searchpage" class="hbunder">search</a></div>
-        <form method="POST" action="/rating">
-            <input id="search_input" type="text" name="song" placeholder="enter keyword" />
-            <input type="hidden" name="acct" value=""/>
-        </form>
         <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);display:inline-block;height:40px;border-radius:5px;right:9%;position:absolute;color:white;top:20px;border:none;background-color:red;width:10%" onclick="location.href = '{{link}}';">{{login}}</button>
         <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);display:inline-block;height:40px;border-radius:5px;right:2%;position:absolute;top:20px;border:none;background-color:red;z-index: {{index}};color:white;width: 6%" onclick="location.href = '/';">log out</button>
         <div id="search_result"></div>
