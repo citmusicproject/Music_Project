@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const app = express();
 const login = require('./login.js')
 const alert = require('alert-node')
+var youtube = require('./searchyoutube.js');
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -32,16 +33,21 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	var num = '/index'+req.body.acct
+    var num = '/index' + req.body.acct
     res.send("<br>Song: {0}</br><br>Favourite: {1}</br><br>Rating: {2}/5</br>"
-        .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct ";>Back</button>`)
+        .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct";>Back</button>`)
 });
 
 app.post('/rating', function(req, res) {
-	console.log(req.body);
-    res.render('rating.hbs', {
-        title: "Rating",
-        data: req.body
+    youtube.searchYoutube(req.body.song, (errorMessage, results) => {
+        if (errorMessage) {
+            console.log(errorMessage);
+        } else {
+            res.render('rating.hbs', {
+                title: "Rating",
+                data: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link)
+            });
+        }
     });
 });
 
@@ -65,7 +71,7 @@ app.post('/login', function(req, res) {
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover",
-                    playlist: "/Playlist"+i.toString(),
+                    playlist: "/Playlist" + i.toString(),
                     index: "1",
                     acct: i
                 });
