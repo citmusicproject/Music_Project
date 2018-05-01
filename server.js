@@ -43,9 +43,10 @@ app.post('/rating', function(req, res) {
         if (errorMessage) {
             console.log(errorMessage);
         } else {
+            // console.log('https://www.youtube.com/embed/'+ encodeURIComponent(results.link));
             res.render('rating.hbs', {
                 title: "Rating",
-                data: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link)
+                data: 'https://www.youtube.com/embed/'+ encodeURIComponent(results.link)
             });
         }
     });
