@@ -1,70 +1,62 @@
-#main{
-    width:100vw;
-    height:100vh;
+#main {
+    width: 100vw;
+    height: 100vh;
     background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
-    left: 0px; 
+    left: 0px;
     top: 0px;
-    
-    
 }
 
-#loginContainer{
-    width:400px;
-    height:450px;
-    left:0px;
-    right:0px;
-    top:0px;
-    bottom:0px;
-    margin:auto;
+#loginContainer {
+    width: 400px;
+    height: 450px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
     position: fixed;
     background-color: rgba(183, 172, 172, 0.3);
     border-radius: 10px;
-
-
 }
 
-#closeButton{
+#closeButton {
     position: absolute;
-    width:20px;
-    height:20px;
+    width: 20px;
+    height: 20px;
     border-radius: 15px;
     background-color: rgba(183, 172, 172, 0.3);
     left: 10px;
-    top: 10px;    
-    
-    
+    top: 10px;
 }
 
-#loginInputs{
+#loginInputs {
     width: 300px;
-    height:300px;
-    left:0px;
-    right:0px;
-    top:0px;
-    bottom:0px;
-    margin:auto;
-    position:absolute;
+    height: 300px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    position: absolute;
     background-color: white;
     opacity: 0.8;
     font-family: calibri;
-
 }
 
 
-.signInCredentials{
+.signInCredentials {
     width: 296px;
-    height:70px;
-    position:relative;
+    height: 70px;
+    position: relative;
     font-size: large;
     text-align: center;
-
 }
 
-#logInButton{
+#logInButton {
     left: 0px;
     right: 0px;
     bottom: 90px;
@@ -76,10 +68,9 @@
     font-family: calibri;
     color: white;
     background-color: rgba(17,15, 40, 0.8);
-  
 }
 
-#orSeparator{
+#orSeparator {
     left: 0px;
     right: 0px;
     bottom: 65px;
@@ -88,8 +79,7 @@
     text-align: center;
 }
 
-
-#signUpButton{
+#signUpButton {
     left: 0px;
     right: 0px;
     bottom: 20px;
@@ -101,6 +91,4 @@
     font-family: calibri;
     color: white;
     background-color: rgba(255,0,0, 0.8);
-
 }
-
