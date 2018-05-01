@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <h1 id="title">{{title}} for {{data}}</h1>
+    <h1 id="title">{{title}}</h1>
     <form method="POST" action="/">
-        <input id=songname type="hidden" name="song" value="{{data.link}}">Favourite
+        <input id=songname type="hidden" name="song" value="{{link}}">Favourite
         <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
         <input type="checkbox" id="favourite" name="favourite" />
         <div id="ratingsongs">
@@ -27,7 +27,8 @@
             <input type="submit" value="OK">
         </div>
     </form>
-    <iframe width="500" height="315" src={{data}}>
+    <img src={{thumbnail}}></img>
+    <iframe width="550" height="315" src={{link}}>
     </iframe>
 </body>
 

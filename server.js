@@ -26,10 +26,15 @@ app.get('/', function(req, res) {
         login: "Log in or Sign up",
         link: "login",
         home: "/",
-        discover: "/login",
+        ranking: "/login",
         playlist: "/login",
         index: "-1"
     });
+});
+
+
+app.get('/ranking', function(req, res) {
+    res.render('ranking.hbs')
 });
 
 app.post('/', function(req, res) {
@@ -46,7 +51,9 @@ app.post('/rating', function(req, res) {
             // console.log('https://www.youtube.com/embed/'+ encodeURIComponent(results.link));
             res.render('rating.hbs', {
                 title: "Rating",
-                data: 'https://www.youtube.com/embed/'+ encodeURIComponent(results.link)
+                link: 'https://www.youtube.com/embed/'+ encodeURIComponent(results.link),
+                thumbnail: results.thumbnails,
+                title: results.title
             });
         }
     });
@@ -68,10 +75,10 @@ app.post('/login', function(req, res) {
             // alert("Login Success")
             app.get('/index' + i.toString(), function(req, res) {
                 res.render('index.hbs', {
-                    login: `Hi, ${first_name} ${last_name} ${userId}`,
+                    login: `Hi, ${first_name} ${last_name}`,
                     home: "/index" + i.toString(),
                     link: "",
-                    discover: "/discover",
+                    ranking: "/ranking",
                     playlist: "/Playlist" + i.toString(),
                     index: "1",
                     acct: i

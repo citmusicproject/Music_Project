@@ -3,11 +3,11 @@ var keyWord = '';
 // var secret = require('./keys');
 var fs = require('fs');
 var list = [];
-var password = "";
+var password = 'AIzaSyA-HLMdUs5ve4uldOOTcfT7BtfWELHfJL8';
 
 
 var opts = {
-    maxResults: 1,
+    maxResults: 5,
     key: password
 };
 
@@ -16,7 +16,12 @@ function searchYoutube(keyword, callback) {
         if (err) {
             console.log(err);
         } else {
-            callback(undefined, { link: results[0].link.split('=')[1] })
+        	var i = 0;
+            callback(undefined, {
+                link: results[0].link.split('=')[1],
+                thumbnails : results[0].thumbnails.default.url,
+                title: results[0].title
+            })
         }
         // var i;
         // for (i = 0; i < results.length; i++) {
@@ -39,7 +44,7 @@ module.exports = {
     searchYoutube
 };
 
-// searchYoutube("Drake God's Plan", (errorMessage, results) => {
+// searchYoutube("Drake", (errorMessage, results) => {
 //     if (errorMessage) {
 //         console.log(errorMessage);
 //     } else {
