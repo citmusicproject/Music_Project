@@ -3,7 +3,7 @@ var keyWord = '';
 // var secret = require('./keys');
 var fs = require('fs');
 var list = [];
-var password = 'AIzaSyA-HLMdUs5ve4uldOOTcfT7BtfWELHfJL8';
+var password = '';
 
 
 var opts = {
