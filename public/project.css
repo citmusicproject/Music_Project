@@ -61,7 +61,7 @@
     height: 0px;
     width: 0px;
     background-color: white;
-    Position: absolute;
+    Position: fixed;
     z-index: 10;
 }
 
