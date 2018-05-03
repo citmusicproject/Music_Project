@@ -7,24 +7,18 @@ var password = secret.api_key;
 
  
 var opts = {
-	maxResults: 5, 
+	maxResults: 1, 
 	key: password
 };
 
 function searchYoutube(keyword) {
 	search(keyword, opts, function(err, results) {
-		if(err) return console.log(err);
-	 
+		console.log(results);
 
-		var i;
-		for (i = 0; i < results.length; i++) { 
-			list.push(results[i].link);
-
-		}
+	 	
+	 	// console.log("result",results);
 		
 		
-	 	var test = JSON.stringify(list);
-	  	fs.writeFile('test.JSON', test);
 	})
 }
  
