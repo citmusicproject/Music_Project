@@ -1,69 +1,132 @@
-#main {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(https://www.movilzona.es/app/uploads/2017/05/fondos-google.jpg);
+#main{
+    width:100vw;
+    height:100vh;
+    background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;  
+    left: 0px;
+    top:0px;
+    position: absolute;
+}
+
+
+#signupContainer{
+    width:400px;
+    height:470px;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    position: absolute;
+    background-color: rgba(183, 172, 172, 0.3);
+
+
+}
+
+#mwLogo{
+    width: 55px;
+    height: 55px;
+    border-radius: 70px;
+    position: absolute;
+    left: 50px;
+    top: 25px;
+    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
+    background-position: center;
     background-size: cover;
-    position: fixed;
-    left: 0px;
-    top: 0px;
+    
 }
 
-#signupContainer {
-    width: 450px;
-    height: 520px;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    position: fixed;
-    background-color: rgba(183, 172, 172, 0.3);
+#mwTitle{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    width: 296px;
+    left: 115px;
+    top: 20px;
+    
+    
+}
+
+
+
+
+
+
+
+
+#closeButton{
+    position: absolute;
+    width: 10px;
+    height: 15px;
     border-radius: 10px;
-}
-
-#closeButton {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    background-color: rgba(183, 172, 172, 0.3);
-    left: 10px;
+    background-color: rgba(183, 172, 172, 0);
+    right: 10px;
     top: 10px;
+    z-index:2;
+    text-align: center;
+    
 }
 
-#signupInputs {
-    width: 350px;
-    height: 370px;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
+#signupInputs{
+    width:350px;
+    height:370px;
+    left:0px;
+    right:0px;
     margin: auto;
-    position: absolute;
-    background-color: white;
+    bottom: 10px;
+    position:absolute;
+    background-color: rgba(0,0,0,0);
     opacity: 0.8;
     font-family: calibri;
+
 }
 
-.signupDivs {
+.signupDivs{
     width: 346px;
     height: 40px;
-    position: relative;
+    position:relative;
     font-size: large;
     text-align: center;
+
 }
 
-#disclosure {
-    font-size: small;
+#lastName{
+    position: relative;
+    top: 10px;
+    
+}
+
+#email{
+    position: relative;
+    top: 20px;
+    
+}
+
+#password{
+    position: relative;
+    top: 30px;
+    
 }
 
 
-#signUpButton {
+
+
+#disclosure{
+    font-size:small;
+    position: absolute;
+    bottom: 113px;
+  
+  
+}
+
+
+#signUpButton{
     left: 0px;
     right: 0px;
-    bottom: 100px;
+    bottom: 70px;
     margin: auto;
     position: absolute;
     width: 120px;
@@ -72,21 +135,24 @@
     font-family: calibri;
     color: white;
     background-color: rgba(255,0,0, 0.8);
+    
+    
 }
 
-#orSeparator {
+#orSeparator{
     left: 0px;
     right: 0px;
-    bottom: 55px;
+    bottom: 28px;
     margin: auto;
     position: absolute;
     text-align: center;
 }
 
-#logInButton {
+
+#logInButton{
     left: 0px;
     right: 0px;
-    bottom: 25px;
+    bottom: 5px;
     margin: auto;
     position: absolute;
     width: 120px;
@@ -95,4 +161,5 @@
     font-family: calibri;
     color: white;
     background-color: rgba(17,15, 40, 0.8);
+ 
 }
