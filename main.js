@@ -1,3 +1,3 @@
 var app = require('./app.js');
 
-app.searchYoutube('Joe');
+console.log(app.searchYoutube('Joe'));
