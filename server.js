@@ -158,7 +158,7 @@ app.get('/discover', function (req, res) {
     var xhr = require('xhr');
     if (!xhr.open) xhr = require('request');
     let ppp = "https://www.googleapis.com/youtube/v3/videos?part=statistics&chart=mostPopular&maxResults=25&key=" +
-        youtube.gpassword();
+        "AIzaSyA-HLMdUs5ve4uldOOTcfT7BtfWELHfJL8";
     xhr({
         url: ppp,
         method: 'GET'
