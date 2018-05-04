@@ -1,10 +1,9 @@
 var search = require('youtube-search');
 var keyWord = '';
-// var secret = require('./keys');
+var secret = require('./keys');
 var fs = require('fs');
 var list = [];
-var password = '';
-
+var password = secret.key;
 
 var opts = {
     maxResults: 5,
