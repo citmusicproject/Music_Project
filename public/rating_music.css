@@ -1,31 +1,54 @@
-#bg{
-    background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
-    height:100vh;
-    width:100vw;
-    margin:auto;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-size:cover;
-    z-index:-100;    
+#favouritetab{
+    position:relative;
+    padding:10px;
 }
+#searchdisplay{
+    width:600px;
+    height:70vh;
+    bottom:0;
+    position:relative;
+}
+#searchresults{
+    height:100px;
+    width:600px;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top:70px;
+    position:relative;
+    vertical-align:center;
+    left:10px;
+}
+.thumbnailtitle{
+    position:relative;
+    color:black;
+    display:inline-block;
+}
+.thumbnails{
+    position:relative;
+    top:0px;
+    display:inline-block;
+    padding:5px;
+}
+
 #display{
     color:white;
 }
 #player{
-    position:absolute;
+    position:fixed;
     right:50px;
     top:100px;
+    width:550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color:black;
+    display:none;
 }
 #searchbar{
     height:35px;
-    width:400px;
+    width:600px;
     line-height: 36px;
     position:relative;
+    top:65px;
     z-index:5;
-    top:10px;
     left:10px;
     margin:auto;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -34,8 +57,47 @@
     font: 18px arial,sans-serif;
     padding:10px;
 }
-.thumbnails{
-    position:relative;
-    top:20px;
-    left:10px;
+#title{
+    font: 18px arial,sans-serif;
 }
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
