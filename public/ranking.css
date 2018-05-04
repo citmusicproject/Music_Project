@@ -28,18 +28,19 @@
     width: 100vw;
     height: 200px;
     top: 100px;
-    background-color: rgba(183, 172, 172, 0.3);
+    background-color: rgba(255, 255, 255, 0);
     position: absolute;
 
 }
 
 #musicWorldImage{
     position: absolute;
-    width: 200px;
-    height:200px;
-    left: 20px;
-    bottom: -40px;
-    background-image: url(http://icons.iconarchive.com/icons/robsonbillponte/sinem/512/File-Music-icon.png);
+    width: 150px;
+    height:150px;
+    border-radius: 150px;
+    left: 80px;
+    bottom: 0px;
+    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
     background-position: center;
     background-size: cover;
     z-index: 1;
@@ -48,12 +49,12 @@
 
 
 #bannerTitle{
-    font-family: tahoma;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
     color: white;
     font-style: bold;
     font-size: 50px;
     position: absolute;
-    left: 220px;
+    left: 250px;
     top: 70px;
  
 }
@@ -63,13 +64,13 @@
     color: rgba(41, 61, 122, 1);
     font-size: 20px;
     position: absolute;
-    left: 220px;
-    top: 127px;
+    left: 250px;
+    top: 130px;
     
 }
 
 #rankedContent{
-    background-color: rgba(183, 172, 172, 0.3);
+    background-color: rgba(255, 255, 255, 0);
     width: 100vw;
     height: auto;
     top: 350px;
@@ -80,7 +81,7 @@
 .rc{
     width: 100vw;
     height: 100px;
-    background-color: rgba(183, 172, 172, 0.3);
+    background-color: rgba(0, 0, 0, 0);
     opacity: 0.7;
 
 }
@@ -138,5 +139,22 @@
     top: -88px;
     position: relative;
     color: rgba(41, 61, 122, 1);
+    
+}
+
+
+#popupYoutube{
+    width: 560px;
+    height: 315px;
+    position: fixed;
+    display: none;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    right: 100px;
+    background-color: white;
+    z-index: 2;
+    
+    
     
 }
