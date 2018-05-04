@@ -1,0 +1,75 @@
+﻿#headbar {
+    width: 100vw;
+    height: 80px;
+    left: 0;
+    top: 0;
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ib {
+    display: inline-block;
+}
+
+#search_input {
+    position: absolute;
+    right: 20%;
+    top: 20px;
+    height: 40px;
+    width: 150px;
+    display: inline-block;
+    border:none;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+#headbar_icon:hover {
+    animation-play-state: running;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#headbar_icon {
+    position: relative;
+    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
+    width: 64px;
+    height: 64px;
+    top: 8px;
+    display: inline-block;
+    cursor: pointer;
+    animation: rotation 2s infinite linear;
+    border-radius: 50%;
+    animation-play-state: paused;
+    color:black;
+}
+
+.headbar_item {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 32px;
+    top: -10px;
+    position: relative;
+}
+
+.hbunder {
+    text-decoration:none;
+    color:rgb(100,100,100);
+ 
+}
+.hbunder:hover{
+    text-shadow: 1px 1px 1px;
+    text-decoration: none;
+    color: rgb(100,100,100);
+}
+

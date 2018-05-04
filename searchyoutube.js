@@ -27,30 +27,36 @@ function searchYoutube(keyword, callback) {
         if (err) {
             console.log(err);
         } else {
+
         	console.log(results);
         	var i = 0;
         	var list = [];
         	var channelImg = [];
         	var channelTitle = [];
         	console.log(results[0].link);
+
      
-        	
-        	for (var i = 0; i < results.length; i++) {
-        		if (results[i].link.includes('/channel/')) {
-        			continue;
-        		}else {
+            
+            for (var i = 0; i < results.length; i++) {
+                if (results[i].link.includes('/channel/')) {
+                    continue;
+                }else {
+
 
         			list.push(results[i].link.split('=')[1]);
         			channelImg.push(results[i].thumbnails.default.url);
         			channelTitle.push(results[i].title);
         			
 
-        		}
+
+                }
+
 
 
         	}
         	
         	
+
             callback(undefined, {
                 link: list[0],
                 link1: list[1],
