@@ -50,7 +50,6 @@
             </form>
         </div>
     </div>
-<<<<<<< HEAD
         <div id="searchdisplay">
             {{>searchresults}}
         </div>
@@ -68,26 +67,6 @@
                 title.innerHTML = "{{data.title0}}";
             });
         }
-=======
-    <div id="searchdisplay">
-        {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}}
-    </div>
-    <script>
-    var elements = document.getElementsByClassName("thumbnails"),
-        youtube = document.getElementById("youtube"),
-        player = document.getElementById("player"),
-        title = document.getElementById("title");
-    console.log(elements.length);
-
-    for (var i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        element.addEventListener("click", function() {
-            youtube.src = "{{link}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title}}";
-        });
-    }
->>>>>>> upstream/master
     </script>
 </body>
 

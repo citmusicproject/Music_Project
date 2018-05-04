@@ -52,7 +52,6 @@ app.post('/rating', function (req, res) {
         } else {
             console.log(req.body);
             res.render('rating.hbs', {
-<<<<<<< HEAD
                 data: {link0: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link),
                 link1: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link1),
                 link2: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link2),
@@ -62,20 +61,6 @@ app.post('/rating', function (req, res) {
                 title0: results.title,
                 title1: results.title1,
                 title2: results.title2}
-=======
-                title: "Rating",
-                link: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link),
-                thumbnail: results.thumbnails,
-                title: results.title,
-                login: req.body.login,
-                home: req.body.home,
-                ranking: req.body.ranking,
-                playlist: req.body.playlist,
-                index: req.body.index,
-                searchindex: req.body.searchindex,
-                acct: req.body.acct
-
->>>>>>> upstream/master
             });
         }
     });
