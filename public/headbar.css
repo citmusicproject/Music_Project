@@ -64,12 +64,12 @@
 
 .hbunder {
     text-decoration:none;
-    color:rgb(181,181,181);
+    color:rgb(100,100,100);
  
 }
 .hbunder:hover{
     text-shadow: 1px 1px 1px;
     text-decoration: none;
-    color: rgb(181,181,181);
+    color: rgb(100,100,100);
 }
 
