@@ -8,23 +8,35 @@
 </head>
 
 <body>
-    <h1 id="title">{{title}} for {{data.song}}</h1>
-    <form method="POST" action="/">
-        <input id=songname type="hidden" name="song" value="{{data.song}}">Facourite
-        <input type="checkbox" id="favourite" name="favourite"/>
-        <div id="ratingsongs">
-        <label>1</label>
-        <input type="radio" name="rating" value="1" />
-        <label>2</label>
-        <input type="radio" name="rating" value="2"/>
-        <label>3</label>
-        <input type="radio" name="rating" value="3"/>
-        <label>4</label>
-        <input type="radio" name="rating" value="4"/>
-        <label>5</label>
-        <input type="radio" name="rating" value="5" checked="checked"/>
-        <input type="submit" value="OK">
+    {{>headbar}}
+    <div id="bg"></div>
+
+    <form method="POST" action="/rating"><input type="text" id="searchbar" placeholder="Search music world" name="song"/></form>
+    <div id="display">
+        <div id="player">
+            <iframe width="550" height="315" src={{link}}>
+            </iframe>
+            <h1 id="title">{{title}}</h1>
+            <form method="POST" action="/">
+                <input id="songname" type="hidden" name="song" value="{{link}}">Favourite
+                <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
+                <input type="checkbox" id="favourite" name="favourite" />
+                <div id="ratingsongs">
+                    <label>1</label>
+                    <input type="radio" name="rating" value="1" />
+                    <label>2</label>
+                    <input type="radio" name="rating" value="2" />
+                    <label>3</label>
+                    <input type="radio" name="rating" value="3" />
+                    <label>4</label>
+                    <input type="radio" name="rating" value="4" />
+                    <label>5</label>
+                    <input type="radio" name="rating" value="5" checked="checked" />
+                    <input type="submit" value="OK">
+                </div>
+            </form>
+        </div>
+    <img class="thumbnails" src={{thumbnail}}></img>
     </div>
-    </form>
 </body>
 </html>

@@ -1,3 +1,6 @@
+body{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
 #bg{
     background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
     height:100vh;
@@ -11,31 +14,20 @@
     background-size:cover;
     z-index:-100;    
 }
-#display{
-    color:white;
-}
-#player{
-    position:absolute;
-    right:50px;
-    top:100px;
-}
 #searchbar{
     height:35px;
     width:400px;
     line-height: 36px;
-    position:relative;
+    position:absolute;
     z-index:5;
-    top:10px;
-    left:10px;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
     margin:auto;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     border:none;
     border-radius:4px;
     font: 18px arial,sans-serif;
     padding:10px;
-}
-.thumbnails{
-    position:relative;
-    top:20px;
-    left:10px;
 }
