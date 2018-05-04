@@ -50,6 +50,25 @@
             </form>
         </div>
     </div>
+<<<<<<< HEAD
+        <div id="searchdisplay">
+            {{>searchresults}}
+        </div>
+    <script>
+       var elements = document.getElementsByClassName("thumbnails"),
+           youtube = document.getElementById("youtube"),
+           player = document.getElementById("player"),
+           title = document.getElementById("title");
+        console.log(elements.length);
+        for (var i=0;i < elements.length; i++){
+            const element = elements[i];
+            element.addEventListener("click", function(){
+                youtube.src = "{{data.link0}}";
+                player.style.display = "block";
+                title.innerHTML = "{{data.title0}}";
+            });
+        }
+=======
     <div id="searchdisplay">
         {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}}
     </div>
@@ -68,6 +87,7 @@
             title.innerHTML = "{{title}}";
         });
     }
+>>>>>>> upstream/master
     </script>
 </body>
 
