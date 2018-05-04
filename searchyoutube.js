@@ -10,6 +10,10 @@ var opts = {
     key: password
 };
 
+function gpassword() {
+    return opts.key;
+}
+
 function searchYoutube(keyword, callback) {
     search(keyword, opts, function(err, results) {
         if (err) {
