@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="rating_music.css">
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <head>
     <meta charset="utf-8">
@@ -9,44 +10,65 @@
 
 <body>
     {{>headbar}}
-    <div id="bg"></div>
     <form method="POST" action="/rating">
         <input type="text" id="searchbar" placeholder="Search music world" name="song" />
     </form>
     <div id="display">
         <div id="player">
-            <iframe width="550" height="315" src={{link}}>
+            <iframe id="youtube" style="border:none;" width="550" height="315" src="">
             </iframe>
-            <h1 id="title">{{title}}</h1>
+            <h1 id="title"></h1>
             <form method="POST" action="/">
-                <input id="songname" type="hidden" name="song" value="{{link}}" />Favourite
-                <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
-                <input type="hidden" name="login" value={{login}}>
-                <input type="hidden" name="home" value={{home}}>
-                <input type="hidden" name="link" value={{link}}>
-                <input type="hidden" name="ranking" value={{ranking}}>
-                <input type="hidden" name="playlist" value={{playlist}}>
-                <input type="hidden" name="index" value={{index}}>
-                <input type="hidden" name="searchindex" value={{searchindex}}>
-                <input type="hidden" name="acct" value={{acct}}>
-                <input type="checkbox" id="favourite" name="favourite" />
-                <div id="ratingsongs">
-                    <label>1</label>
-                    <input type="radio" name="rating" value="1" />
-                    <label>2</label>
-                    <input type="radio" name="rating" value="2" />
-                    <label>3</label>
-                    <input type="radio" name="rating" value="3" />
-                    <label>4</label>
-                    <input type="radio" name="rating" value="4" />
-                    <label>5</label>
-                    <input type="radio" name="rating" value="5" checked="checked" />
-                    <input type="submit" value="OK">
+                <div id="favouritetab">Favourite
+                    <input type="checkbox" id="favourite" name="favourite" value="favourite" />
                 </div>
+                <input id="songname" type="hidden" name="song" value="{{link}}" />
+                <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" />
+                    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                <input type="submit" value="OK">
             </form>
         </div>
-        <img class="thumbnails" src={{thumbnail}}></img>
     </div>
+    <div id="searchdisplay">
+        {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}} {{>searchresults}}
+    </div>
+    <script>
+    var elements = document.getElementsByClassName("thumbnails"),
+        youtube = document.getElementById("youtube"),
+        player = document.getElementById("player"),
+        title = document.getElementById("title");
+    console.log(elements.length);
+
+    for (var i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.addEventListener("click", function() {
+            youtube.src = "{{link}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title}}";
+        });
+    }
+    </script>
 </body>
 
 </html>
