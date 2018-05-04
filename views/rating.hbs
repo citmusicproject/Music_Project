@@ -40,13 +40,6 @@
     </div>
         <div id="searchdisplay">
             {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
-            {{>searchresults}}
         </div>
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
@@ -54,13 +47,12 @@
            player = document.getElementById("player"),
            title = document.getElementById("title");
         console.log(elements.length);
-        
         for (var i=0;i < elements.length; i++){
             const element = elements[i];
             element.addEventListener("click", function(){
-                youtube.src = "{{link}}";
+                youtube.src = "{{data.link0}}";
                 player.style.display = "block";
-                title.innerHTML = "{{title}}";
+                title.innerHTML = "{{data.title0}}";
             });
         }
     </script>
