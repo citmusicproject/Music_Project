@@ -11,7 +11,7 @@ var opts = {
 };
 
 function gpassword() {
-    return opts.key;
+    return opts.keys;
 }
 
 function searchYoutube(keyword, callback) {
@@ -19,7 +19,7 @@ function searchYoutube(keyword, callback) {
         if (err) {
             console.log(err);
         } else {
-        	console.log(results);
+        	// console.log(results);
         	var i = 0;
         	var list = [];
         	console.log(results[0].link);
