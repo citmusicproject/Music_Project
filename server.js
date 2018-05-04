@@ -23,10 +23,12 @@ String.prototype.format = function () {
 
 app.get('/', function (req, res) {
     res.render('index.hbs', {
-        login: "Log in or Sign up",
+        login: "Login/Signup",
         link: "login",
         home: "/",
-        ranking: "/login",
+        // search: "/searchpage",
+        ranking: "/ranking",
+        // searchindex: req.body.searchindex,
         playlist: "/login",
         index: "-1"
     });
@@ -42,17 +44,26 @@ app.post('/', function (req, res) {
         .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct";>Back</button>`);
 });
 
+
 app.post('/rating', function (req, res) {
     youtube.searchYoutube(req.body.song, (errorMessage, results) => {
         if (errorMessage) {
             console.log(errorMessage);
         } else {
-            // console.log('https://www.youtube.com/embed/'+ encodeURIComponent(results.link));
+            console.log(req.body);
             res.render('rating.hbs', {
                 title: "Rating",
                 link: 'https://www.youtube.com/embed/' + encodeURIComponent(results.link),
                 thumbnail: results.thumbnails,
-                title: results.title
+                title: results.title,
+                login: req.body.login,
+                home: req.body.home,
+                ranking: req.body.ranking,
+                playlist: req.body.playlist,
+                index: req.body.index,
+                searchindex: req.body.searchindex,
+                acct: req.body.acct
+
             });
         }
     });
@@ -70,16 +81,17 @@ app.post('/login', function (req, res) {
         if (userId == login_info[i].email && userPw == login_info[i].pw) {
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
-            // console.log(first_name);
             // alert("Login Success")
             app.get('/index' + i.toString(), function (req, res) {
                 res.render('index.hbs', {
-                    login: `Hi, ${first_name} ${last_name}`,
+                    login: first_name,
                     home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking",
                     playlist: "/Playlist" + i.toString(),
+                    search: "/searchpage",
                     index: "1",
+                    searchindex: "-1",
                     acct: i
                 });
             });
@@ -104,8 +116,17 @@ app.get('/signup', function (req, res) {
     res.render('signup.hbs');
 });
 app.get('/searchpage', function(req, res) {
-    res.render('searchpage.hbs')
-})
+    res.render('searchpage.hbs', {
+        login: req.body.login,
+        home: req.body.home,
+        ranking: req.body.ranking,
+        playlist: req.body.playlist,
+        index: req.body.index,
+        searchindex: req.body.searchindex,
+        acct: req.body.acct
+
+    });
+});
 
 app.post('/signup', function (req, res) {
     var id = req.body.email;
