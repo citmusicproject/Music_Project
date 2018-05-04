@@ -2,3 +2,4 @@ node_modules/
 package/
 package-lock/
 keys.js
+accdata.json
