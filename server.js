@@ -130,6 +130,7 @@ app.post('/signup', function (req, res) {
     var pw = req.body.pass;
     var fname = req.body.fname;
     var lname = req.body.lname;
+    console.log(req.body);
     if (id == "" || pw == "" || fname == "" || lname == "") {
         res.redirect('/signup');
         alert('Missing Values');
