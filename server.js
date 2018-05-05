@@ -121,6 +121,7 @@ app.get('/searchpage', function(req, res) {
         index: req.body.index,
         searchindex: req.body.searchindex,
         acct: req.body.acct
+
     });
 });
 

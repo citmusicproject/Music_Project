@@ -6,9 +6,10 @@
 <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
-    {{>headbar}}
 </head>
+
 <body>
+    {{>headbar}}
     <form method="POST" action="/rating">
         <input type="text" id="searchbar" placeholder="Search music world" name="song" />
     </form>
