@@ -11,7 +11,7 @@
 <body>
     <div id="bg_index" style="position:absolute;left:0;top:0;width:100vw;height:100vh;background-image:url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);background-size:cover;background-repeat:no-repeat;"></div>
     <form method="POST" action="/rating">
-        <input type="text" id="searchbar" name="song" placeholder="Search music world"/>
+        <input type="text" id="searchbar" name="song" placeholder="Search music world" style="z-index: {{searchindex}}" />
     </form>
     {{>headbar}}
 </body>
