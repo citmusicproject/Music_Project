@@ -28,7 +28,7 @@ var opts = {
 
 
 function gpassword() {
-    return password
+    return password;
 }
 
 function searchYoutube(keyword, callback) {
@@ -65,6 +65,6 @@ function readJSON() {
 module.exports = {
     readJSON,
     searchYoutube,
-    gpassword,
+    gpassword
     // youtubesearch
 };
