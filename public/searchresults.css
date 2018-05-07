@@ -1,6 +1,6 @@
 .searches{
     height:100px;
-    width:700px;
+    width:600px;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top:60px;
@@ -13,8 +13,12 @@
     position:absolute;
     color:black;
     word-break: normal;
+    font-size: 18px;
+    font-weight: bold;
+    top:30%;
     /*display:inline-block;*/
 }
+
 .thumbnails{
     position:relative;
     top:0px;
@@ -22,5 +26,9 @@
     padding:5px;
 }
 .thumbnails:hover{
+    filter:brightness(80%)
+}
+
+.searches:hover{
     filter:brightness(80%);
 }
