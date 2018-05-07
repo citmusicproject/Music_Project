@@ -1,0 +1,31 @@
+.searches{
+    height:100px;
+    width:600px;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top:60px;
+    position:relative;
+    vertical-align:center;
+    left:5px;
+    margin:5px;
+}
+.thumbnailtitle{
+    position:absolute;
+    color:black;
+    word-break: normal;
+    font-size: 18px;
+    font-weight: bold;
+    top:30%;
+    /*display:inline-block;*/
+}
+
+.thumbnails{
+    position:relative;
+    top:0px;
+    display:inline-block;
+    padding:5px;
+}
+
+.thumbnails:hover, .searches:hover{
+    filter:brightness(80%);
+}
