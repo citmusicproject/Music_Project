@@ -15,6 +15,8 @@
             <div id="bannerDescription">Alex's pick of the week</div>
             <div id="musicWorldImage"></div>
         </div>
+        <div id="player">
+            <iframe id="youtubeVideo" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div id="rankedContent">
             <div id="r1" class="rc">
                 <div id="pi1" class="playImage" style="background-image:url(https://cdn0.iconfinder.com/data/icons/arrows-37/502/Untitled-5-512.png); background-size:100% 100%;"></div>
@@ -94,6 +96,21 @@
 </div>
 </body>
 <script>
+var t1 = "IetIg7y5k3A",
+    t2 = "9XaS93WMRQQ",
+    t3 = "U9BwWKXjVaI",
+    t4 = "OsrylSTDvAw",
+    t5 = "zDo0H8Fm7d0",
+    t6 = "au2n7VVGv_c",
+    t7 = "gOsM-DYAEhY",
+    t8 = "Ph54wQG8ynk",
+    t9 = "_I_D_8Z4sJE",
+    t10 = "VDndE432GpU";
+
+
+
+
+
 r1.addEventListener("mouseover", function() {
     r1.style.cursor = "pointer";
     pi1.style.top = "30px";
@@ -103,6 +120,10 @@ r1.addEventListener("mouseout", function() {
     r1.style.cursor = "pointer";
     pi1.style.top = "30px";
     pi1.style.left = "-50px";
+});
+r1.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t1;  
 });
 
 r2.addEventListener("mouseover", function() {
@@ -117,6 +138,11 @@ r2.addEventListener("mouseout", function() {
     pi2.style.left = "-50px";
 });
 
+r2.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t2;
+});
+
 r3.addEventListener("mouseover", function() {
     r3.style.cursor = "pointer";
     pi3.style.top = "233px";
@@ -127,6 +153,11 @@ r3.addEventListener("mouseout", function() {
     r3.style.cursor = "pointer";
     document.getElementById("pi3").style.top = "233px";
     document.getElementById("pi3").style.left = "-50px";
+});
+
+r3.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t3;
 });
 
 document.getElementById("r4").addEventListener("mouseover", function() {
@@ -141,6 +172,11 @@ document.getElementById("r4").addEventListener("mouseout", function() {
     document.getElementById("pi4").style.left = "-50px";
 });
 
+r4.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t4;
+});
+
 document.getElementById("r5").addEventListener("mouseover", function() {
     document.getElementById("r5").style.cursor = "pointer";
     document.getElementById("pi5").style.top = "435px";
@@ -151,6 +187,11 @@ document.getElementById("r5").addEventListener("mouseout", function() {
     document.getElementById("r5").style.cursor = "pointer";
     document.getElementById("pi5").style.top = "435px";
     document.getElementById("pi5").style.left = "-50px";
+});
+
+r5.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t5;
 });
 
 document.getElementById("r6").addEventListener("mouseover", function() {
@@ -165,6 +206,11 @@ document.getElementById("r6").addEventListener("mouseout", function() {
     document.getElementById("pi6").style.left = "-50px";
 });
 
+r6.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t6;
+});
+
 document.getElementById("r7").addEventListener("mouseover", function() {
     document.getElementById("r7").style.cursor = "pointer";
     document.getElementById("pi7").style.top = "637px";
@@ -175,6 +221,11 @@ document.getElementById("r7").addEventListener("mouseout", function() {
     document.getElementById("r7").style.cursor = "pointer";
     document.getElementById("pi7").style.top = "637px";
     document.getElementById("pi7").style.left = "-50px";
+});
+
+r7.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t7;
 });
 
 document.getElementById("r8").addEventListener("mouseover", function() {
@@ -189,6 +240,11 @@ document.getElementById("r8").addEventListener("mouseout", function() {
     document.getElementById("pi8").style.left = "-50px";
 });
 
+r8.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t8;
+});
+
 document.getElementById("r9").addEventListener("mouseover", function() {
     document.getElementById("r9").style.cursor = "pointer";
     document.getElementById("pi9").style.top = "839px";
@@ -201,6 +257,11 @@ document.getElementById("r9").addEventListener("mouseout", function() {
     document.getElementById("pi9").style.left = "-50px";
 });
 
+r9.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t9;
+});
+
 document.getElementById("r10").addEventListener("mouseover", function() {
     document.getElementById("r10").style.cursor = "pointer";
     document.getElementById("pi10").style.top = "940px";
@@ -211,6 +272,11 @@ document.getElementById("r10").addEventListener("mouseout", function() {
     document.getElementById("r10").style.cursor = "pointer";
     document.getElementById("pi10").style.top = "940px";
     document.getElementById("pi10").style.left = "-50px";
+});
+
+r10.addEventListener("click", function(){
+    player.style.display = "block";
+    youtubeVideo.src = "https://www.youtube.com/embed/" + t10;
 });
 </script>
 </body>
