@@ -7,7 +7,6 @@ const login = require('./login.js');
 const alert = require('alert-node');
 var sessions = require('express-session');
 var youtube = require('./searchyoutube.js');
-
 var sessions;
 
 hbs.registerPartials(__dirname + '/views/partial');
