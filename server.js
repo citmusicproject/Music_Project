@@ -58,6 +58,7 @@ app.post('/rating', function(req, res) {
         if (errorMessage) {
             console.log(errorMessage);
         } else {
+            console.log(results.links);
             res.render('rating.hbs', {
                 link1: results.links[0],
                 link2: results.links[1],
@@ -92,24 +93,23 @@ app.post('/login', function(req, res) {
             sessions.uniqueID = req.body.username;
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
-            app.get('/index', function(req, res) {
+            app.get('/index'+ i.toString(), function(req, res) {
                 res.render('index.hbs', {
                     login: first_name,
-                    home: "/index",
+                    home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking",
-                    playlist: "/Playlist",
+                    playlist: "/Playlist" + i.toString(),
                     search: "/searchpage",
                     index: "1",
-                    searchindex: "1",
                     acct: i
                 });
             });
-            app.get('/Playlist', function(req, res) {
+            app.get('/Playlist' + i.toString(), function(req, res) {
                 res.render('Playlist.hbs');
             });
             var valid = true;
-            res.redirect('/index');
+            res.redirect('/index'+ i.toString());
             break;
         } else {
             var valid = false;
