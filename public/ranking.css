@@ -86,6 +86,22 @@
 
 .rc:hover{opacity: 1}
 
+#player{
+    position: fixed;
+    display: none;
+    height: 315px;
+    width: 560px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    right: 100px;
+    background-color: pink;
+
+
+}
+
+
+
 .playImage{
     width: 40px;
     height: 40px;
