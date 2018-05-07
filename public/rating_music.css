@@ -1,12 +1,27 @@
+#bg{
+    background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
+    height:100vh;
+    width:100vw;
+    margin:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-size:cover;
+    z-index:-100;    
+}
+
 #favouritetab{
     position:relative;
     padding:10px;
 }
 #searchdisplay{
-    width:50vw;
-    height:70vh;
-    bottom:0;
+    width:auto;
+    height:auto;
+    top:0;
     position:relative;
+    display:block;
 }
 #searchresults{
     height:100px;
@@ -32,22 +47,24 @@
 
 #display{
     color:white;
+    position:relative;
 }
 #player{
-    position:fixed;
+    position:absolute;
     right:10px;
-    top:100px;
     width:40vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
     display:none;
+    z-index:50;
+    background-color:white;
 }
 #searchbar{
     height:35px;
     width:50vw;
     line-height: 36px;
     position:relative;
-    top:10vh;
+    top:1vh;
     z-index:5;
     left:10px;
     margin:auto;
