@@ -12,7 +12,8 @@ var opts = {
     // videoCategoryId: 10,
     key: password,
     type: "video",
-    videoCategoryId: "10"
+    videoCategoryId: "10",
+    chart: "mostPopular"
 };
 
 
