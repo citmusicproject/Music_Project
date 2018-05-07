@@ -1,38 +1,61 @@
 var search = require('youtube-search');
 var keyWord = '';
-// var secret = require('./keys');
+var secret = require('./keys');
 var fs = require('fs');
 var list = [];
-var password = 'AIzaSyANrvv-vFCUTj8fYrxwKwCMqAZpXdZ0qvw';
 
+const request = require('request');
 
+var password = secret.key;
 var opts = {
-    maxResults: 5,
-    key: password
+    maxResults: 10,
+    // videoCategoryId: 10,
+    key: password,
+    type: "video",
+    videoCategoryId: "10",
+    chart: "mostPopular"
 };
+
+
+
+// fs.readFile('keys', (er, da) => {
+//     password = da.toString().substring(1);
+//     opts = {
+//         maxResults: 5,
+//         key: password
+//     }
+// });
+
+
+function gpassword() {
+    return password
+}
 
 function searchYoutube(keyword, callback) {
     search(keyword, opts, function(err, results) {
         if (err) {
             console.log(err);
         } else {
-        	var i = 0;
+            var i = 0;
+            var links = [];
+            var img = [];
+            var title = [];
+
+            for (var i = 0; i < results.length; i++) {
+                links.push(results[i].id);
+                img.push(results[i].thumbnails.default.url);
+                title.push(results[i].title);
+            }
             callback(undefined, {
-                link: results[0].link.split('=')[1],
-                thumbnails : results[0].thumbnails.default.url,
-                title: results[0].title
-            })
-        }
-        // var i;
-        // for (i = 0; i < results.length; i++) {
-        //     list.push(results[i].link);
+                links: links,
+                img: img,
+                title: title
 
-        // }
-        // var test = JSON.stringify(list);
-        // fs.writeFile('test.JSON', test);
-
+            });
+        };
     });
 };
+
 
 function readJSON() {
     fs.readFile('test.JSON', test);
@@ -41,13 +64,7 @@ function readJSON() {
 
 module.exports = {
     readJSON,
-    searchYoutube
+    searchYoutube,
+    gpassword,
+    // youtubesearch
 };
-
-// searchYoutube("Drake", (errorMessage, results) => {
-//     if (errorMessage) {
-//         console.log(errorMessage);
-//     } else {
-//         console.log(results)
-//     }
-// });

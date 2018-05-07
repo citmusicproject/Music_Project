@@ -1,18 +1,34 @@
-﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="..\\headbar.css">
-    <div id="headbar">
-        <div style="left:0px;width:15vw;" class="ib"></div>
-        <div id="headbar_icon"></div>
-        <div class="headbar_item"><a id="headbar_title" class="hbunder" href="/">music world</a> | <a href="{{ranking}}" class="hbunder">ranking</a> | <a href="{{playlist}}" class="hbunder">playlist</a> |
-        <a href="/searchpage" class="hbunder">search</a></div>
-        <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);display:inline-block;height:40px;border-radius:5px;right:9%;position:absolute;color:white;top:20px;border:none;background-color:red;width:10%" onclick="location.href = '{{link}}';">{{login}}</button>
-        <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);display:inline-block;height:40px;border-radius:5px;right:2%;position:absolute;top:20px;border:none;background-color:red;z-index: {{index}};color:white;width: 6%" onclick="location.href = '/';">log out</button>
-        <div id="search_result"></div>
-        <script type="text/javascript">
-        function TestFunction() { console.log("You can run JavaScript here."); } TestFunction();
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" text="text/css" href="..\\headbar.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+            
 
-        </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <a class="navbar-brand" href="{{home}}"><div id="headbar_icon"></div><div id="headbar_text"> music world</div></a>
     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/discover">discover</a></li>
+        <li><a href="{{ranking}}">ranking</a></li>
+        <li><a href="{{playlist}}">playlist</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">      
+        <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;color:white;top:20px;border:none;background-color:red;width:auto;font-size:15px;" onclick="location.href = '{{link}}';">{{login}}</button>
+        <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;border:none;background-color:red;position:relative;z-index: {{index}};color:white;width:auto;font-size:15px;" onclick="location.href = '/';">log out</button>
+      </ul>
+    </div>
+  </div>
+</nav>

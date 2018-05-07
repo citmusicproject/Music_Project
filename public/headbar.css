@@ -1,29 +1,16 @@
-﻿#headbar {
-    width: 100vw;
-    height: 80px;
-    left: 0;
-    top: 0;
-    background-color: white;
+#headbar_icon {
+    position: relative;
+    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
+    width: 64px;
+    height: 64px;
+    top: -15px;
     display: inline-block;
-    position: absolute;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.ib {
-    display: inline-block;
-}
-
-#search_input {
-    position: absolute;
-    right: 20%;
-    top: 20px;
-    height: 40px;
-    width: 150px;
-    display: inline-block;
-    border:none;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    cursor: pointer;
+    animation: rotation 2s infinite linear;
+    border-radius: 50%;
+    animation-play-state: paused;
+    color:black;
+    z-index:1000;
 }
 
 #headbar_icon:hover {
@@ -39,37 +26,23 @@
         transform: rotate(360deg);
     }
 }
-
-#headbar_icon {
-    position: relative;
-    background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
-    width: 64px;
-    height: 64px;
-    top: 8px;
-    display: inline-block;
-    cursor: pointer;
-    animation: rotation 2s infinite linear;
-    border-radius: 50%;
-    animation-play-state: paused;
-    color:black;
+.navbar-default{
+    min-height:80px;
 }
-
-.headbar_item {
-    display: inline-block;
-    cursor: pointer;
-    font-size: 32px;
-    top: -10px;
-    position: relative;
+.navbar-header{
+    min-height:80px;
 }
-
-.hbunder {
-    text-decoration:none;
-    color:rgb(181,181,181);
- 
+#headbar_text{
+    position:relative;
+    display:inline-block;
+    bottom:30px;
+    font-size:23px;
 }
-.hbunder:hover{
-    text-shadow: 1px 1px 1px;
-    text-decoration: none;
-    color: rgb(181,181,181);
+.navbar-nav{
+    position:relative;
+    top:15px;
+    font-size:23px;
 }
-
+#myNavbar{
+    height:200px;
+}
