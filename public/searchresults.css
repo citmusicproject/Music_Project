@@ -25,10 +25,7 @@
     display:inline-block;
     padding:5px;
 }
-.thumbnails:hover{
-    filter:brightness(80%)
-}
 
-.searches:hover{
+.thumbnails:hover, .searches:hover{
     filter:brightness(80%);
 }
