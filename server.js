@@ -61,9 +61,21 @@ app.post('/rating', function(req, res) {
             console.log(errorMessage);
         } else {
             res.render('rating.hbs', {
-                links: results.links[0],
-                img: results.img[0],
-                title: results.title[0]
+                link1: results.links[0],
+                link2: results.links[1],
+                link3: results.links[2],
+                link4: results.links[3],
+                link5: results.links[4],
+                img1: results.img[0],
+                img2 : results.img[1],
+                img3 : results.img[2],
+                img4 : results.img[3],
+                img5 : results.img[4],
+                title1: results.title[0],
+                title2: results.title[1],
+                title3: results.title[2],
+                title4: results.title[3],
+                title5: results.title[4]
             });
         }
     });
