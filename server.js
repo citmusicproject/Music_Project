@@ -54,7 +54,6 @@ app.post('/', function(req, res) {
         .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct";>Back</button>`);
 });
 
-
 app.post('/rating', function(req, res) {
     youtube.searchYoutube(req.body.song, (errorMessage, results) => {
         if (errorMessage) {
