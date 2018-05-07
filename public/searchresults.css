@@ -10,9 +10,10 @@
     margin:5px;
 }
 .thumbnailtitle{
-    position:relative;
+    position:absolute;
     color:black;
-    display:inline-block;
+    word-break: normal;
+    /*display:inline-block;*/
 }
 .thumbnails{
     position:relative;
