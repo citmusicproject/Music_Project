@@ -3,14 +3,14 @@
     padding:10px;
 }
 #searchdisplay{
-    width:600px;
+    width:50vw;
     height:70vh;
     bottom:0;
     position:relative;
 }
 #searchresults{
     height:100px;
-    width:600px;
+    width:35vw;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top:70px;
@@ -35,19 +35,19 @@
 }
 #player{
     position:fixed;
-    right:50px;
+    right:10px;
     top:100px;
-    width:550px;
+    width:40vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
     display:none;
 }
 #searchbar{
     height:35px;
-    width:600px;
+    width:50vw;
     line-height: 36px;
     position:relative;
-    top:65px;
+    top:10vh;
     z-index:5;
     left:10px;
     margin:auto;
