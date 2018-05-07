@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="rating_music.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
@@ -47,14 +47,43 @@
            player = document.getElementById("player"),
            title = document.getElementById("title");
         console.log(elements.length);
-        for (var i=0;i < elements.length; i++){
-            const element = elements[i];
-            element.addEventListener("click", function(){
-                youtube.src = "https://www.youtube.com/embed/{{links}}";
-                player.style.display = "block";
-                title.innerHTML = "{{title}}";
-            });
-        }
+        // for (var i=0;i < elements.length; i++){
+        //     const element = elements[i];
+        //     element.addEventListener("click", function(){
+        //         youtube.src = "https://www.youtube.com/embed/{{links}}";
+        //         player.style.display = "block";
+        //         title.innerHTML = "{{title}}";
+        //     });
+        // }
+        document.getElementById('thumb1').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link1}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title1}}";
+        });
+        document.getElementById('thumb2').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link2}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title2}}";
+        });
+
+        document.getElementById('thumb3').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link3}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title3}}";
+        });
+        
+
+        document.getElementById('thumb4').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link4}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title4}}";
+        });
+
+        document.getElementById('thumb5').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link5}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title5}}";
+        });
     </script>
 </body>
 </html>
