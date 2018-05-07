@@ -1,6 +1,6 @@
 .searches{
-    height:100px;
-    width:600px;
+    height:15vh;
+    width:50vw;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top:60px;
@@ -13,7 +13,7 @@
     position:absolute;
     color:black;
     word-break: normal;
-    font-size: 18px;
+    font-size: 100%;
     font-weight: bold;
     top:30%;
     /*display:inline-block;*/
@@ -24,6 +24,8 @@
     top:0px;
     display:inline-block;
     padding:5px;
+    height:100%;
+    width:auto;
 }
 
 .thumbnails:hover, .searches:hover{
