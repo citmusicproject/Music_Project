@@ -3,16 +3,31 @@ var keyWord = '';
 var secret = require('./keys');
 var fs = require('fs');
 var list = [];
+
+const request = require('request');
+
 var password = secret.key;
 var opts = {
     maxResults: 10,
-    key: password
+    // videoCategoryId: 10,
+    key: password,
+    type: "video",
+    videoCategoryId: "10"
 };
 
 
 
+// fs.readFile('keys', (er, da) => {
+//     password = da.toString().substring(1);
+//     opts = {
+//         maxResults: 5,
+//         key: password
+//     }
+// });
+
+
 function gpassword() {
-    return password;
+    return password
 }
 
 function searchYoutube(keyword, callback) {
@@ -20,58 +35,26 @@ function searchYoutube(keyword, callback) {
         if (err) {
             console.log(err);
         } else {
+            var i = 0;
+            var links = [];
+            var img = [];
+            var title = [];
 
-        	console.log(results);
-        	var i = 0;
-        	var list = [];
-        	var channelImg = [];
-        	var channelTitle = [];
-        	console.log(results[0].link);
-
-     
-            
             for (var i = 0; i < results.length; i++) {
-                if (results[i].link.includes('/channel/')) {
-                    continue;
-                }else {
-
-
-        			list.push(results[i].link.split('=')[1]);
-        			channelImg.push(results[i].thumbnails.default.url);
-        			channelTitle.push(results[i].title);
-        			
-
-
-                }
-
-
-
-        	}
-        	
-        	
-
+                links.push(results[i].id);
+                img.push(results[i].thumbnails.default.url);
+                title.push(results[i].title);
+            }
             callback(undefined, {
-                link: list[0],
-                link1: list[1],
-                link2: list[2],
-                thumbnails : channelImg[0],
-                thumbnails1 : channelImg[1],
-                thumbnails2 : channelImg[2],
-                title: channelTitle[0],
-                title1: channelTitle[1],
-                title2: channelTitle[2]
+                links: links,
+                img: img,
+                title: title
+
             });
-        }
-        // var i;
-        // for (i = 0; i < results.length; i++) {
-        //     list.push(results[i].link);
-
-        // }
-        // var test = JSON.stringify(list);
-        // fs.writeFile('test.JSON', test);
-
+        };
     });
 };
+
 
 function readJSON() {
     fs.readFile('test.JSON', test);
@@ -80,13 +63,7 @@ function readJSON() {
 
 module.exports = {
     readJSON,
-    searchYoutube
+    searchYoutube,
+    gpassword,
+    // youtubesearch
 };
-
-// searchYoutube("Drake", (errorMessage, results) => {
-//     if (errorMessage) {
-//         console.log(errorMessage);
-//     } else {
-//         // console.log(results)
-//     }
-// });
