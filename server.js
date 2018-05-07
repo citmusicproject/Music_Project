@@ -102,7 +102,7 @@ app.post('/login', function(req, res) {
                     playlist: "/Playlist",
                     search: "/searchpage",
                     index: "1",
-                    searchindex: "-1",
+                    searchindex: "1",
                     acct: i
                 });
             });
@@ -125,18 +125,6 @@ app.post('/login', function(req, res) {
 
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
-});
-app.get('/searchpage', function(req, res) {
-    res.render('searchpage.hbs', {
-        login: req.body.login,
-        home: req.body.home,
-        ranking: req.body.ranking,
-        playlist: req.body.playlist,
-        index: req.body.index,
-        searchindex: req.body.searchindex,
-        acct: req.body.acct
-
-    });
 });
 
 app.post('/signup', function(req, res) {
