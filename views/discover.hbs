@@ -3,8 +3,33 @@
 <html>
 <head>
     <title>Discover</title>
+    <link href="discover.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <iframe style="top:0;left: 0;width:100%;height:100%;position:fixed;border:none" src="https://www.youtube.com/embed/{{lnk}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!--<iframe style="top:0;left: 0;width:100%;height:100%;position:fixed;border:none" src="https://www.youtube.com/embed/{{lnk}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+    {{>headbar}}
+    <div>
+        {{#each data}}
+        {{#if this.display}}
+        {{#if this.rev}}
+        <div class="sblock">
+            <iframe style="top:0;left: 0;width:100%;height:100%;border:none" src="https://www.youtube.com/embed/{{this.lnk}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="sblock">
+            <b>{{this.title}}</b><br />
+            View: {{this.viewCount}}
+        </div>
+        {{else}}
+        <div class="sblock">
+            <b>{{this.title}}</b><br />
+            View: {{this.viewCount}}
+        </div>
+        <div class="sblock">
+            <iframe style="top:0;left: 0;width:100%;height:100%;border:none" src="https://www.youtube.com/embed/{{this.lnk}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/each}}
+    </div>
 </body>
 </html>
