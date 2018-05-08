@@ -5,7 +5,7 @@ var loadDatabase = () => {
     var accdata = JSON.stringify(db);
     var data = JSON.parse(accdata);
     return data;
-}
+};
 
 var addUser = (accdata) => {
     var valid = true;
@@ -16,7 +16,7 @@ var addUser = (accdata) => {
         }
     });
     return valid;
-}
+};
 
 
 module.exports = {

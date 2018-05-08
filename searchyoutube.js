@@ -28,11 +28,12 @@ var opts = {
 
 
 function gpassword() {
-    return password
+    return password;
 }
 
 function searchYoutube(keyword, callback) {
-    search(keyword, opts, function(err, results) {
+    var song = keyword+' music'
+    search(song, opts, function(err, results) {
         if (err) {
             console.log(err);
         } else {
@@ -65,6 +66,6 @@ function readJSON() {
 module.exports = {
     readJSON,
     searchYoutube,
-    gpassword,
+    gpassword
     // youtubesearch
 };

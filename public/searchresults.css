@@ -3,19 +3,24 @@
     width:50vw;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    top:60px;
+    top:0px;
     position:relative;
     vertical-align:center;
     left:5px;
     margin:5px;
+    border-radius: 5px;
 }
 .thumbnailtitle{
-    position:absolute;
+    /*position:absolute;*/
+    width: 75%;
+    height: 100%;
     color:black;
     word-break: normal;
     font-size: 100%;
     font-weight: bold;
-    top:30%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
     /*display:inline-block;*/
 }
 
