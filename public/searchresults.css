@@ -8,8 +8,22 @@
     vertical-align:center;
     left:5px;
     margin:5px;
-    border-radius: 5px;
+    display:block;
 }
+
+.searches2{
+    height:15vh;
+    width:50vw;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top:0px;
+    position:relative;
+    vertical-align:center;
+    left:5px;
+    margin:5px;
+    display:none;
+}
+
 .thumbnailtitle{
     /*position:absolute;*/
     width: 75%;
@@ -33,6 +47,6 @@
     width:auto;
 }
 
-.thumbnails:hover, .searches:hover{
+.thumbnails:hover, .searches:hover, .searches2:hover{
     filter:brightness(80%);
 }

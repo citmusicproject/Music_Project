@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const login = require('./login.js');
 const alert = require('alert-node');
+
 const helper = require('./helper.js');
 var sessions = require('express-session');
 var youtube = require('./searchyoutube.js');
@@ -22,7 +23,7 @@ app.use(sessions({
     saveUninitialized: true
 }));
 
-String.prototype.format = function() {
+String.prototype.format = function () {
     a = this;
     for (k in arguments) {
         a = a.replace("{" + k + "}", arguments[k]);
@@ -30,7 +31,7 @@ String.prototype.format = function() {
     return a;
 };
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.render('index.hbs', {
         login: "Login/Signup",
         link: "login",
@@ -102,26 +103,41 @@ app.post('/rating', function(req, res) {
                 link3: results.links[2],
                 link4: results.links[3],
                 link5: results.links[4],
+                link6: results.links[5],
+                link7: results.links[6],
+                link8: results.links[7],
+                link9: results.links[8],
+                link10: results.links[9],
                 img1: results.img[0],
                 img2: results.img[1],
                 img3: results.img[2],
                 img4: results.img[3],
                 img5: results.img[4],
+                img6: results.img[5],
+                img7: results.img[6],
+                img8: results.img[7],
+                img9: results.img[8],
+                img10: results.img[9],
                 title1: results.title[0],
                 title2: results.title[1],
                 title3: results.title[2],
                 title4: results.title[3],
-                title5: results.title[4]
+                title5: results.title[4],
+                title6: results.title[5],
+                title7: results.title[6],
+                title8: results.title[7],
+                title9: results.title[8],
+                title10: results.title[9]
             });
         }
     });
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
     res.render('login.hbs');
 });
 
-app.post('/login', function(req, res) {
+app.post('/login', function (req, res) {
     var userId = req.body.email;
     var userPw = req.body.pw;
     var login_info = login.loadDatabase();
@@ -156,6 +172,7 @@ app.post('/login', function(req, res) {
                     acct: i
                 });
             });
+
             app.post('/rating' + i.toString(), function(req, res) {
                 youtube.searchYoutube(req.body.song, (errorMessage, results) => {
                     if (errorMessage) {
@@ -177,16 +194,31 @@ app.post('/login', function(req, res) {
                             link3: results.links[2],
                             link4: results.links[3],
                             link5: results.links[4],
+                            link6: results.links[5],
+                            link7: results.links[6],
+                            link8: results.links[7],
+                            link9: results.links[8],
+                            link10: results.links[9],
                             img1: results.img[0],
                             img2: results.img[1],
                             img3: results.img[2],
                             img4: results.img[3],
                             img5: results.img[4],
+                            img6: results.img[5],
+                            img7: results.img[6],
+                            img8: results.img[7],
+                            img9: results.img[8],
+                            img10: results.img[9],
                             title1: results.title[0],
                             title2: results.title[1],
                             title3: results.title[2],
                             title4: results.title[3],
-                            title5: results.title[4]
+                            title5: results.title[4],
+                            title6: results.title[5],
+                            title7: results.title[6],
+                            title8: results.title[7],
+                            title9: results.title[8],
+                            title10: results.title[9]
                         });
                     }
                 });
@@ -212,16 +244,31 @@ app.post('/login', function(req, res) {
                             link3: results.links[2],
                             link4: results.links[3],
                             link5: results.links[4],
+                            link6: results.links[5],
+                            link7: results.links[6],
+                            link8: results.links[7],
+                            link9: results.links[8],
+                            link10: results.links[9],
                             img1: results.img[0],
                             img2: results.img[1],
                             img3: results.img[2],
                             img4: results.img[3],
                             img5: results.img[4],
+                            img6: results.img[5],
+                            img7: results.img[6],
+                            img8: results.img[7],
+                            img9: results.img[8],
+                            img10: results.img[9],
                             title1: results.title[0],
                             title2: results.title[1],
                             title3: results.title[2],
                             title4: results.title[3],
-                            title5: results.title[4]
+                            title5: results.title[4],
+                            title6: results.title[5],
+                            title7: results.title[6],
+                            title8: results.title[7],
+                            title9: results.title[8],
+                            title10: results.title[9]
                         });
                     }
                 });
@@ -290,11 +337,12 @@ app.post('/login', function(req, res) {
     }
 });
 
+
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
 });
 
-app.post('/signup', function(req, res) {
+app.post('/signup', function (req, res) {
     var id = req.body.email;
     var pw = req.body.pass;
     var fname = req.body.fname;
@@ -321,7 +369,7 @@ app.post('/signup', function(req, res) {
 
 });
 
-app.get('/discover', function(req, res) {
+app.get('/discover', function (req, res) {
     var xhr = require('xhr');
     if (!xhr.open) xhr = require('request');
     let ppp = "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&videoCategoryId=10&key=" +
@@ -329,7 +377,7 @@ app.get('/discover', function(req, res) {
     xhr({
         url: ppp,
         method: 'GET'
-    }, function(err, res2, body) {
+    }, function (err, res2, body) {
         var result = JSON.parse(body);
         var randomk = helper.getRandomUniqueNumber(9, 50, 0).map(function (item) {
             if (result.items[item] != undefined) {
