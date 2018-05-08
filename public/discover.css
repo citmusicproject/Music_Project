@@ -1,7 +1,7 @@
 ﻿.sblock {
-    width: 24vw;
-    height: 22vh;
+    width: 28vw;
+    height: 29vh;
     display: inline-block;
-    float: left;
+    /*float: left;*/
     text-align: center;
 }
