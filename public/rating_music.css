@@ -16,6 +16,15 @@
     position:relative;
     padding-left: 1.5%
 }
+
+#navBar {
+    position: absolute;
+    left: 600px;
+}
+
+#prevPage {
+    display:none;
+}
 #searchdisplay{
     width:auto;
     height:auto;
