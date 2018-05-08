@@ -41,12 +41,18 @@
         <div id="searchdisplay">
             {{>searchresults}}
         </div>
+    <div id ='navBar'> 
+        <button id='prevPage'> Previous Page </button>
+        <button id='nextPage'> Next Page </button>
+        
+    </div>
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
            youtube = document.getElementById("youtube"),
            player = document.getElementById("player"),
            title = document.getElementById("title")
            num = document.getElementsByClassName('thumbnailtitle');
+
         console.log(elements.length);
         // for (var i=0;i < elements.length; i++){
         //     const element = elements[i];
@@ -84,6 +90,65 @@
             youtube.src = "https://www.youtube.com/embed/{{link5}}";
             player.style.display = "block";
             title.innerHTML = "{{title5}}";
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function(){
+
+            var elems = document.getElementsByClassName('searches');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'none';
+            }
+
+            document.getElementById('prevPage').style.display = 'block';
+            var elems2 = document.getElementsByClassName('searches2');
+            for (var i=0;i<elems2.length;i+=1){
+                elems2[i].style.display = 'block';
+            }
+        })
+
+        document.getElementById('prevPage').addEventListener('click', function(){
+
+            var elems = document.getElementsByClassName('searches');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'block';
+            }
+
+            document.getElementById('prevPage').style.display = 'none';
+            var elems2 = document.getElementsByClassName('searches2');
+            for (var i=0;i<elems2.length;i+=1){
+                elems2[i].style.display = 'none';
+            }
+        })
+
+
+        document.getElementById('box6').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link6}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title6}}";
+        });
+        document.getElementById('box7').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link7}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title7}}";
+        });
+
+        document.getElementById('box8').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link8}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title8}}";
+        });
+        
+
+        document.getElementById('box9').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link9}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title9}}";
+        });
+
+        document.getElementById('box10').addEventListener('click', function(){
+            youtube.src = "https://www.youtube.com/embed/{{link10}}";
+            player.style.display = "block";
+            title.innerHTML = "{{title10}}";
         });
     </script>
 </body>

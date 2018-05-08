@@ -2,6 +2,15 @@
     position:relative;
     padding:10px;
 }
+
+#navBar {
+    position: absolute;
+    left: 600px;
+}
+
+#prevPage {
+    display:none;
+}
 #searchdisplay{
     width:600px;
     height:70vh;
