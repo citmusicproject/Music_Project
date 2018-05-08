@@ -82,44 +82,77 @@ app.post('/rating', function(req, res) {
 app.get('/login', function(req, res) {
     res.render('login.hbs');
 });
-
 app.post('/login', function(req, res) {
-    var userId = req.body.email;
-    var userPw = req.body.pw;
-    var login_info = login.loadDatabase();
-    for (i = 0; i < login_info.length; i++) {
-        if (userId == login_info[i].email && userPw == login_info[i].pw) {
-            sessions.uniqueID = req.body.username;
-            var first_name = login_info[i].first;
-            var last_name = login_info[i].last;
-            app.get('/index', function(req, res) {
-                res.render('index.hbs', {
-                    login: first_name,
-                    home: "/index",
-                    link: "",
-                    ranking: "/ranking",
-                    playlist: "/Playlist",
-                    search: "/searchpage",
-                    index: "1",
-                    searchindex: "-1",
-                    acct: i
-                });
-            });
-            app.get('/Playlist', function(req, res) {
-                res.render('Playlist.hbs');
-            });
-            var valid = true;
-            res.redirect('/index');
-            break;
-        } else {
-            var valid = false;
-        }
+    var users = {
+        email : req.body.email,
+        pw : req.body.pw
     }
-    if (!valid) {
-        res.render('login.hbs');
-        alert("Login Failed");
-    }
+    login.login(users)
+    // app.get('/index', function(req, res) {
+    //                 res.render('index.hbs', {
+    //                     login: first_name,
+    //                     home: "/index",
+    //                     link: "",
+    //                     ranking: "/ranking",
+    //                     playlist: "/Playlist",
+    //                     search: "/searchpage",
+    //                     index: "1",
+    //                     searchindex: "-1",
+    //                     acct: i
+    //                 });
+    //             });
+    //             app.get('/Playlist', function(req, res) {
+    //                 res.render('Playlist.hbs');
+    //             });
+    //             var valid = true;
+    //             res.redirect('/index');
+    //             break;
+    //         } else {
+    //             var valid = false;
+    //         }
+    //     }
+    //     if (!valid) {
+    //         res.render('login.hbs');
+    //         alert("Login Failed");
+    // }
 });
+// app.post('/login', function(req, res) {
+//     var userId = req.body.email;
+//     var userPw = req.body.pw;
+//     var login_info = login.loadDatabase();
+//     for (i = 0; i < login_info.length; i++) {
+//         if (userId == login_info[i].email && userPw == login_info[i].pw) {
+//             sessions.uniqueID = req.body.username;
+//             var first_name = login_info[i].first;
+//             var last_name = login_info[i].last;
+//             app.get('/index', function(req, res) {
+//                 res.render('index.hbs', {
+//                     login: first_name,
+//                     home: "/index",
+//                     link: "",
+//                     ranking: "/ranking",
+//                     playlist: "/Playlist",
+//                     search: "/searchpage",
+//                     index: "1",
+//                     searchindex: "-1",
+//                     acct: i
+//                 });
+//             });
+//             app.get('/Playlist', function(req, res) {
+//                 res.render('Playlist.hbs');
+//             });
+//             var valid = true;
+//             res.redirect('/index');
+//             break;
+//         } else {
+//             var valid = false;
+//         }
+//     }
+//     if (!valid) {
+//         res.render('login.hbs');
+//         alert("Login Failed");
+//     }
+// });
 
 
 app.get('/signup', function(req, res) {
@@ -153,14 +186,8 @@ app.post('/signup', function(req, res) {
             pw: pw,
             first: fname,
             last: lname
-        };
-        var login_info = login.loadDatabase();
-        login_info.push(user);
-        var valid = login.addUser(login_info);
-        if (valid) {
-            alert('Successfully registered');
-            res.redirect('/login');
         }
+        login.register(user)
     }
 
 });
