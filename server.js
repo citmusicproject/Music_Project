@@ -58,6 +58,7 @@ app.post('/rating', function (req, res) {
         if (errorMessage) {
             console.log(errorMessage);
         } else {
+            console.log(results.links);
             res.render('rating.hbs', {
                 link1: results.links[0],
                 link2: results.links[1],
@@ -93,24 +94,23 @@ app.post('/login', function (req, res) {
             sessions.uniqueID = req.body.username;
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
-            app.get('/index', function (req, res) {
+            app.get('/index'+ i.toString(), function(req, res) {
                 res.render('index.hbs', {
                     login: first_name,
-                    home: "/index",
+                    home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking",
-                    playlist: "/Playlist",
+                    playlist: "/Playlist" + i.toString(),
                     search: "/searchpage",
                     index: "1",
-                    searchindex: "-1",
                     acct: i
                 });
             });
-            app.get('/Playlist', function (req, res) {
+            app.get('/Playlist' + i.toString(), function(req, res) {
                 res.render('Playlist.hbs');
             });
-            valid = true;
-            res.redirect('/index');
+            var valid = true;
+            res.redirect('/index'+ i.toString());
             break;
         }
     }
@@ -123,18 +123,6 @@ app.post('/login', function (req, res) {
 
 app.get('/signup', function (req, res) {
     res.render('signup.hbs');
-});
-app.get('/searchpage', function (req, res) {
-    res.render('searchpage.hbs', {
-        login: req.body.login,
-        home: req.body.home,
-        ranking: req.body.ranking,
-        playlist: req.body.playlist,
-        index: req.body.index,
-        searchindex: req.body.searchindex,
-        acct: req.body.acct
-
-    });
 });
 
 app.post('/signup', function (req, res) {

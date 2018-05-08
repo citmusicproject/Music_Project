@@ -8,14 +8,19 @@
     vertical-align:center;
     left:5px;
     margin:5px;
+    border-radius: 5px;
 }
 .thumbnailtitle{
-    position:absolute;
+    /*position:absolute;*/
+    width: 75%;
+    height: 100%;
     color:black;
     word-break: normal;
     font-size: 100%;
     font-weight: bold;
-    top:30%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
     /*display:inline-block;*/
 }
 

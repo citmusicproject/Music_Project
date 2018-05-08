@@ -32,7 +32,8 @@ function gpassword() {
 }
 
 function searchYoutube(keyword, callback) {
-    search(keyword, opts, function(err, results) {
+    var song = keyword+' music'
+    search(song, opts, function(err, results) {
         if (err) {
             console.log(err);
         } else {
@@ -40,7 +41,7 @@ function searchYoutube(keyword, callback) {
             var links = [];
             var img = [];
             var title = [];
-
+            console.log(results);
             for (var i = 0; i < results.length; i++) {
                 links.push(results[i].id);
                 img.push(results[i].thumbnails.default.url);
