@@ -90,129 +90,23 @@
         <div id="popupYoutube" class="popyt">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/IetIg7y5k3A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-</body>
-</div>
-</body>
-<script>
-r1.addEventListener("mouseover", function() {
-    r1.style.cursor = "pointer";
-    pi1.style.top = "30px";
-    pi1.style.left = "10px";
-});
-r1.addEventListener("mouseout", function() {
-    r1.style.cursor = "pointer";
-    pi1.style.top = "30px";
-    pi1.style.left = "-50px";
-});
+    </div>
+    <script>
+        for (let i = 0; i < 10; i++) {
+            let sss = (i + 1).toString();
+            document.getElementById("r" + sss).addEventListener("mouseover", function () {
+                document.getElementById("r" + sss).style.cursor = "pointer";
+                document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString()+"px";
+                document.getElementById("pi" + sss).style.left = "10px";
+            });
 
-r2.addEventListener("mouseover", function() {
-    r2.style.cursor = "pointer";
-    pi2.style.top = "131px";
-    pi2.style.left = "10px";
-});
-
-r2.addEventListener("mouseout", function() {
-    r2.style.cursor = "pointer";
-    pi2.style.top = "131px";
-    pi2.style.left = "-50px";
-});
-
-r3.addEventListener("mouseover", function() {
-    r3.style.cursor = "pointer";
-    pi3.style.top = "233px";
-    pi3.style.left = "10px";
-});
-
-r3.addEventListener("mouseout", function() {
-    r3.style.cursor = "pointer";
-    document.getElementById("pi3").style.top = "233px";
-    document.getElementById("pi3").style.left = "-50px";
-});
-
-document.getElementById("r4").addEventListener("mouseover", function() {
-    document.getElementById("r4").style.cursor = "pointer";
-    document.getElementById("pi4").style.top = "334px";
-    document.getElementById("pi4").style.left = "10px";
-});
-
-document.getElementById("r4").addEventListener("mouseout", function() {
-    document.getElementById("r4").style.cursor = "pointer";
-    document.getElementById("pi4").style.top = "334px";
-    document.getElementById("pi4").style.left = "-50px";
-});
-
-document.getElementById("r5").addEventListener("mouseover", function() {
-    document.getElementById("r5").style.cursor = "pointer";
-    document.getElementById("pi5").style.top = "435px";
-    document.getElementById("pi5").style.left = "10px";
-});
-
-document.getElementById("r5").addEventListener("mouseout", function() {
-    document.getElementById("r5").style.cursor = "pointer";
-    document.getElementById("pi5").style.top = "435px";
-    document.getElementById("pi5").style.left = "-50px";
-});
-
-document.getElementById("r6").addEventListener("mouseover", function() {
-    document.getElementById("r6").style.cursor = "pointer";
-    document.getElementById("pi6").style.top = "536px";
-    document.getElementById("pi6").style.left = "10px";
-});
-
-document.getElementById("r6").addEventListener("mouseout", function() {
-    document.getElementById("r6").style.cursor = "pointer";
-    document.getElementById("pi6").style.top = "536px";
-    document.getElementById("pi6").style.left = "-50px";
-});
-
-document.getElementById("r7").addEventListener("mouseover", function() {
-    document.getElementById("r7").style.cursor = "pointer";
-    document.getElementById("pi7").style.top = "637px";
-    document.getElementById("pi7").style.left = "10px";
-});
-
-document.getElementById("r7").addEventListener("mouseout", function() {
-    document.getElementById("r7").style.cursor = "pointer";
-    document.getElementById("pi7").style.top = "637px";
-    document.getElementById("pi7").style.left = "-50px";
-});
-
-document.getElementById("r8").addEventListener("mouseover", function() {
-    document.getElementById("r8").style.cursor = "pointer";
-    document.getElementById("pi8").style.top = "738px";
-    document.getElementById("pi8").style.left = "10px";
-});
-
-document.getElementById("r8").addEventListener("mouseout", function() {
-    document.getElementById("r8").style.cursor = "pointer";
-    document.getElementById("pi8").style.top = "738px";
-    document.getElementById("pi8").style.left = "-50px";
-});
-
-document.getElementById("r9").addEventListener("mouseover", function() {
-    document.getElementById("r9").style.cursor = "pointer";
-    document.getElementById("pi9").style.top = "839px";
-    document.getElementById("pi9").style.left = "10px";
-});
-
-document.getElementById("r9").addEventListener("mouseout", function() {
-    document.getElementById("r9").style.cursor = "pointer";
-    document.getElementById("pi9").style.top = "839px";
-    document.getElementById("pi9").style.left = "-50px";
-});
-
-document.getElementById("r10").addEventListener("mouseover", function() {
-    document.getElementById("r10").style.cursor = "pointer";
-    document.getElementById("pi10").style.top = "940px";
-    document.getElementById("pi10").style.left = "10px";
-});
-
-document.getElementById("r10").addEventListener("mouseout", function() {
-    document.getElementById("r10").style.cursor = "pointer";
-    document.getElementById("pi10").style.top = "940px";
-    document.getElementById("pi10").style.left = "-50px";
-});
-</script>
+            document.getElementById("r" + sss).addEventListener("mouseout", function () {
+                document.getElementById("r" + sss).style.cursor = "pointer";
+                document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString() +"px";
+                document.getElementById("pi" + sss).style.left = "-50px";
+            });
+        }
+    </script>
 </body>
 
 </html>
