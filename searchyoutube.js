@@ -51,7 +51,6 @@ function searchYoutube(keyword, callback) {
                 links: links,
                 img: img,
                 title: title
-
             });
         };
     });
