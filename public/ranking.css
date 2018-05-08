@@ -72,7 +72,7 @@
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 100%;
-    top: 350px;
+    top: 250px;
     position: relative;
     font-family: tahoma;
 }
@@ -85,6 +85,21 @@
 }
 
 .rc:hover{opacity: 1}
+
+#player{
+    position: fixed;
+    display: none;
+    height: 315px;
+    width: 560px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+
+}
+
+
 
 .playImage{
     width: 40px;

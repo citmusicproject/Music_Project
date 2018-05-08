@@ -15,6 +15,9 @@
             <div id="bannerDescription">Alex's pick of the week</div>
             <div id="musicWorldImage"></div>
         </div>
+        <div id="player">
+            <iframe id="youtubeVideo" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
         <div id="rankedContent">
             <div id="r1" class="rc">
                 <div id="pi1" class="playImage" style="background-image:url(https://cdn0.iconfinder.com/data/icons/arrows-37/502/Untitled-5-512.png); background-size:100% 100%;"></div>
@@ -92,18 +95,31 @@
         </div>
     </div>
     <script>
+        var tlist = ["IetIg7y5k3A",
+            "9XaS93WMRQQ",
+            "U9BwWKXjVaI",
+            "OsrylSTDvAw",
+            "zDo0H8Fm7d0",
+            "au2n7VVGv_c",
+            "gOsM-DYAEhY",
+            "Ph54wQG8ynk",
+            "_I_D_8Z4sJE",
+            "VDndE432GpU"];
         for (let i = 0; i < 10; i++) {
             let sss = (i + 1).toString();
             document.getElementById("r" + sss).addEventListener("mouseover", function () {
                 document.getElementById("r" + sss).style.cursor = "pointer";
-                document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString()+"px";
+                document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString() + "px";
                 document.getElementById("pi" + sss).style.left = "10px";
             });
 
             document.getElementById("r" + sss).addEventListener("mouseout", function () {
                 document.getElementById("r" + sss).style.cursor = "pointer";
-                document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString() +"px";
                 document.getElementById("pi" + sss).style.left = "-50px";
+            });
+            document.getElementById("r" + sss).addEventListener("click", function () {
+                player.style.display = "block";
+                youtubeVideo.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
             });
         }
     </script>

@@ -1,16 +1,31 @@
+#bg{
+    background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
+    height:100vh;
+    width:100vw;
+    margin:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-size:cover;
+    z-index:-100;    
+}
+
 #favouritetab{
     position:relative;
-    padding:10px;
+    padding-left: 1.5%
 }
 #searchdisplay{
-    width:600px;
-    height:70vh;
-    bottom:0;
+    width:auto;
+    height:auto;
+    top:0;
     position:relative;
+    display:block;
 }
 #searchresults{
     height:100px;
-    width:600px;
+    width:35vw;
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top:70px;
@@ -32,22 +47,24 @@
 
 #display{
     color:white;
+    position:relative;
 }
 #player{
-    position:fixed;
-    right:50px;
-    top:100px;
-    width:550px;
+    position:absolute;
+    right:4.5%;
+    width:40vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
     display:none;
+    z-index:50;
+    background-color:white;
 }
 #searchbar{
     height:35px;
-    width:600px;
+    width:50vw;
     line-height: 36px;
     position:relative;
-    top:65px;
+    top:1vh;
     z-index:5;
     left:10px;
     margin:auto;
@@ -59,6 +76,7 @@
 }
 #title{
     font: 18px arial,sans-serif;
+    padding-left: 1.5%;
 }
 
 fieldset, label { margin: 0; padding: 0; }
@@ -70,6 +88,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating { 
   border: none;
   float: left;
+  padding-left: 1%
 }
 
 .rating > input { display: none; } 
