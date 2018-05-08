@@ -16,18 +16,18 @@
       </button>
             
 
-      <a class="navbar-brand" href="{{home}}"><div id="headbar_icon"></div><div id="headbar_text"> music world</div></a>
+      <a class="navbar-brand" href="{{home}}"><div id="headbar_icon"></div><div id="headbar_text">Music World</div></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/discover">discover</a></li>
-        <li><a href="{{ranking}}">ranking</a></li>
-        <li><a href="{{playlist}}">playlist</a></li>
+        <li><a href="{{discover}}">Discover</a></li>
+        <li><a href="{{ranking}}">Ranking</a></li>
+        <li><a href="{{playlist}}">Playlist</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">      
-        <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;color:white;top:20px;border:none;background-color:red;width:auto;font-size:15px;" onclick="location.href = '{{link}}';">{{login}}</button>
-        <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;border:none;background-color:red;position:relative;z-index: {{index}};color:white;width:auto;font-size:15px;" onclick="location.href = '/';">log out</button>
+        <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;color:white;border:none;background-color:red;width:auto;font-size:15px;" onclick="location.href = '{{link}}';">{{login}}</button>
+        <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;border:none;background-color:red;position:relative; z-index:{{index}};color:white;width:auto;font-size:15px;" onclick="location.href = '/';">log out</button>
       </ul>
     </div>
   </div>

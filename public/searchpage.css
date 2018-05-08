@@ -15,11 +15,12 @@ body{
     z-index:-100;    
 }
 #searchbar{
-    height:35px;
-    width:600px;
+    height:5%;
+    width:40%;
     line-height: 36px;
     position:absolute;
-    z-index:5;
+    text-align: left;
+    z-index:0;
     top:0;
     bottom:0;
     left:0;
