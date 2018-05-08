@@ -162,7 +162,7 @@ app.get('/discover', function (req, res) {
         method: 'GET'
     }, function (err, res2, body) {
         var result = JSON.parse(body);
-        var randomk = helper.getRandomUniqueNumber(8, 50, 0).map(function (item) {
+        var randomk = helper.getRandomUniqueNumber(9, 50, 0).map(function (item) {
             if (result.items[item] != undefined) {
                 return ({
                     lnk: result.items[item].id,
