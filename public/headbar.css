@@ -3,7 +3,7 @@
     background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
     width: 64px;
     height: 64px;
-    top: -15px;
+    top: -40%;
     display: inline-block;
     cursor: pointer;
     animation: rotation 2s infinite linear;
@@ -36,6 +36,7 @@
     position:relative;
     display:inline-block;
     bottom:30px;
+    padding-left: 10px;
     font-size:23px;
 }
 .navbar-nav{
@@ -44,5 +45,5 @@
     font-size:23px;
 }
 #myNavbar{
-    height:200px;
+    height:250px;
 }
