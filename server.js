@@ -33,7 +33,7 @@ String.prototype.format = function () {
 
 app.get('/', function (req, res) {
     res.render('index.hbs', {
-        login: "Login/Signup",
+        login: "",
         link: "login",
         home: "/",
         discover: "/discover",
@@ -147,9 +147,13 @@ app.post('/login', function (req, res) {
             sessions.uniqueID = req.body.username;
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
+            var id = login_info[i].email;
             app.get('/index' + i.toString(), function(req, res) {
                 res.render('index.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -163,6 +167,9 @@ app.post('/login', function (req, res) {
             app.get('/Playlist' + i.toString(), function(req, res) {
                 res.render('Playlist.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -181,6 +188,9 @@ app.post('/login', function (req, res) {
                         // console.log(results.links);
                         res.render('rating.hbs', {
                             login: `Hi, ${first_name} ${last_name}`,
+                            first_name: `${first_name}`,
+                            last_name: `${last_name}`,
+                            email: `${id}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -231,6 +241,9 @@ app.post('/login', function (req, res) {
                         // console.log(results.links);
                         res.render('rating.hbs', {
                             login: `Hi, ${first_name} ${last_name}`,
+                            first_name: `${first_name}`,
+                            last_name: `${last_name}`,
+                            email: `${id}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -304,6 +317,8 @@ app.post('/login', function (req, res) {
                     res.render('discover.hbs', {
                         data: randomk,
                         login: `Hi, ${first_name} ${last_name}`,
+                        first_name: `${first_name}`,
+                        last_name: `${last_name}`,
                         home: "/index" + i.toString(),
                         link: "",
                         discover: "/discover" + i.toString(),
@@ -317,6 +332,9 @@ app.post('/login', function (req, res) {
             app.get('/ranking' + i.toString(), function(req, res) {
                 res.render('ranking.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
                     home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking" + i.toString(),
@@ -341,7 +359,33 @@ app.post('/login', function (req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
 });
+app.post('/edit', function (req, res) {
+    var id = req.body.id;
+    var pw = req.body.pass;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
 
+    var user = {
+            email: id,
+            pw: pw,
+            first: fname,
+            last: lname,
+        };
+
+    var login_info = login.loadDatabase();
+    for (let i = 0; i < login_info.length; i++) {
+        if (id == login_info[i].email) {
+    login_info.splice(i, 1);
+    login_info.push(user);
+
+        var valid = login.addUser(login_info);
+        if (valid) {
+            alert('Succesfully changed my account');
+            res.redirect('/index'+i.toString());
+        }
+    }
+}
+});
 app.post('/signup', function (req, res) {
     var id = req.body.email;
     var pw = req.body.pass;
