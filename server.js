@@ -148,12 +148,16 @@ app.post('/login', function (req, res) {
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
             var id = login_info[i].email;
+            var profilepic = login_info[i].profilepic;
+            var pw = login_info[i].pw;
             app.get('/index' + i.toString(), function(req, res) {
                 res.render('index.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
                     first_name: `${first_name}`,
                     last_name: `${last_name}`,
                     email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -170,6 +174,8 @@ app.post('/login', function (req, res) {
                     first_name: `${first_name}`,
                     last_name: `${last_name}`,
                     email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -191,6 +197,8 @@ app.post('/login', function (req, res) {
                             first_name: `${first_name}`,
                             last_name: `${last_name}`,
                             email: `${id}`,
+                            profilepic: `${profilepic}`,
+                            pw: `${pw}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -244,6 +252,8 @@ app.post('/login', function (req, res) {
                             first_name: `${first_name}`,
                             last_name: `${last_name}`,
                             email: `${id}`,
+                            profilepic: `${profilepic}`,
+                            pw: `${pw}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -319,6 +329,9 @@ app.post('/login', function (req, res) {
                         login: `Hi, ${first_name} ${last_name}`,
                         first_name: `${first_name}`,
                         last_name: `${last_name}`,
+                        email: `${id}`,
+                        profilepic: `${profilepic}`,
+                        pw: `${pw}`,
                         home: "/index" + i.toString(),
                         link: "",
                         discover: "/discover" + i.toString(),
@@ -335,6 +348,8 @@ app.post('/login', function (req, res) {
                     first_name: `${first_name}`,
                     last_name: `${last_name}`,
                     email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking" + i.toString(),
@@ -361,15 +376,17 @@ app.get('/signup', function(req, res) {
 });
 app.post('/edit', function (req, res) {
     var id = req.body.id;
-    var pw = req.body.pass;
+    var pw = req.body.pw;
     var fname = req.body.fname;
     var lname = req.body.lname;
+    var profilepic = req.body.profilepic;
 
     var user = {
             email: id,
             pw: pw,
             first: fname,
             last: lname,
+            profilepic: profilepic,
         };
 
     var login_info = login.loadDatabase();
