@@ -19,7 +19,17 @@
 
 #navBar {
     position: absolute;
-    left: 600px;
+    left: 52vw;
+    bottom:10px; 
+}
+.pagebuttons{
+    background:red;
+    color:white;
+    border-radius:50px;
+    border:none;
+    padding:1vw;
+    border-style: outset;
+    font-weight:900;
 }
 
 #prevPage {
