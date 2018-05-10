@@ -112,165 +112,236 @@ app.get('/login', function (req, res) {
     res.render('login.hbs');
 });
 
-app.post('/login', function (req, res) {
-    var userId = req.body.email;
-    var userPw = req.body.pw;
-    var login_info = login.loadDatabase();
-    var valid = false;
-    for (let i = 0; i < login_info.length; i++) {
-        if (userId == login_info[i].email && userPw == login_info[i].pw) {
-            sessions.uniqueID = req.body.username;
-            var first_name = login_info[i].first;
-            var last_name = login_info[i].last;
-            app.get('/index' + i.toString(), function(req, res) {
-                res.render('index.hbs', {
-                    login: `Hi, ${first_name} ${last_name}`,
-                    home: "/index" + i.toString(),
-                    link: "",
-                    discover: "/discover" + i.toString(),
-                    ranking: "/ranking" + i.toString(),
-                    playlist: "/Playlist" + i.toString(),
-                    rating:"/rating"+i.toString(),
-                    index: "1",
-                    acct: i
-                });
-            });
-            app.get('/Playlist' + i.toString(), function(req, res) {
-                res.render('Playlist.hbs', {
-                    login: `Hi, ${first_name} ${last_name}`,
-                    home: "/index" + i.toString(),
-                    link: "",
-                    discover: "/discover" + i.toString(),
-                    ranking: "/ranking" + i.toString(),
-                    playlist: "/Playlist" + i.toString(),
-                    index: "1",
-                    acct: i
-                });
-            });
+app.post('/login', function(req, res) {
+    var users = {
+        email : req.body.email,
+        pw : req.body.pw
+=======
 
-            app.post('/rating' + i.toString(), function(req, res) {
-                youtube.searchYoutube(req.body.song, (errorMessage, results) => {
-                    if (errorMessage) {
-                        console.log(errorMessage);
-                    } else {
-                        // console.log(results.links);
-                        let dat = [];
-                        for (let i = 0; i < 10; i++) {
-                            dat.push({
-                                link: results.links[i],
-                                img: results.img[i],
-                                title: results.title[i],
-                                styletype: i < 5 ? "searches" : "searches2"
-                            });
-                        }
-                        res.render('rating.hbs', {
-                            login: `Hi, ${first_name} ${last_name}`,
-                            home: "/index" + i.toString(),
-                            link: "",
-                            discover: "/discover" + i.toString(),
-                            ranking: "/ranking" + i.toString(),
-                            playlist: "/Playlist" + i.toString(),
-                            rating:"/rating"+i.toString(),
-                            index: "1",
-                            acct: i,
-                            data: dat
-                        });
-                    }
-                });
-            });
-              app.get('/rating' + i.toString(), function(req, res) {
-                youtube.searchYoutube(req.body.song, (errorMessage, results) => {
-                    if (errorMessage) {
-                        console.log(errorMessage);
-                    } else {
-                        // console.log(results.links);
-                        let dat = [];
-                        for (let i = 0; i < 10; i++) {
-                            dat.push({
-                                link: results.links[i],
-                                img: results.img[i],
-                                title: results.title[i],
-                                styletype: i < 5 ? "searches" : "searches2"
-                            });
-                        }
-                        res.render('rating.hbs', {
-                            login: `Hi, ${first_name} ${last_name}`,
-                            home: "/index" + i.toString(),
-                            link: "",
-                            discover: "/discover" + i.toString(),
-                            ranking: "/ranking" + i.toString(),
-                            playlist: "/Playlist" + i.toString(),
-                            rating:"/rating"+i.toString(),
-                            index: "1",
-                            acct: i,
-                            data: dat
-                        });
-                    }
-                });
-            });
-            app.get('/discover' + i.toString(), function(req, res) {
-                var xhr = require('xhr');
-                if (!xhr.open) xhr = require('request');
-                let ppp = "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&videoCategoryId=10&key=" +
-                    youtube.gpassword();
-                xhr({
-                    url: ppp,
-                    method: 'GET'
-                }, function(err, res2, body) {
-                    var result = JSON.parse(body);
-                    var randomk = helper.getRandomUniqueNumber(9, 50, 0).map(function(item) {
-                        if (result.items[item] != undefined) {
-                            return ({
-                                lnk: result.items[item].id,
-                                title: result.items[item].snippet.title,
-                                viewCount: result.items[item].statistics.viewCount,
-                                rev: Math.random() > 0.5,
-                                display: true
-                            });
-                        }
-                        return ({
-                            lnk: "",
-                            title: "",
-                            viewCount: "",
-                            rev: 0,
-                            display: false
-                        });
-                    });
-                    res.render('discover.hbs', {
-                        data: randomk,
-                        login: `Hi, ${first_name} ${last_name}`,
-                        home: "/index" + i.toString(),
-                        link: "",
-                        discover: "/discover" + i.toString(),
-                        ranking: "/ranking" + i.toString(),
-                        playlist: "/Playlist" + i.toString(),
-                        index: "1",
-                        acct: i
-                    });
-                });
-            });
-            app.get('/ranking' + i.toString(), function(req, res) {
-                res.render('ranking.hbs', {
-                    login: `Hi, ${first_name} ${last_name}`,
-                    home: "/index" + i.toString(),
-                    link: "",
-                    ranking: "/ranking" + i.toString(),
-                    playlist: "/Playlist" + i.toString(),
-                    index: "1",
-                    discover: "/discover" + i.toString(),
-                    acct: i
-                });
-            });
-            var valid = true;
-            res.redirect('/index' + i.toString());
-            break;
-        }
-    }
-    if (!valid) {
-        res.render('login.hbs');
-        alert("Login Failed");
-    }
+// app.post('/login', function (req, res) {
+//     var userId = req.body.email;
+//     var userPw = req.body.pw;
+//     var login_info = login.loadDatabase();
+//     var valid = false;
+//     for (let i = 0; i < login_info.length; i++) {
+//         if (userId == login_info[i].email && userPw == login_info[i].pw) {
+//             sessions.uniqueID = req.body.username;
+//             var first_name = login_info[i].first;
+//             var last_name = login_info[i].last;
+//             app.get('/index' + i.toString(), function(req, res) {
+//                 res.render('index.hbs', {
+//                     login: `Hi, ${first_name} ${last_name}`,
+//                     home: "/index" + i.toString(),
+//                     link: "",
+//                     discover: "/discover" + i.toString(),
+//                     ranking: "/ranking" + i.toString(),
+//                     playlist: "/Playlist" + i.toString(),
+//                     rating:"/rating"+i.toString(),
+//                     index: "1",
+//                     acct: i
+//                 });
+//             });
+//             app.get('/Playlist' + i.toString(), function(req, res) {
+//                 res.render('Playlist.hbs', {
+//                     login: `Hi, ${first_name} ${last_name}`,
+//                     home: "/index" + i.toString(),
+//                     link: "",
+//                     discover: "/discover" + i.toString(),
+//                     ranking: "/ranking" + i.toString(),
+//                     playlist: "/Playlist" + i.toString(),
+//                     index: "1",
+//                     acct: i
+//                 });
+//             });
+
+//             app.post('/rating' + i.toString(), function(req, res) {
+//                 youtube.searchYoutube(req.body.song, (errorMessage, results) => {
+//                     if (errorMessage) {
+//                         console.log(errorMessage);
+//                     } else {
+//                         // console.log(results.links);
+//                         let dat = [];
+//                         for (let i = 0; i < 10; i++) {
+//                             dat.push({
+//                                 link: results.links[i],
+//                                 img: results.img[i],
+//                                 title: results.title[i],
+//                                 styletype: i < 5 ? "searches" : "searches2"
+//                             });
+//                         }
+//                         res.render('rating.hbs', {
+//                             login: `Hi, ${first_name} ${last_name}`,
+//                             home: "/index" + i.toString(),
+//                             link: "",
+//                             discover: "/discover" + i.toString(),
+//                             ranking: "/ranking" + i.toString(),
+//                             playlist: "/Playlist" + i.toString(),
+//                             rating:"/rating"+i.toString(),
+//                             index: "1",
+//                             acct: i,
+//                             data: dat
+//                         });
+//                     }
+//                 });
+//             });
+//               app.get('/rating' + i.toString(), function(req, res) {
+//                 youtube.searchYoutube(req.body.song, (errorMessage, results) => {
+//                     if (errorMessage) {
+//                         console.log(errorMessage);
+//                     } else {
+//                         // console.log(results.links);
+//                         let dat = [];
+//                         for (let i = 0; i < 10; i++) {
+//                             dat.push({
+//                                 link: results.links[i],
+//                                 img: results.img[i],
+//                                 title: results.title[i],
+//                                 styletype: i < 5 ? "searches" : "searches2"
+//                             });
+//                         }
+//                         res.render('rating.hbs', {
+//                             login: `Hi, ${first_name} ${last_name}`,
+//                             home: "/index" + i.toString(),
+//                             link: "",
+//                             discover: "/discover" + i.toString(),
+//                             ranking: "/ranking" + i.toString(),
+//                             playlist: "/Playlist" + i.toString(),
+//                             rating:"/rating"+i.toString(),
+//                             index: "1",
+//                             acct: i,
+//                             data: dat
+//                         });
+//                     }
+//                 });
+//             });
+//             app.get('/discover' + i.toString(), function(req, res) {
+//                 var xhr = require('xhr');
+//                 if (!xhr.open) xhr = require('request');
+//                 let ppp = "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&videoCategoryId=10&key=" +
+//                     youtube.gpassword();
+//                 xhr({
+//                     url: ppp,
+//                     method: 'GET'
+//                 }, function(err, res2, body) {
+//                     var result = JSON.parse(body);
+//                     var randomk = helper.getRandomUniqueNumber(9, 50, 0).map(function(item) {
+//                         if (result.items[item] != undefined) {
+//                             return ({
+//                                 lnk: result.items[item].id,
+//                                 title: result.items[item].snippet.title,
+//                                 viewCount: result.items[item].statistics.viewCount,
+//                                 rev: Math.random() > 0.5,
+//                                 display: true
+//                             });
+//                         }
+//                         return ({
+//                             lnk: "",
+//                             title: "",
+//                             viewCount: "",
+//                             rev: 0,
+//                             display: false
+//                         });
+//                     });
+//                     res.render('discover.hbs', {
+//                         data: randomk,
+//                         login: `Hi, ${first_name} ${last_name}`,
+//                         home: "/index" + i.toString(),
+//                         link: "",
+//                         discover: "/discover" + i.toString(),
+//                         ranking: "/ranking" + i.toString(),
+//                         playlist: "/Playlist" + i.toString(),
+//                         index: "1",
+//                         acct: i
+//                     });
+//                 });
+//             });
+//             app.get('/ranking' + i.toString(), function(req, res) {
+//                 res.render('ranking.hbs', {
+//                     login: `Hi, ${first_name} ${last_name}`,
+//                     home: "/index" + i.toString(),
+//                     link: "",
+//                     ranking: "/ranking" + i.toString(),
+//                     playlist: "/Playlist" + i.toString(),
+//                     index: "1",
+//                     discover: "/discover" + i.toString(),
+//                     acct: i
+//                 });
+//             });
+//             var valid = true;
+//             res.redirect('/index' + i.toString());
+//             break;
+//         }
+//     }
+//     if (!valid) {
+//         res.render('login.hbs');
+//         alert("Login Failed");
+
+    login.login(users)
+    // app.get('/index', function(req, res) {
+    //                 res.render('index.hbs', {
+    //                     login: first_name,
+    //                     home: "/index",
+    //                     link: "",
+    //                     ranking: "/ranking",
+    //                     playlist: "/Playlist",
+    //                     search: "/searchpage",
+    //                     index: "1",
+    //                     searchindex: "-1",
+    //                     acct: i
+    //                 });
+    //             });
+    //             app.get('/Playlist', function(req, res) {
+    //                 res.render('Playlist.hbs');
+    //             });
+    //             var valid = true;
+    //             res.redirect('/index');
+    //             break;
+    //         } else {
+    //             var valid = false;
+    //         }
+    //     }
+    //     if (!valid) {
+    //         res.render('login.hbs');
+    //         alert("Login Failed");
+    // }
 });
+// app.post('/login', function(req, res) {
+//     var userId = req.body.email;
+//     var userPw = req.body.pw;
+//     var login_info = login.loadDatabase();
+//     for (i = 0; i < login_info.length; i++) {
+//         if (userId == login_info[i].email && userPw == login_info[i].pw) {
+//             sessions.uniqueID = req.body.username;
+//             var first_name = login_info[i].first;
+//             var last_name = login_info[i].last;
+//             app.get('/index', function(req, res) {
+//                 res.render('index.hbs', {
+//                     login: first_name,
+//                     home: "/index",
+//                     link: "",
+//                     ranking: "/ranking",
+//                     playlist: "/Playlist",
+//                     search: "/searchpage",
+//                     index: "1",
+//                     searchindex: "-1",
+//                     acct: i
+//                 });
+//             });
+//             app.get('/Playlist', function(req, res) {
+//                 res.render('Playlist.hbs');
+//             });
+//             var valid = true;
+//             res.redirect('/index');
+//             break;
+//         } else {
+//             var valid = false;
+//         }
+//     }
+//     if (!valid) {
+//         res.render('login.hbs');
+//         alert("Login Failed");
+//     }
+// });
 
 
 app.get('/signup', function(req, res) {
@@ -292,14 +363,8 @@ app.post('/signup', function (req, res) {
             pw: pw,
             first: fname,
             last: lname
-        };
-        var login_info = login.loadDatabase();
-        login_info.push(user);
-        var valid = login.addUser(login_info);
-        if (valid) {
-            alert('Successfully registered');
-            res.redirect('/login');
         }
+        login.register(user)
     }
 
 });
