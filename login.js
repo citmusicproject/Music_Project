@@ -18,6 +18,7 @@ connection.connect(function(err) {
   console.log('Connected to database.');
 });
 
+
 function register(user){
   console.log('user data', user)
   var today = new Date();
