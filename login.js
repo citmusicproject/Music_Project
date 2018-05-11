@@ -18,11 +18,10 @@ connection.connect(function(err) {
   console.log('Connected to database.');
 });
 
-
 function register(user){
   console.log('user data', user)
-  var today = new Date();
-  var users = {
+  const today = new Date();
+  const users = {
       "first_name":user.first,
       "last_name":user.last,
       "email":user.email,
@@ -42,30 +41,24 @@ function register(user){
 } 
 
 function login(user){
-  var email = user.email;
-  var password = user.pw
+  const email = user.email;
+  const password = user.pw
   connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
-    console.log([email])
-  if (error) {
-    console.log("error ocurred",error);
-    res.send({
-      "code":400,
-      "failed":"error ocurred"
-    })
-  }else{
-    console.log('The login result: ', results);
-    if(results.length >0){
-      if(results[0].password === password){
-        console.log("sucessfull")
-      }else{
-        console.log("password not match")
-      }
+    if (error) {
+      console.log("error ocurred",error);
     }else{
-      console.log("email does not exit")
+      if(results.length >0){
+        if(results[0].password === password){
+          console.log("sucessfull")
+        }else{
+          console.log("password not match")
+        }
+      }else{
+        console.log("email does not exit")
+      }
     }
-  }
-    });
-  }
+      });
+    }
 
   module.exports={
     register,
