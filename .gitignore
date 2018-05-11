@@ -3,3 +3,4 @@ package/
 package-lock/
 keys.json
 accdata.json
+dbkeys.js
