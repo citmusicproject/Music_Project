@@ -1,7 +1,7 @@
-#backgroundImage{
+#bgImage{
     background-image: url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);
-    height:100vh;
-    width: 100vw;
+    height:100%;
+    width: 100%;
     margin:auto;
     top:0px;
     left: 0px;
@@ -9,8 +9,6 @@
     bottom: 0px;
     position: fixed;
     background-size: cover;
-    
-    
 }
 
 
@@ -18,32 +16,29 @@
     width:100%;
     height:auto;
     position: absolute;
-    left: 0px;
-    top: 0px;
     
 }
 
 #banner{
     width: 100%;
-    height: 200px;
-    top: 100px;
-    background-color: rgba(255, 255, 255, 0);
+    height: 18%;
+    top: 10%;
     position: absolute;
+    padding-left: 5%;
 
 }
 
 #musicWorldImage{
-    position: absolute;
-    width: 150px;
-    height:150px;
+    max-width: 200px;
+    max-height:200px;
+    width: 100%;
+    height: 100%;
     border-radius: 150px;
-    left: 80px;
-    bottom: 0px;
     background-image: url(https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg);
     background-position: center;
     background-size: cover;
-    z-index: 1;
-    
+    display: inline-block;
+
 }
 
 
@@ -51,21 +46,14 @@
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
     color: white;
     font-style: bold;
-    font-size: 50px;
-    position: absolute;
-    left: 250px;
-    top: 70px;
+    font-size: 300%;
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    text-align: center;
  
-}
-
-#bannerDescription{
-    font-family: tahoma;
-    color: rgba(41, 61, 122, 1);
-    font-size: 20px;
-    position: absolute;
-    left: 250px;
-    top: 130px;
-    
 }
 
 #rankedContent{
@@ -78,8 +66,8 @@
 }
 
 .rc{
-    
-    height: 100px;
+    max-height: 100px;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0);
     opacity: 0.7;
 }
@@ -96,16 +84,14 @@
     left: 0px;
     right: 0px;
     margin: auto;
-
+    z-index: 5;
 }
-
-
 
 .playImage{
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 31px;
+    top: ;
     left: -50px;
     transition: 0.2s;
     
@@ -114,11 +100,11 @@
 
 
 .rankNum{
-    width: 40px;
-    height: 40px;
+    width: 5%;
+    height: 5%;
     position: relative;
-    left: 50px;
-    top: 40px;
+    left: 3%;
+    top: 41px;
     text-align: center;
     color: white;
  
@@ -127,44 +113,25 @@
 .rankImage{
     width: 75px;
     height: 75px;
-    left: 100px;
-    top: -27px;
+    left: 10%;
     position: relative;
     
 }
 
 .songTitle{
-    width: 500px;
-    height: 25px;
-    left: 210px;
+    left: 20%;
     top: -90px;
     position: relative;
-    font-size: 20px;
-    font-style: bold;
+    font-size: 150%;
     color: white;
+    padding-top: 2%;
     
 }
 
 .songArtist{
-    width: 500px;
-    height: 25px;
-    left: 210px;
+    left: 20%;
     top: -88px;
     position: relative;
     color: rgba(41, 61, 122, 1);
     
-}
-
-
-#popupYoutube{
-    width: 560px;
-    height: 315px;
-    position: fixed;
-    display: none;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    right: 100px;
-    background-color: white;
-    z-index: 2;   
 }
