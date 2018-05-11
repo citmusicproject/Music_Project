@@ -44,21 +44,22 @@ function login(user){
   const email = user.email;
   const password = user.pw
   connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
-    if (error) {
-      console.log("error ocurred",error);
-    }else{
-      if(results.length >0){
-        if(results[0].password === password){
-          console.log("sucessfull")
-        }else{
-          console.log("password not match")
-        }
+    console.log([email])
+  if (error) {
+    console.log("error ocurred",error);
+  }else{
+    if(results.length >0){
+      if(results[0].password === password){
+        console.log("sucessfull")
       }else{
-        console.log("email does not exit")
+        console.log("password not match")
       }
+    }else{
+      console.log("email does not exit")
     }
-      });
-    }
+  }
+    });
+  }
 
   module.exports={
     register,
