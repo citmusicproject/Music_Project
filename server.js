@@ -33,7 +33,7 @@ String.prototype.format = function () {
 
 app.get('/', function (req, res) {
     res.render('index.hbs', {
-        login: "Login/Signup",
+        login: "",
         link: "login",
         home: "/",
         discover: "/discover",
@@ -56,6 +56,15 @@ app.get('/rating', function(req, res) {
             console.log(errorMessage);
         } else {
             // console.log(results.links);
+            let dat = [];
+            for (let i = 0; i < 10; i++) {
+                dat.push({
+                    link: results.links[i],
+                    img: results.img[i],
+                    title: results.title[i],
+                    styletype: i < 5 ? "searches" : "searches2"
+                });
+            }
             res.render('rating.hbs', {
                 login: "Login/Signup",
                 link: "login",
@@ -64,21 +73,7 @@ app.get('/rating', function(req, res) {
                 ranking: "/ranking",
                 playlist: "/login",
                 index: "-1",
-                link1: results.links[0],
-                link2: results.links[1],
-                link3: results.links[2],
-                link4: results.links[3],
-                link5: results.links[4],
-                img1: results.img[0],
-                img2: results.img[1],
-                img3: results.img[2],
-                img4: results.img[3],
-                img5: results.img[4],
-                title1: results.title[0],
-                title2: results.title[1],
-                title3: results.title[2],
-                title4: results.title[3],
-                title5: results.title[4]
+                data: dat
             });
         }
     });
@@ -90,6 +85,15 @@ app.post('/rating', function(req, res) {
             console.log(errorMessage);
         } else {
             // console.log(results.links);
+            let dat = [];
+            for (let i = 0; i < 10; i++) {
+                dat.push({
+                    link: results.links[i],
+                    img: results.img[i],
+                    title: results.title[i],
+                    styletype: i < 5 ? "searches" : "searches2"
+                });
+            }
             res.render('rating.hbs', {
                 login: "Login/Signup",
                 link: "login",
@@ -98,36 +102,7 @@ app.post('/rating', function(req, res) {
                 ranking: "/ranking",
                 playlist: "/login",
                 index: "-1",
-                link1: results.links[0],
-                link2: results.links[1],
-                link3: results.links[2],
-                link4: results.links[3],
-                link5: results.links[4],
-                link6: results.links[5],
-                link7: results.links[6],
-                link8: results.links[7],
-                link9: results.links[8],
-                link10: results.links[9],
-                img1: results.img[0],
-                img2: results.img[1],
-                img3: results.img[2],
-                img4: results.img[3],
-                img5: results.img[4],
-                img6: results.img[5],
-                img7: results.img[6],
-                img8: results.img[7],
-                img9: results.img[8],
-                img10: results.img[9],
-                title1: results.title[0],
-                title2: results.title[1],
-                title3: results.title[2],
-                title4: results.title[3],
-                title5: results.title[4],
-                title6: results.title[5],
-                title7: results.title[6],
-                title8: results.title[7],
-                title9: results.title[8],
-                title10: results.title[9]
+                data: dat
             });
         }
     });
@@ -142,14 +117,22 @@ app.post('/login', function (req, res) {
     var userPw = req.body.pw;
     var login_info = login.loadDatabase();
     var valid = false;
-    for (i = 0; i < login_info.length; i++) {
+    for (let i = 0; i < login_info.length; i++) {
         if (userId == login_info[i].email && userPw == login_info[i].pw) {
             sessions.uniqueID = req.body.username;
             var first_name = login_info[i].first;
             var last_name = login_info[i].last;
+            var id = login_info[i].email;
+            var profilepic = login_info[i].profilepic;
+            var pw = login_info[i].pw;
             app.get('/index' + i.toString(), function(req, res) {
                 res.render('index.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -163,6 +146,11 @@ app.post('/login', function (req, res) {
             app.get('/Playlist' + i.toString(), function(req, res) {
                 res.render('Playlist.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     discover: "/discover" + i.toString(),
@@ -179,8 +167,22 @@ app.post('/login', function (req, res) {
                         console.log(errorMessage);
                     } else {
                         // console.log(results.links);
+                        let dat = [];
+                        for (let i = 0; i < 10; i++) {
+                            dat.push({
+                                link: results.links[i],
+                                img: results.img[i],
+                                title: results.title[i],
+                                styletype: i < 5 ? "searches" : "searches2"
+                            });
+                        }
                         res.render('rating.hbs', {
                             login: `Hi, ${first_name} ${last_name}`,
+                            first_name: `${first_name}`,
+                            last_name: `${last_name}`,
+                            email: `${id}`,
+                            profilepic: `${profilepic}`,
+                            pw: `${pw}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -189,36 +191,7 @@ app.post('/login', function (req, res) {
                             rating:"/rating"+i.toString(),
                             index: "1",
                             acct: i,
-                            link1: results.links[0],
-                            link2: results.links[1],
-                            link3: results.links[2],
-                            link4: results.links[3],
-                            link5: results.links[4],
-                            link6: results.links[5],
-                            link7: results.links[6],
-                            link8: results.links[7],
-                            link9: results.links[8],
-                            link10: results.links[9],
-                            img1: results.img[0],
-                            img2: results.img[1],
-                            img3: results.img[2],
-                            img4: results.img[3],
-                            img5: results.img[4],
-                            img6: results.img[5],
-                            img7: results.img[6],
-                            img8: results.img[7],
-                            img9: results.img[8],
-                            img10: results.img[9],
-                            title1: results.title[0],
-                            title2: results.title[1],
-                            title3: results.title[2],
-                            title4: results.title[3],
-                            title5: results.title[4],
-                            title6: results.title[5],
-                            title7: results.title[6],
-                            title8: results.title[7],
-                            title9: results.title[8],
-                            title10: results.title[9]
+                            data: dat
                         });
                     }
                 });
@@ -229,8 +202,22 @@ app.post('/login', function (req, res) {
                         console.log(errorMessage);
                     } else {
                         // console.log(results.links);
+                        let dat = [];
+                        for (let i = 0; i < 10; i++) {
+                            dat.push({
+                                link: results.links[i],
+                                img: results.img[i],
+                                title: results.title[i],
+                                styletype: i < 5 ? "searches" : "searches2"
+                            });
+                        }
                         res.render('rating.hbs', {
                             login: `Hi, ${first_name} ${last_name}`,
+                            first_name: `${first_name}`,
+                            last_name: `${last_name}`,
+                            email: `${id}`,
+                            profilepic: `${profilepic}`,
+                            pw: `${pw}`,
                             home: "/index" + i.toString(),
                             link: "",
                             discover: "/discover" + i.toString(),
@@ -239,36 +226,7 @@ app.post('/login', function (req, res) {
                             rating:"/rating"+i.toString(),
                             index: "1",
                             acct: i,
-                            link1: results.links[0],
-                            link2: results.links[1],
-                            link3: results.links[2],
-                            link4: results.links[3],
-                            link5: results.links[4],
-                            link6: results.links[5],
-                            link7: results.links[6],
-                            link8: results.links[7],
-                            link9: results.links[8],
-                            link10: results.links[9],
-                            img1: results.img[0],
-                            img2: results.img[1],
-                            img3: results.img[2],
-                            img4: results.img[3],
-                            img5: results.img[4],
-                            img6: results.img[5],
-                            img7: results.img[6],
-                            img8: results.img[7],
-                            img9: results.img[8],
-                            img10: results.img[9],
-                            title1: results.title[0],
-                            title2: results.title[1],
-                            title3: results.title[2],
-                            title4: results.title[3],
-                            title5: results.title[4],
-                            title6: results.title[5],
-                            title7: results.title[6],
-                            title8: results.title[7],
-                            title9: results.title[8],
-                            title10: results.title[9]
+                            data: dat
                         });
                     }
                 });
@@ -304,6 +262,11 @@ app.post('/login', function (req, res) {
                     res.render('discover.hbs', {
                         data: randomk,
                         login: `Hi, ${first_name} ${last_name}`,
+                        first_name: `${first_name}`,
+                        last_name: `${last_name}`,
+                        email: `${id}`,
+                        profilepic: `${profilepic}`,
+                        pw: `${pw}`,
                         home: "/index" + i.toString(),
                         link: "",
                         discover: "/discover" + i.toString(),
@@ -317,6 +280,11 @@ app.post('/login', function (req, res) {
             app.get('/ranking' + i.toString(), function(req, res) {
                 res.render('ranking.hbs', {
                     login: `Hi, ${first_name} ${last_name}`,
+                    first_name: `${first_name}`,
+                    last_name: `${last_name}`,
+                    email: `${id}`,
+                    profilepic: `${profilepic}`,
+                    pw: `${pw}`,
                     home: "/index" + i.toString(),
                     link: "",
                     ranking: "/ranking" + i.toString(),
@@ -341,7 +309,35 @@ app.post('/login', function (req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
 });
+app.post('/edit', function (req, res) {
+    var id = req.body.id;
+    var pw = req.body.pw;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var profilepic = req.body.profilepic;
 
+    var user = {
+            email: id,
+            pw: pw,
+            first: fname,
+            last: lname,
+            profilepic: profilepic,
+        };
+
+    var login_info = login.loadDatabase();
+    for (let i = 0; i < login_info.length; i++) {
+        if (id == login_info[i].email) {
+    login_info.splice(i, 1);
+    login_info.push(user);
+
+        var valid = login.addUser(login_info);
+        if (valid) {
+            alert('Succesfully changed my account');
+            res.redirect('/index'+i.toString());
+        }
+    }
+}
+});
 app.post('/signup', function (req, res) {
     var id = req.body.email;
     var pw = req.body.pass;
