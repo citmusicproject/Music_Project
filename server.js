@@ -333,7 +333,7 @@ app.post('/edit', function (req, res) {
         var valid = login.addUser(login_info);
         if (valid) {
             alert('Succesfully changed my account');
-            res.redirect('/index'+i.toString());
+            res.redirect('/');
         }
     }
 }
