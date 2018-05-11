@@ -117,7 +117,7 @@ app.post('/login', function(req, res) {
         email : req.body.email,
         pw : req.body.pw
     }
-   login.login(users)
+   console.log(login.login(users))x
         
 // app.post('/login', function (req, res) {
 //     var userId = req.body.email;
