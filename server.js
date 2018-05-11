@@ -33,7 +33,7 @@ String.prototype.format = function () {
 
 app.get('/', function (req, res) {
     res.render('index.hbs', {
-        login: "Login/Signup",
+        login: "",
         link: "login",
         home: "/",
         discover: "/discover",
@@ -112,12 +112,13 @@ app.get('/login', function (req, res) {
     res.render('login.hbs');
 });
 
+
 app.post('/login', function(req, res) {
     var users = {
         email : req.body.email,
         pw : req.body.pw
     }
-   console.log(login.login(users))x
+   console.log(login.login(users))
         
 // app.post('/login', function (req, res) {
 //     var userId = req.body.email;
@@ -348,7 +349,35 @@ app.post('/login', function(req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
 });
+app.post('/edit', function (req, res) {
+    var id = req.body.id;
+    var pw = req.body.pw;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var profilepic = req.body.profilepic;
 
+    var user = {
+            email: id,
+            pw: pw,
+            first: fname,
+            last: lname,
+            profilepic: profilepic,
+        };
+
+    var login_info = login.loadDatabase();
+    for (let i = 0; i < login_info.length; i++) {
+        if (id == login_info[i].email) {
+    login_info.splice(i, 1);
+    login_info.push(user);
+
+        var valid = login.addUser(login_info);
+        if (valid) {
+            alert('Succesfully changed my account');
+            res.redirect('/index'+i.toString());
+        }
+    }
+}
+});
 app.post('/signup', function (req, res) {
     var id = req.body.email;
     var pw = req.body.pass;
