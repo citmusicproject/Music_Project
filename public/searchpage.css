@@ -54,7 +54,7 @@ form.example button {
 }
 
 form.example button:hover {
-  background: #0b7dda;
+  filter:brightness(80%);
 }
 
 /* Clear floats */

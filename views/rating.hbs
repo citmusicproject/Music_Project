@@ -7,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="searchresults.css">
 </head>
 
 <body style="overflow: hidden;">
@@ -45,12 +46,17 @@
 
         </div>
     </div>
-        <div id="searchdisplay">
-            {{>searchresults}}
+    <div id="searchdisplay">
+        {{#each data}}
+        <div class="{{this.styletype}}" id='box{{@index}}'>
+            <img class="thumbnails" id='thumb{{@index}}' src="{{this.img}}" />
+            <div class="thumbnailtitle">{{this.title}}</div>
         </div>
+        {{/each}}
+    </div>
     <div id ='navBar'> 
-        <button id='prevPage'> Previous Page </button>
-        <button id='nextPage'> Next Page </button>
+        <button class="pagebuttons" id='prevPage'> ← </button>
+        <button class="pagebuttons" id='nextPage'> → </button>
         
     </div>
     <script>
@@ -69,36 +75,13 @@
         //         title.innerHTML = "{{title}}";
         //     });
         // }
-        document.getElementById('box1').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link1}}";
+        {{#each data}}
+        document.getElementById('box' + {{@index}}).addEventListener('click', function () {
+            youtube.src = "https://www.youtube.com/embed/{{this.link}}";
             player.style.display = "block";
-            title.innerHTML = "{{title1}}";
+            title.innerHTML = "{{this.title}}";
         });
-        document.getElementById('box2').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link2}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title2}}";
-        });
-
-        document.getElementById('box3').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link3}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title3}}";
-        });
-        
-
-        document.getElementById('box4').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link4}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title4}}";
-        });
-
-        document.getElementById('box5').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link5}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title5}}";
-        });
-
+        {{/each}}
         document.getElementById('nextPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
@@ -126,37 +109,6 @@
                 elems2[i].style.display = 'none';
             }
         })
-
-
-        document.getElementById('box6').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link6}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title6}}";
-        });
-        document.getElementById('box7').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link7}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title7}}";
-        });
-
-        document.getElementById('box8').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link8}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title8}}";
-        });
-        
-
-        document.getElementById('box9').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link9}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title9}}";
-        });
-
-        document.getElementById('box10').addEventListener('click', function(){
-            youtube.src = "https://www.youtube.com/embed/{{link10}}";
-            player.style.display = "block";
-            title.innerHTML = "{{title10}}";
-        });
     </script>
 </body>
 </html>
