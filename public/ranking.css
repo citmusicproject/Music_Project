@@ -56,6 +56,11 @@
  
 }
 
+
+
+
+
+
 #rankedContent{
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
@@ -120,18 +125,29 @@
 
 .songTitle{
     left: 20%;
-    top: -90px;
+    top: -92px;
     position: relative;
     font-size: 150%;
     color: white;
-    padding-top: 2%;
+    padding-top: 1.5%;
     
 }
 
 .songArtist{
     left: 20%;
-    top: -88px;
+    top: -90px;
     position: relative;
     color: rgba(41, 61, 122, 1);
     
+}
+
+.checked{
+    color:yellow;
+}
+
+#stars{
+    position: relative;
+    left: 20%;
+    top: -88px;
+
 }
