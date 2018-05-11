@@ -116,8 +116,9 @@ app.post('/login', function(req, res) {
     var users = {
         email : req.body.email,
         pw : req.body.pw
-=======
-
+    }
+   login.login(users)
+        
 // app.post('/login', function (req, res) {
 //     var userId = req.body.email;
 //     var userPw = req.body.pw;
@@ -276,7 +277,7 @@ app.post('/login', function(req, res) {
 //         res.render('login.hbs');
 //         alert("Login Failed");
 
-    login.login(users)
+    
     // app.get('/index', function(req, res) {
     //                 res.render('index.hbs', {
     //                     login: first_name,
