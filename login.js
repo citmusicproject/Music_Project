@@ -2,6 +2,7 @@ const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
 // //create connection with MySQL
+const alert = require('alert-node')
 var connection = mysql.createConnection({
     host: key.RDS_HOSTNAME,
     user: key.RDS_USERNAME,
@@ -56,14 +57,16 @@ function register(user) {
                         });
                     } else {
                         console.log("password not match")
+                        alert('Incorrect Password')
                     }
                 } else {
-                    console.log("email does not exit")
+                    console.log("email does not exist")
+                    alert(`Invaild Email`)
                 }
             }
         });
     }
-    
+
     module.exports = {
         register,
         login
