@@ -112,7 +112,7 @@ app.post('/login', function(req, res) {
     login.login(users, (errorMessage, results) => {
         if (errorMessage) {
             console.log(errorMessage);
-        } else {
+        } else if (results) {
             alert('Login Successful')
             if (!results) {
                 return res.status(404).send();
@@ -217,12 +217,13 @@ app.post('/login', function(req, res) {
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');
-                return res.status(401).send();
+                return res.status(200).send();
             })
             res.redirect(`/index${results.data[0].id}`)
             return res.status(200).send();
         }
     });
+
 });
 
 
@@ -238,7 +239,7 @@ app.post('/signup', function(req, res) {
     var pw = req.body.pass;
     var fname = req.body.fname;
     var lname = req.body.lname;
-    if (id.length <= 8|| pw.length <=8 || fname.length <=0 || lname.length <=0) {
+    if (id.length <= 8 || pw.length <= 8 || fname.length <= 0 || lname.length <= 0) {
         res.redirect('/signup');
         alert('Invaild Input(s)');
     } else {
