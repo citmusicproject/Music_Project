@@ -100,6 +100,7 @@ app.post('/rating', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
+    req.session.destroy();
     res.render('login.hbs');
 });
 
@@ -129,6 +130,11 @@ app.post('/login', function(req, res) {
                 signout: '/signout'
             }
             req.session.user = results;
+            app.get('/signout', function(req, res) {
+                req.session.destroy();
+                res.redirect('/');
+                // return res.status(200).send();
+            })
             app.get(`/index${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
                     return res.status(401).send()
@@ -214,11 +220,6 @@ app.post('/login', function(req, res) {
                     info: info
                 });
             });
-            app.get('/signout', function(req, res) {
-                req.session.destroy();
-                res.redirect('/');
-                return res.status(200).send();
-            })
             res.redirect(`/index${results.data[0].id}`)
             return res.status(200).send();
         }
@@ -297,4 +298,6 @@ app.get('/ranking', function(req, res) {
     });
 });
 
-app.listen(8080);
+app.listen(8080,function(){
+   console.log('Server listening on port 8080');
+});
