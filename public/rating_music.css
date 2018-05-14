@@ -14,31 +14,35 @@
 
 #favouritetab{
     position:relative;
-    padding-left: 1.5%
+    padding-left: 1.5%;
+    left: 2%;
 }
 
 #navBar {
     position: absolute;
-    left: 52vw;
-    bottom:10px; 
+    left: 10px;
+    bottom: 0%;
+    height: 5%;
+    width: 50%;
 }
 .pagebuttons{
-    background:red;
-    color:white;
-    border-radius:50px;
-    border:none;
-    padding:1vw;
-    border-style: outset;
-    font-weight:900;
+    background: red;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    width: 10%;
+    height: 75%;
 }
 
 #prevPage {
     display:none;
+    position: absolute;
+    left: 0%;
 }
 #searchdisplay{
     width:auto;
     height:auto;
-    top:0;
+    top:-9px;
     position:relative;
     display:block;
 }
@@ -71,7 +75,7 @@
 #player{
     position:absolute;
     right:4.5%;
-    width:40vw;
+    width:39vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
     display:none;
@@ -79,10 +83,11 @@
     background-color:white;
 }
 #searchbardiv{
-    width:50vw;
+    width:50%;
     position:relative;
     z-index:5;
-    left:1%;
+    left:0.7%;
+    height: 5%;
 }
 #title{
     font: 18px arial,sans-serif;
@@ -141,15 +146,15 @@ form.example input[type=text] {
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 80%;
+  width: 90%;
   background: #f1f1f1;
-    height:7%;
+    height:100%;
 }
 
 /* Style the submit button */
 form.example button {
   float: left;
-  width: 20%;
+  width: 10%;
   padding: 10px;
   background: red;
   color: white;
@@ -157,7 +162,7 @@ form.example button {
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
-    height:7%;
+    height:100%;
 }
 
 form.example button:hover {
@@ -170,3 +175,38 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+
+[id="heart"] {
+  position: absolute;
+  left: -80vw;
+}
+
+[for="heart"] {
+  color: #aab8c2;
+  cursor: pointer;
+  font-size: 2em;
+  align-self: center;  
+  transition: color 0.2s ease-in-out;
+}
+
+[for="heart"]:hover {
+  color: grey;
+}
+
+[for="heart"]::selection {
+  color: none;
+  background: transparent;
+}
+
+[for="heart"]::moz-selection {
+  color: none;
+  background: transparent;
+}
+
+[id="heart"]:checked + label {
+  color: #e2264d;
+  will-change: font-size;
+}
+
+
