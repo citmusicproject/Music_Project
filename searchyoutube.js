@@ -12,8 +12,8 @@ var opts = {
     // videoCategoryId: 10,
     key: password,
     type: "video",
-    videoCategoryId: "10",
-    chart: "mostPopular"
+    videoCategoryId: "10"
+    // chart: "mostPopular"
 };
 
 
@@ -32,7 +32,7 @@ function gpassword() {
 }
 
 function searchYoutube(keyword, callback) {
-    var song = keyword+' song'
+    var song = `${keyword} VEVO`
     search(song, opts, function(err, results) {
         if (err) {
             console.log(err);

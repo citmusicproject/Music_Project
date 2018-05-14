@@ -44,7 +44,7 @@
     display:inline-block;
     padding:5px;
     height:100%;
-    width:auto;
+    width:20%;
 }
 
 .thumbnails:hover, .searches:hover, .searches2:hover{
