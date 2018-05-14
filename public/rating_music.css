@@ -40,11 +40,12 @@
     left: 0%;
 }
 #searchdisplay{
-    width:auto;
     height:auto;
+    width:50vw;
+    margin-left:5px;
     top:-9px;
+    left:0;
     position:relative;
-    display:block;
 }
 #searchresults{
     height:100px;
@@ -73,9 +74,6 @@
     position:relative;
 }
 #player{
-    position:absolute;
-    right:4.5%;
-    width:39vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
     display:none;
