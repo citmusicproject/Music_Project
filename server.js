@@ -48,9 +48,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    var num = '/index' + req.body.acct;
-    res.send("<br>Song: {0}</br><br>Favourite: {1}</br><br>Rating: {2}/5</br>"
-        .format(req.body.song, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/index'+req.body.acct";>Back</button>`);
+    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br>"
+        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/'";>Back</button>`);
 });
 
 app.get('/rating', function(req, res) {
