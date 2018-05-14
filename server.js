@@ -19,11 +19,6 @@ const info = {
 var sessions = require('express-session');
 var youtube = require('./searchyoutube.js');
 var sessions;
-// const login = false
-
-// app.use(function(req,res,next) {
-
-// })
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -85,19 +80,21 @@ app.post('/rating', function(req, res) {
         if (errorMessage) {
             console.log(errorMessage);
         } else {
-            // console.log(results.links);
+            console.log(results);
             let dat = [];
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < results.img.length; i++) {
                 dat.push({
                     link: results.links[i],
                     img: results.img[i],
                     title: results.title[i],
+                    error: results.error,
                     styletype: i < 5 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
                 info: info,
-                data: dat
+                data: dat,
+                error: results.error
             });
         }
     });
@@ -166,7 +163,7 @@ app.post('/login', function(req, res) {
                         console.log(errorMessage);
                     } else {
                         let dat = [];
-                        for (let i = 0; i < 10; i++) {
+                        for (let i = 0; i < results.img.length; i++) {
                             dat.push({
                                 link: results.links[i],
                                 img: results.img[i],
@@ -176,7 +173,8 @@ app.post('/login', function(req, res) {
                         }
                         res.render('rating.hbs', {
                             info: info,
-                            data: dat
+                            data: dat,
+                            error: results.error
                         });
                     }
                 });
@@ -304,6 +302,6 @@ app.get('/ranking', function(req, res) {
     });
 });
 
-app.listen(8080,function(){
-   console.log('Server listening on port 8080');
+app.listen(8080, function() {
+    console.log('Server listening on port 8080');
 });

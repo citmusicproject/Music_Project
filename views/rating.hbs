@@ -20,6 +20,11 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </div>
         </form>
+         {{#if error}}
+        <div id="error" style="color: white;
+    position: absolute;
+    left: 12.5%;;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
+        {{else}}
     <div id="display">
         <div id="player">
             <iframe id="youtube" style="border:none;" width="100%" height="42.5%" src="">
@@ -40,12 +45,8 @@
                     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
                     <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
-                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="    position: absolute;
-    left: 22%;">❤</label></div>
-                <input type="submit" value="Submit" style="position: absolute;
-    left: 31%;
-    bottom: 2%;
-}" >
+                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
+                <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;}" >
             </form>
 
         </div>
@@ -63,6 +64,7 @@
         <button class="pagebuttons" id='nextPage' style="position: absolute;
     right: 0%;" > Next </button>
     </div>
+    {{/if}}
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
            youtube = document.getElementById("youtube"),
