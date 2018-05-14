@@ -14,7 +14,8 @@
 
 #favouritetab{
     position:relative;
-    padding-left: 1.5%
+    padding-left: 1.5%;
+    left: 2%;
 }
 
 #navBar {
@@ -174,3 +175,38 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+
+[id="heart"] {
+  position: absolute;
+  left: -80vw;
+}
+
+[for="heart"] {
+  color: #aab8c2;
+  cursor: pointer;
+  font-size: 2em;
+  align-self: center;  
+  transition: color 0.2s ease-in-out;
+}
+
+[for="heart"]:hover {
+  color: grey;
+}
+
+[for="heart"]::selection {
+  color: none;
+  background: transparent;
+}
+
+[for="heart"]::moz-selection {
+  color: none;
+  background: transparent;
+}
+
+[id="heart"]:checked + label {
+  color: #e2264d;
+  will-change: font-size;
+}
+
+
