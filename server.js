@@ -6,6 +6,8 @@ const app = express();
 const login = require('./login.js');
 const alert = require('alert-node');
 
+const port = process.env.port || 8080;
+
 const helper = require('./helper.js');
 var sessions = require('express-session');
 var youtube = require('./searchyoutube.js');
@@ -112,6 +114,10 @@ app.get('/login', function (req, res) {
     res.render('login.hbs');
 });
 
+
+app.get('/playlist',function(req,res){
+    res.render('playlist.hbs')
+})
 
 app.post('/login', function(req, res) {
     var users = {
@@ -453,4 +459,6 @@ app.get('/ranking', function(req, res) {
 });
 
 
-app.listen(8080);
+app.listen(port,()=> {
+    console.log(`server up on http://localhost:${port}`);    
+});
