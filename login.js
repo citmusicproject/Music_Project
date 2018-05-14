@@ -10,15 +10,15 @@ var connection = mysql.createConnection({
   database : key.RDS_DB_NAME
 });
 
-connection.connect(function(err) {
-  if (err) { //if database fail connecting
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  } //if database connected
-  console.log('Connected to database.');
-});
-
 function register(user){
+  connection.connect(function(err) {
+    if (err) { //if database fail connecting
+      console.error('Database connection failed: ' + err.stack);
+      return;
+    } //if database connected
+    console.log('Connected to database.');
+  });
+
   console.log('user data', user)
   const today = new Date();
   const users = {
@@ -37,10 +37,17 @@ function register(user){
       console.log('Result: ', results);
     }
   });
-
+  connection.end()
 } 
 
 function login(user){
+  connection.connect(function(err) {
+    if (err) { //if database fail connecting
+      console.error('Database connection failed: ' + err.stack);
+      return;
+    } //if database connected
+    console.log('Connected to database.');
+  });
   const email = user.email;
   const password = user.pw
   connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
@@ -59,6 +66,7 @@ function login(user){
     }
   }
     });
+    connection.end()
   }
 
   module.exports={
