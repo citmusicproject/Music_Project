@@ -20,24 +20,24 @@
 
 #navBar {
     position: absolute;
-    left: 1%;
+    left: 10px;
     bottom: 0%;
     height: 5%;
-    width: 10%;
+    width: 50%;
 }
 .pagebuttons{
     background: red;
     color: white;
     border-radius: 50px;
     border: none;
-    width: 35%;
+    width: 10%;
     height: 75%;
 }
 
 #prevPage {
     display:none;
     position: absolute;
-    left: 40%;
+    left: 0%;
 }
 #searchdisplay{
     width:auto;
