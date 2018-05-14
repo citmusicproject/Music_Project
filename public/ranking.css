@@ -22,7 +22,7 @@
 #banner{
     width: 100%;
     height: 18%;
-    top: 10%;
+    top: 150%;
     position: absolute;
     padding-left: 5%;
 
@@ -66,7 +66,7 @@
     width: 100%;
     height: 100%;
     top: 250px;
-    position: relative;
+    position: absolute;
     font-family: tahoma;
 }
 
@@ -75,6 +75,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
     opacity: 0.7;
+    position: relative;
 }
 
 .rc:hover{opacity: 1}
@@ -96,7 +97,6 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    top: ;
     left: -50px;
     transition: 0.2s;
     
@@ -106,10 +106,12 @@
 
 .rankNum{
     width: 5%;
-    height: 5%;
-    position: relative;
+    height: 75px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
     left: 3%;
-    top: 41px;
     text-align: center;
     color: white;
  
@@ -119,23 +121,29 @@
     width: 75px;
     height: 75px;
     left: 10%;
-    position: relative;
+    position: absolute;
     
 }
 
-.songTitle{
+
+.description{
+    position:relative;
     left: 20%;
-    top: -92px;
+    top: 5%;
+    display: inline-block;
+    width: 100%;
+
+
+}
+
+.songTitle{
     position: relative;
     font-size: 150%;
     color: white;
-    padding-top: 1.5%;
     
 }
 
 .songArtist{
-    left: 20%;
-    top: -90px;
     position: relative;
     color: rgba(41, 61, 122, 1);
     
@@ -147,7 +155,5 @@
 
 #stars{
     position: relative;
-    left: 20%;
-    top: -88px;
 
 }
