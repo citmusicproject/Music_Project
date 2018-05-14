@@ -41,7 +41,6 @@ function register(user) {
 
     }
 
-
     function login(user, callback) {
         const email = user.email;
         const password = user.pw
@@ -66,6 +65,7 @@ function register(user) {
             }
         });
     }
+
 
     module.exports = {
         register,
