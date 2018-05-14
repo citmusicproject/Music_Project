@@ -19,6 +19,11 @@ const info = {
 var sessions = require('express-session');
 var youtube = require('./searchyoutube.js');
 var sessions;
+// const login = false
+
+// app.use(function(req,res,next) {
+
+// })
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -109,6 +114,7 @@ app.post('/login', function(req, res) {
         email: req.body.email,
         pw: req.body.pw
     }
+    const login1 = true
     login.login(users, (errorMessage, results) => {
         if (errorMessage) {
             console.log(errorMessage);
@@ -126,7 +132,8 @@ app.post('/login', function(req, res) {
                 playlist: `/playlist${results.data[0].id}`,
                 search: `/rating${results.data[0].id}`,
                 index: "1",
-                signout: '/signout'
+                signout: '/signout',
+                login1: true
             }
             req.session.user = results;
             app.get('/signout', function(req, res) {
