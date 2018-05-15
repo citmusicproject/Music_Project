@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const login = require('./login.js');
 const alert = require('alert-node');
+
+const port = process.env.port || 8080;
+
 const helper = require('./helper.js');
 const info = {
     login: "Login/Signup",
@@ -48,8 +51,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br>"
-        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/rating'";>Back</button>`);
+    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br><br>UID: {4}</br>"
+        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating, req.body.uid) + `<button onclick="location.href = '/rating'";>Back</button>`);
 });
 
 app.get('/rating', function(req, res) {
@@ -106,6 +109,10 @@ app.get('/login', function(req, res) {
 });
 
 
+// app.get('/playlist',function(req,res){
+//     res.render('playlist.hbs')
+// })
+
 app.post('/login', function(req, res) {
     var users = {
         email: req.body.email,
@@ -130,7 +137,8 @@ app.post('/login', function(req, res) {
                 search: `/rating${results.data[0].id}`,
                 index: "1",
                 signout: '/signout',
-                login1: true
+                login1: true,
+                uid: `${results.data[0].id}`
             }
             req.session.user = results;
             app.get('/signout', function(req, res) {
@@ -245,7 +253,7 @@ app.post('/signup', function(req, res) {
     var pw = req.body.pass;
     var fname = req.body.fname;
     var lname = req.body.lname;
-    if (id.length <= 8 || pw.length <= 8 || fname.length <= 0 || lname.length <= 0) {
+    if (id.length <= 8 || pw.length < 8 || fname.length <= 0 || lname.length <= 0) {
         res.redirect('/signup');
         alert('Invaild Input(s)');
     } else {
@@ -303,6 +311,6 @@ app.get('/ranking', function(req, res) {
     });
 });
 
-app.listen(8080, function() {
-    console.log('Server listening on port 8080');
+app.listen(port,()=> {
+    console.log(`server up on http://localhost:${port}`);    
 });

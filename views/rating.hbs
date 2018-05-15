@@ -37,7 +37,8 @@
             </iframe>
             <h1 id="title"></h1>
             <form method="POST" action="/">
-                <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/></div>
+                {{#if info.login1}}
+                <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
                 <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
                <fieldset class="rating">
                     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -52,7 +53,9 @@
                     <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
                 <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
-                <input type="submit" value="Submit" style="position:relative; display:inline-block; right:0; padding:0; left:10%; bottom 2vh;" >
+                <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;" >
+                {{else}}
+                {{/if}}
             </form>
 
         </div>
