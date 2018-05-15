@@ -73,8 +73,7 @@ function register(user) {
             }
         });
     }
-
-
+    
     module.exports = {
         register,
         login
