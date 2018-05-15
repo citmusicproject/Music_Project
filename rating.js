@@ -15,7 +15,7 @@ function get_rating(vid,callback){
 
     connection.query(`SELECT * FROM playlist WHERE vid = ?`,[vid], function(error, results, fields){
         if(error){
-            console.log("error",error)
+            return error
         }else{
             let sum_of_rate = 0
             if(results.length >0){
@@ -36,7 +36,7 @@ function add_rating(user){ //require data: userID, videoID, Rating
   let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
   connection.connect(function(err){
     if(err){
-      throw error
+      return err
     }else{
       connection.query(sql, function (error, results, fields) {
         if (error) {
@@ -47,5 +47,11 @@ function add_rating(user){ //require data: userID, videoID, Rating
       });
     }
   });
+
+}
+
+module.exports={
+  add_rating,
+  get_rating
 
 }
