@@ -57,21 +57,18 @@ function searchYoutube(keyword, callback) {
 };
 
 
-function checkSearchInput(keyword) {
-    var song = keyword;
-    searchYoutube(song, (errorMessage, results) => {
+function checkSearchInput(keyWord) {
+    searchYoutube(keyWord, (errorMessage, results) => {
         if (results.links.length == 0) {
             return false;
         }else {
             return true;
         }
     })
+
 }
 
-
-
-
-
+checkSearchInput();
 
 function readJSON() {
     fs.readFile('test.JSON', test);
