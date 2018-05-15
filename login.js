@@ -1,22 +1,22 @@
-const key = require('./dbkeys.js') //File that stores database credentials
-var mysql = require('mysql'); //mysql module
+// const key = require('./dbkeys.js') //File that stores database credentials
+// var mysql = require('mysql'); //mysql module
 
 //create connection with MySQL
-var connection = mysql.createConnection({ 
-  host     : key.RDS_HOSTNAME,
-  user     : key.RDS_USERNAME,
-  password : key.RDS_PASSWORD,
-  port     : key.RDS_PORT,
-  database : key.RDS_DB_NAME
-});
+// var connection = mysql.createConnection({ 
+//   host     : key.RDS_HOSTNAME,
+//   user     : key.RDS_USERNAME,
+//   password : key.RDS_PASSWORD,
+//   port     : key.RDS_PORT,
+//   database : key.RDS_DB_NAME
+// });
 
-connection.connect(function(err) {
-  if (err) { //if database fail connecting
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  } //if database connected
-  console.log('Connected to database.');
-});
+// connection.connect(function(err) {
+//   if (err) { //if database fail connecting
+//     console.error('Database connection failed: ' + err.stack);
+//     return;
+//   } //if database connected
+//   console.log('Connected to database.');
+// });
 
 function register(user){
   console.log('user data', user)
