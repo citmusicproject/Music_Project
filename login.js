@@ -1,8 +1,14 @@
 const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
-// //create connection with MySQL
-const alert = require('alert-node')
+const alert = require('alert-node');
+
+//random unique id generator
+var uniqueID = function () {
+    return Math.random().toString(36).substr(2, 8);
+  };
+
+//create connection with MySQL
 var connection = mysql.createConnection({
     host: key.RDS_HOSTNAME,
     user: key.RDS_USERNAME,
@@ -22,7 +28,9 @@ connection.connect(function(err) {
 function register(user) {
     console.log('user data', user)
     const today = new Date();
+    const id = uniqueID();
     const users = {
+        "id":id,
         "first_name": user.first,
         "last_name": user.last,
         "email": user.email,
@@ -65,7 +73,12 @@ function register(user) {
             }
         });
     }
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> upstream/master
     module.exports = {
         register,
         login

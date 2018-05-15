@@ -1,8 +1,8 @@
 const key = require('./dbkeys.json') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 
-//create connection with MySQL
-var connection = mysql.createConnection({ 
+ //create connection with MySQL
+ var connection = mysql.createConnection({ 
   host     : key.RDS_HOSTNAME,
   user     : key.RDS_USERNAME,
   password : key.RDS_PASSWORD,
@@ -10,67 +10,71 @@ var connection = mysql.createConnection({
   database : key.RDS_DB_NAME
 });
 
-function create_play_list(user){
-  return user
-};
-function add_to_play_list(user){
-  return user
-};
-// function get_play_list(user){
-//   return user
-// };
-function get_song_list(user){
-  return user
+//Add rating for video
+function add_rating(user){ //require data: userID, videoID, Rating
+  let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
+  connection.connect(function(err){
+    if(err){
+      throw error
+    }else{
+      connection.query(sql, function (error, results, fields) {
+        if (error) {
+          console.log("error ocurred",error);
+        }else{
+          console.log('Result: ', results);
+        }
+      });
+    }
+  });
+
 }
 
-// var user ={
-//   id: 3,
-//   pid:2,
-//   name: "my list"
-// }
-// create_play_list(user)
-// function create_play_list(user){
+//Removing Video from favourite List
+function remove_from_list(user){ //Require Data: userID, VideoID
 
-//   const users = {
-//      id: user.id,
-//      pid: user.pid,
-//      pname: user.pid
-//   }
-//     connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
-//       if (error) {
-//         console.log("error ocurred",error);
-//       }else{
-//         console.log('Result: ', results);
-//       }
-//     });
-//     connection.end()
-// }
+    connection.connect(function(err){
+      if(err){
+        throw err
+      }else{//If connected, delete user's selected item.
+        connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
+          if (error) {
+            console.log("error ocurred",error);
+          }else{
+            console.log('Result: ', results);
+          }
+        });
+      }
+    });
 
-// function get_song_list(playlist){
-//   return playlist
-// }
+}
 
-// function add_to_play_list(user){
-//     let id = user.id
-//     let pid = user.pid
-//     let song = user.vid
-//     const users = {
-//         id:user.id,
-//         pid:user.pid,
-//         song:user.vid
-//     }
-    
-//     connection.query('INSERT INTO songs SET ?',users, function (error, results, fields) {
-//       if (error) {
-//         console.log("error ocurred",error);
-//       }else{
-//         console.log('Result: ', results);
-//       }
-//     });
-//     connection.end()
-//   }
+//Add video into favourite List
+function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
 
-function get_play_list(id,callback){
+    const users = {
+        id:user.id,
+        vid:user.vid,
+        video_name:user.video_name
+    }
+
+    connection.connect(function(err){
+      if(err){
+        throw error
+      }else{
+        connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
+          if (error) {
+            console.log("error ocurred",error);
+          }else{
+            console.log('Result: ', results);
+          }
+        });
+      }
+    });
+
+  }
+
+//Get list of songs in the favourite list
+function get_song_list(id,callback){ //Require Data: UserID
 
     connection.connect(function(err) {
         if (err) { //if database fail connecting
@@ -84,27 +88,28 @@ function get_play_list(id,callback){
         if(error){
             console.log("error",error)
         }else{
-            let pid = []
-            let pname = []
+            let vid = []
+            let name = []
             if(results.length >0){
                 for(i = 0; i <results.length;i++){
-                   pid.push(results[i].pid);
-                   pname.push(results[i].play_name)
+                   vid.push(results[i].vid);
+                   name.push(results[i].video_name)
                 }
                 callback(undefined,{
-                  pid : pid
+                  vid : vid,
+                  name: name
                 });
             }else{
                 console.log("error2")
             }
         }
     });
-    connection.end();
+
 }
 
 module.exports={
-  create_play_list,
-  get_play_list,
   add_to_play_list,
-  get_song_list
+  get_song_list,
+  remove_from_list,
+  add_rating
 }
