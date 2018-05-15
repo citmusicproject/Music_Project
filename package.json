@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "unittesting",
+=======
+  "name": "test",
+>>>>>>> upstream/master
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
     "jest": "^22.4.3"
   },
   "dependencies": {
@@ -18,5 +23,9 @@
     "express-form-handler-mongoose": "^0.1.3",
     "express-validator": "^5.2.0",
     "hbs": "^4.0.1"
+=======
+    "babel-jest": "^22.4.3",
+    "jest": "^22.4.3"
+>>>>>>> upstream/master
   }
 }
