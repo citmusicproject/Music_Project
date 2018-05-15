@@ -30,6 +30,7 @@ function searchYoutube(keyword, callback) {
         var img = [];
         var title = [];
         var error = false;
+        var lessthanfiveerror = false;
         // console.log(results);
         for (var i = 0; i < results.length; i++) {
             links.push(results[i].id);
@@ -39,11 +40,15 @@ function searchYoutube(keyword, callback) {
         if (img.length == 0 && links.length == 0 && title.length == 0) {
             error = true
         }
+        else if (img.length <= 5 && links.length <= 5 && title.length <= 5){
+            lessthanfiveerror = true
+        }
         callback(undefined, {
             links: links,
             img: img,
             title: title,
-            error: error
+            error: error,
+            lessthanfiveerror: lessthanfiveerror
         });
     });
 };
