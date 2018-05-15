@@ -22,7 +22,10 @@
         <li>
         <a href="{{info.discover}}">Discover</a></li>
         <li><a href="{{info.ranking}}">Ranking</a></li>
+        {{#if info.login1}}
         <li><a href="{{info.playlist}}">Playlist</a></li>
+        {{else}}
+        {{/if}}
       </ul>
 
       <ul class="nav navbar-nav navbar-right">  
