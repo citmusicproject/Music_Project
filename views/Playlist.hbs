@@ -3,11 +3,12 @@
 <head>
     <title>Project Theme</title>
     <link href="project.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
 </head>
 
 <body>
+	{{>headbar}}
     <div id="bg"></div>
-    {{>headbar}}
     <div id="title">
         My Playlists
         <button id="addbutton">+♪</button>
@@ -56,7 +57,7 @@
         addbutton.addEventListener("click", function () {
             var newplaylist = document.createElement("div");
             newplaylist.innerHTML = `{{>newplaylist}}`;
-            display.appendChild(newplaylist.firstChild);
+            display.appendChild(newplaylist.f   irstChild);
             addDetailEvent(document.getElementsByClassName("playlist").length - 1);
         });
     </script>
