@@ -14,24 +14,23 @@
 
 #favouritetab{
     position:relative;
-    padding-left: 1.5%;
-    left: 2%;
+    display: inline;
 }
 
 #navBar {
     position: absolute;
-    left: 10px;
     bottom: 0%;
     height: 5%;
-    width: 50%;
+    left:450px;
+    width:100%
 }
 .pagebuttons{
     background: red;
     color: white;
     border-radius: 50px;
     border: none;
-    width: 10%;
-    height: 75%;
+    width: 50px;
+    height: 100%;
 }
 
 #prevPage {
@@ -40,15 +39,15 @@
     left: 0%;
 }
 #searchdisplay{
-    width:auto;
     height:auto;
+    margin-left:5px;
     top:-9px;
     position:relative;
-    display:block;
+    padding:0;
 }
 #searchresults{
     height:100px;
-    width:35vw;
+    width:100%
     background-color:white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top:70px;
@@ -73,24 +72,25 @@
     position:relative;
 }
 #player{
-    position:absolute;
-    right:4.5%;
-    width:39vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:black;
-    display:none;
+    display:block;
     z-index:50;
     background-color:white;
+    padding:0;
+    visibility:hidden;
 }
 #searchbardiv{
-    width:50%;
+    width:60%;
     position:relative;
     z-index:5;
-    left:0.7%;
-    height: 5%;
+    left:0;
+    right:0;
+    height:40px;
+    margin:auto;
 }
 #title{
-    font: 18px arial,sans-serif;
+    font: 18px arial,sans-serif;F
     padding-left: 1.5%;
 }
 
@@ -102,8 +102,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating { 
   border: none;
-  float: left;
-  padding-left: 1%
+  position:relative;
+    left:0;
+    display:inline-block;
 }
 
 .rating > input { display: none; } 
@@ -208,5 +209,5 @@ form.example::after {
   color: #e2264d;
   will-change: font-size;
 }
-
-
+html { overflow-y: scroll;
+}
