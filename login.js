@@ -73,12 +73,7 @@ function register(user) {
             }
         });
     }
-<<<<<<< HEAD
     
-=======
-
-
->>>>>>> upstream/master
     module.exports = {
         register,
         login

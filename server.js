@@ -51,8 +51,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br>"
-        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating) + `<button onclick="location.href = '/rating'";>Back</button>`);
+    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br><br>UID: {4}</br>"
+        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating, req.body.uid) + `<button onclick="location.href = '/rating'";>Back</button>`);
 });
 
 app.get('/rating', function(req, res) {
@@ -109,9 +109,9 @@ app.get('/login', function(req, res) {
 });
 
 
-app.get('/playlist',function(req,res){
-    res.render('playlist.hbs')
-})
+// app.get('/playlist',function(req,res){
+//     res.render('playlist.hbs')
+// })
 
 app.post('/login', function(req, res) {
     var users = {
@@ -137,7 +137,8 @@ app.post('/login', function(req, res) {
                 search: `/rating${results.data[0].id}`,
                 index: "1",
                 signout: '/signout',
-                login1: true
+                login1: true,
+                uid: `${results.data[0].id}`
             }
             req.session.user = results;
             app.get('/signout', function(req, res) {
