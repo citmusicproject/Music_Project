@@ -10,25 +10,6 @@ var mysql = require('mysql'); //mysql module
   database : key.RDS_DB_NAME
 });
 
-//Add rating for video
-function add_rating(user){ //require data: userID, videoID, Rating
-  let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
-  connection.connect(function(err){
-    if(err){
-      throw error
-    }else{
-      connection.query(sql, function (error, results, fields) {
-        if (error) {
-          console.log("error ocurred",error);
-        }else{
-          console.log('Result: ', results);
-        }
-      });
-    }
-  });
-
-}
-
 //Removing Video from favourite List
 function remove_from_list(user){ //Require Data: userID, VideoID
 
@@ -111,5 +92,5 @@ module.exports={
   add_to_play_list,
   get_song_list,
   remove_from_list,
-  add_rating
+
 }
