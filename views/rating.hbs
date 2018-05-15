@@ -71,8 +71,15 @@
             <button class="pagebuttons" id='nextPage'> Next </button>
         </div>
     </div>
-</div>
-</div>
+
+    {{#if lessthanfiveerror}}
+    {{else}}
+    <div id ='navBar'> 
+        <button class="pagebuttons" id='prevPage'> Back </button>
+        <button class="pagebuttons" id='nextPage' style="position: absolute;
+    right: 0%;" > Next </button>
+    </div>
+    {{/if}}
     {{/if}}
     
     <script>
@@ -114,6 +121,8 @@
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'block';
             }
+            document.getElementById('nextPage').style.display = 'none';
+
         })
 
         document.getElementById('prevPage').addEventListener('click', function(){
@@ -124,6 +133,7 @@
             }
 
             document.getElementById('prevPage').style.display = 'none';
+            document.getElementById('nextPage').style.display = 'block';
             var elems2 = document.getElementsByClassName('searches2');
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'none';
