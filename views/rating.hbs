@@ -52,7 +52,7 @@
                     <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
                 <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
-                <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;}" >
+                <input type="submit" value="Submit" style="position:relative; display:inline-block; right:0; padding:0; left:10%; bottom 2vh;" >
             </form>
 
         </div>
@@ -63,15 +63,15 @@
             <div class="thumbnailtitle">{{this.title}}</div>
         </div>
         {{/each}}
+        <div id ='navBar'> 
+            <button class="pagebuttons" id='prevPage'> Back </button>
+            <button class="pagebuttons" id='nextPage'> Next </button>
+        </div>
     </div>
-    </div>
-    </div>
-    <div id ='navBar'> 
-        <button class="pagebuttons" id='prevPage'> Back </button>
-        <button class="pagebuttons" id='nextPage' style="position: absolute;
-    right: 0%;" > Next </button>
-    </div>
+</div>
+</div>
     {{/if}}
+    
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
            youtube = document.getElementById("youtube"),
@@ -93,7 +93,7 @@
         {{#each data}}
         document.getElementById('box' + {{@index}}).addEventListener('click', function () {
             youtube.src = "https://www.youtube.com/embed/{{this.link}}?autoplay=1";
-            player.style.display = "block";
+            player.style.visibility = "visible";
             title.innerHTML = "{{this.title}}";
             songlink.value = "{{this.link}}";
             songname.value = "{{this.title}}";
