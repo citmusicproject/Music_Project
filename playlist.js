@@ -15,7 +15,7 @@ function remove_from_list(user){ //Require Data: userID, VideoID
 
     connection.connect(function(err){
       if(err){
-        throw err
+        return err
       }else{//If connected, delete user's selected item.
         connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
@@ -40,11 +40,11 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
 
     connection.connect(function(err){
       if(err){
-        throw error
+        return err
       }else{
         connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
           if (error) {
-            console.log("error ocurred",error);
+            console.log("error ocurred",err);
           }else{
             console.log('Result: ', results);
           }
@@ -88,7 +88,14 @@ function get_song_list(id,callback){ //Require Data: UserID
 
 }
 
-// add_to_play_list('')
+// add_to_play_list({'id':'dtojzg5j','vid':'kOkQ4T5WO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
+// get_song_list('dtojzg5j',(err,results) =>{
+//   if (err){
+//     console.log(err);
+//   } else{
+//     console.log(results.name);
+//   }
+// })
 
 module.exports={
   add_to_play_list,
