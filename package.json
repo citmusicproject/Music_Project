@@ -11,5 +11,8 @@
   "devDependencies": {
     "babel-jest": "^22.4.3",
     "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "uuid": "^3.2.1"
   }
 }
