@@ -1,30 +1,42 @@
 const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 
+ //create connection with MySQL
+ var connection = mysql.createConnection({ 
+  host     : key.RDS_HOSTNAME,
+  user     : key.RDS_USERNAME,
+  password : key.RDS_PASSWORD,
+  port     : key.RDS_PORT,
+  database : key.RDS_DB_NAME
+});
 
-function remove_from_list(user){
-    //create connection with MySQL
-    var connection = mysql.createConnection({ 
-      host     : key.RDS_HOSTNAME,
-      user     : key.RDS_USERNAME,
-      password : key.RDS_PASSWORD,
-      port     : key.RDS_PORT,
-      database : key.RDS_DB_NAME
-    });
-
-    let users= {
-      id : user.id,
-      vid : user.vid
+//Add rating for video
+function add_rating(user){ //require data: userID, videoID, Rating
+  let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
+  connection.connect(function(err){
+    if(err){
+      throw error
+    }else{
+      connection.query(sql, function (error, results, fields) {
+        if (error) {
+          console.log("error ocurred",error);
+        }else{
+          console.log('Result: ', results);
+        }
+      });
     }
-    let id = user.id;
-    let vid = user.vid
-    let sql = `DELETE FROM playlist WHERE vid = ${vid} and id = ${id}`
-    console.log(sql)
+  });
+
+}
+
+//Removing Video from favourite List
+function remove_from_list(user){ //Require Data: userID, VideoID
+
     connection.connect(function(err){
       if(err){
         throw err
-      }else{
-        connection.query( sql ,function (error, results, fields) {
+      }else{//If connected, delete user's selected item.
+        connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
           }else{
@@ -36,55 +48,33 @@ function remove_from_list(user){
 
 }
 
-function add_to_play_list(user){
-
-  //create connection with MySQL
-  var connection = mysql.createConnection({ 
-    host     : key.RDS_HOSTNAME,
-    user     : key.RDS_USERNAME,
-    password : key.RDS_PASSWORD,
-    port     : key.RDS_PORT,
-    database : key.RDS_DB_NAME
-  });
+//Add video into favourite List
+function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
 
     const users = {
         id:user.id,
         vid:user.vid,
         video_name:user.video_name
     }
-  connection.connect(function(err){
-    if(err){
-      throw error
-    }else{
-      connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
-        if (error) {
-          console.log("error ocurred",error);
-        }else{
-          console.log('Result: ', results);
-        }
-      });
-    }
-  });
+
+    connection.connect(function(err){
+      if(err){
+        throw error
+      }else{
+        connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
+          if (error) {
+            console.log("error ocurred",error);
+          }else{
+            console.log('Result: ', results);
+          }
+        });
+      }
+    });
 
   }
 
-  var user = {
-    id : 2,
-    vid : 1,
-    video_name: 'Dodie-you'
-  }
-  // add_to_play_list(user)
-  remove_from_list(user)
-
-function get_song_list(id,callback){
-  //create connection with MySQL
-  var connection = mysql.createConnection({ 
-    host     : key.RDS_HOSTNAME,
-    user     : key.RDS_USERNAME,
-    password : key.RDS_PASSWORD,
-    port     : key.RDS_PORT,
-    database : key.RDS_DB_NAME
-  });
+//Get list of songs in the favourite list
+function get_song_list(id,callback){ //Require Data: UserID
 
     connection.connect(function(err) {
         if (err) { //if database fail connecting
@@ -102,8 +92,8 @@ function get_song_list(id,callback){
             let name = []
             if(results.length >0){
                 for(i = 0; i <results.length;i++){
-                   vid.push(results[i].pid);
-                   name.push(results[i].play_name)
+                   vid.push(results[i].vid);
+                   name.push(results[i].video_name)
                 }
                 callback(undefined,{
                   vid : vid,
@@ -119,5 +109,7 @@ function get_song_list(id,callback){
 
 module.exports={
   add_to_play_list,
-  get_song_list
+  get_song_list,
+  remove_from_list,
+  add_rating
 }
