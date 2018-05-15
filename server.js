@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const login = require('./login.js');
 const alert = require('alert-node');
+const playlist = require('./playlist.js');
+const rating = require('./rating.js');
 
 const port = process.env.port || 8080;
 
@@ -48,11 +50,6 @@ app.get('/', function(req, res) {
     res.render('index.hbs', {
         info: info
     });
-});
-
-app.post('/', function(req, res) {
-    res.send("<br>Song Link: {0}</br><br>Song Name: {1}</br><br>Favourite: {2}</br><br>Rating: {3}/5</br><br>UID: {4}</br>"
-        .format(req.body.songlink, req.body.songname, req.body.favourite == "on", req.body.rating, req.body.uid) + `<button onclick="location.href = '/rating'";>Back</button>`);
 });
 
 app.get('/rating', function(req, res) {
@@ -142,6 +139,16 @@ app.post('/login', function(req, res) {
                 uid: `${results.data[0].id}`
             }
             req.session.user = results.data[0].id;
+            app.get('/data', function(req, res) {
+                res.send('red')
+            });
+
+            app.post('/data', function(req, res) {
+                playlist.add_to_play_list({ 'id': req.body.uid, 'vid': req.body.songlink, 'video_name': req.body.songname })
+                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
+                res.redirect(`/rating${results.data[0].id}`)
+            });
+
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');
@@ -159,8 +166,42 @@ app.post('/login', function(req, res) {
                 if (!req.session.user) {
                     return res.status(401).send()
                 }
-                res.render('Playlist.hbs', {
-                    info: info
+                playlist.get_song_list(`${results.data[0].id}`, (errorMessage, results) => {
+                    if (errorMessage) {
+                        console.log(errorMessage);
+                    } else {
+                        res.render('Playlist.hbs', {
+                            info: info,
+                            vid: results.vid,
+                            name: results.name
+                        });
+                    }
+                })
+            });
+            app.get(`/rating${results.data[0].id}`, function(req, res) {
+                if (!req.session.user) {
+                    return res.status(401).send()
+                }
+                youtube.searchYoutube(req.body.song, (errorMessage, results) => {
+                    if (errorMessage) {
+                        console.log(errorMessage);
+                    } else {
+                        let dat = [];
+                        for (let i = 0; i < results.img.length; i++) {
+                            dat.push({
+                                link: results.links[i],
+                                img: results.img[i],
+                                title: results.title[i],
+                                styletype: i < 5 ? "searches" : "searches2"
+                            });
+                        }
+                        res.render('rating.hbs', {
+                            info: info,
+                            data: dat,
+                            error: results.error,
+                            lessthanfiveerror: results.lessthanfiveerror
+                        });
+                    }
                 });
             });
             app.post(`/rating${results.data[0].id}`, function(req, res) {
@@ -313,6 +354,6 @@ app.get('/ranking', function(req, res) {
     });
 });
 
-app.listen(port,()=> {
-    console.log(`server up on http://localhost:${port}`);    
+app.listen(port, () => {
+    console.log(`server up on http://localhost:${port}`);
 });
