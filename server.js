@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(sessions({
-    secret: '4334rfgy89olkmnbgr4323456jhgfd3',
+    secret: '4334@#$!rfgy89o$#nbgr$%43234+_56jh*&gfd3',
     resave: false,
     saveUninitialized: true
 }));
@@ -97,7 +97,8 @@ app.post('/rating', function(req, res) {
             res.render('rating.hbs', {
                 info: info,
                 data: dat,
-                error: results.error
+                error: results.error,
+                lessthanfiveerror: results.lessthanfiveerror
             });
         }
     });
@@ -140,7 +141,7 @@ app.post('/login', function(req, res) {
                 login1: true,
                 uid: `${results.data[0].id}`
             }
-            req.session.user = results;
+            req.session.user = results.data[0].id;
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');
@@ -182,7 +183,8 @@ app.post('/login', function(req, res) {
                         res.render('rating.hbs', {
                             info: info,
                             data: dat,
-                            error: results.error
+                            error: results.error,
+                            lessthanfiveerror: results.lessthanfiveerror
                         });
                     }
                 });
