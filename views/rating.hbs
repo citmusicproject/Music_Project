@@ -45,7 +45,10 @@
                     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
                     <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
+                {{#if info.login1}}
                 <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
+                   {{else}}
+                   {{/if}}
                 <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;}" >
             </form>
 
