@@ -252,7 +252,7 @@ app.post('/signup', function(req, res) {
     var pw = req.body.pass;
     var fname = req.body.fname;
     var lname = req.body.lname;
-    if (id.length <= 8 || pw.length <= 8 || fname.length <= 0 || lname.length <= 0) {
+    if (id.length <= 8 || pw.length < 8 || fname.length <= 0 || lname.length <= 0) {
         res.redirect('/signup');
         alert('Invaild Input(s)');
     } else {

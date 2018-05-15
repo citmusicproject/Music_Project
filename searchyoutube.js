@@ -10,22 +10,12 @@ const request = require('request');
 var password = secret.key;
 var opts = {
     maxResults: 10,
-    // videoCategoryId: 10,
     key: password,
     type: "video",
-    videoCategoryId: "10"
-    // chart: "mostPopular"
+    videoCategoryId: "10",
+    chart: "mostPopular"
 };
 
-
-
-// fs.readFile('keys', (er, da) => {
-//     password = da.toString().substring(1);
-//     opts = {
-//         maxResults: 5,
-//         key: password
-//     }
-// });
 
 
 function gpassword() {
@@ -47,10 +37,6 @@ function searchYoutube(keyword, callback) {
             title.push(results[i].title);
         }
         if (img.length == 0 && links.length == 0 && title.length == 0) {
-            // links.push("(unknown)");
-            // img.push("https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_1280.png");
-            // title.push("Sorry, No Search Results");
-            // alert('Sorry, No Search Results')
             error = true
         }
         callback(undefined, {
@@ -67,11 +53,3 @@ module.exports = {
     searchYoutube,
     gpassword
 };
-
-// searchYoutube('dfskfdsjhjsdfjlahkdfsjla',(errorMessage, results) => {
-//     if (errorMessage) {
-//         console.log(errorMessage);
-//     } else{
-//         console.log(results);
-//     }
-// });

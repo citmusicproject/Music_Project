@@ -11,66 +11,6 @@ var connection = mysql.createConnection({
     database: key.RDS_DB_NAME
 });
 
-<<<<<<< HEAD
-function register(user){
-  connection.connect(function(err) {
-    if (err) { //if database fail connecting
-      console.error('Database connection failed: ' + err.stack);
-      return;
-    } //if database connected
-    console.log('Connected to database.');
-  });
-
-  console.log('user data', user)
-  const today = new Date();
-  const users = {
-      "first_name":user.first,
-      "last_name":user.last,
-      "email":user.email,
-      "password":user.pw,
-      "created":today,
-      "modified":today
-  }
-  
-  connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
-    if (error) {
-      console.log("error ocurred",error);
-    }else{
-      console.log('Result: ', results);
-    }
-  });
-  connection.end()
-} 
-
-function login(user){
-  connection.connect(function(err) {
-    if (err) { //if database fail connecting
-      console.error('Database connection failed: ' + err.stack);
-      return;
-    } //if database connected
-    console.log('Connected to database.');
-  });
-  const email = user.email;
-  const password = user.pw
-  connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
-    console.log([email])
-  if (error) {
-    console.log("error ocurred",error);
-  }else{
-    if(results.length >0){
-      if(results[0].password === password){
-        console.log("sucessfull")
-      }else{
-        console.log("password not match")
-      }
-    }else{
-      console.log("email does not exit")
-    }
-  }
-    });
-    connection.end()
-  }
-=======
 connection.connect(function(err) {
     if (err) { //if database fail connecting
         console.error('Database connection failed: ' + err.stack);
@@ -125,9 +65,7 @@ function register(user) {
             }
         });
     }
->>>>>>> upstream/master
-
-
+    
     module.exports = {
         register,
         login
