@@ -22,7 +22,7 @@ connection.connect(function(err) {
         console.error('Database connection failed: ' + err.stack);
         return;
     } //if database connected
-    console.log('Connected to database.');
+    console.log('Connected to Login database.');
 });
 
 function register(user) {

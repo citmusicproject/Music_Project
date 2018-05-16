@@ -36,7 +36,7 @@
             <iframe id="youtube" style="border:none;" width="100%" height="42.5%" src="">
             </iframe>
             <h1 id="title"></h1>
-            <form method="POST" action="/">
+            <form method="POST" action="/data{{info.uid}}">
                 {{#if info.login1}}
                 <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
                 <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
@@ -66,15 +66,20 @@
             <div class="thumbnailtitle">{{this.title}}</div>
         </div>
         {{/each}}
-        <div id ='navBar'> 
+        <!-- <div id ='navBar'> 
             <button class="pagebuttons" id='prevPage'> Back </button>
             <button class="pagebuttons" id='nextPage'> Next </button>
-        </div>
+        </div> -->
     </div>
-</div>
-</div>
+    {{#if lessthanfiveerror}}
+    {{else}}
+    <div id ='navBar'> 
+        <button class="pagebuttons" id='prevPage'> Back </button>
+        <button class="pagebuttons" id='nextPage' style="position: absolute;
+    right: 0%;" > Next </button>
+    </div>
     {{/if}}
-    
+    {{/if}}
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
            youtube = document.getElementById("youtube"),
@@ -118,6 +123,8 @@
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'block';
             }
+            document.getElementById('nextPage').style.display = 'none';
+
         })
 
        /**Change the video on search**/ document.getElementById('prevPage').addEventListener('click', function(){
@@ -128,6 +135,7 @@
             }
 
             document.getElementById('prevPage').style.display = 'none';
+            document.getElementById('nextPage').style.display = 'block';
             var elems2 = document.getElementsByClassName('searches2');
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'none';
