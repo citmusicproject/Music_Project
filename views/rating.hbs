@@ -36,7 +36,7 @@
             <iframe id="youtube" style="border:none;" width="100%" height="42.5%" src="">
             </iframe>
             <h1 id="title"></h1>
-            <form method="POST" action="/data">
+            <form method="POST" action="/data{{info.uid}}">
                 {{#if info.login1}}
                 <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
                 <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
@@ -66,10 +66,10 @@
             <div class="thumbnailtitle">{{this.title}}</div>
         </div>
         {{/each}}
-        <div id ='navBar'> 
+        <!-- <div id ='navBar'> 
             <button class="pagebuttons" id='prevPage'> Back </button>
             <button class="pagebuttons" id='nextPage'> Next </button>
-        </div>
+        </div> -->
     </div>
     {{#if lessthanfiveerror}}
     {{else}}
