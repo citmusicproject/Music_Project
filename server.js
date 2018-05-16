@@ -106,11 +106,6 @@ app.get('/login', function(req, res) {
     res.render('login.hbs');
 });
 
-
-// app.get('/playlist',function(req,res){
-//     res.render('playlist.hbs')
-// })
-
 app.post('/login', function(req, res) {
     var users = {
         email: req.body.email,
@@ -139,14 +134,24 @@ app.post('/login', function(req, res) {
                 uid: `${results.data[0].id}`
             }
             req.session.user = results.data[0].id;
-            app.get('/data', function(req, res) {
-                res.send('red')
-            });
 
-            app.post('/data', function(req, res) {
-                playlist.add_to_play_list({ 'id': req.body.uid, 'vid': req.body.songlink, 'video_name': req.body.songname })
+            app.post(`/data${results.data[0].id}`, function(req, res) {
+                if (!req.session.user) {
+                    return res.status(401).send()
+                }
+                var id = req.body.uid;
+                var vid = req.body.songlink;
+                var vn = req.body.songname;
+                var addplaylist = {
+                    id: id,
+                    vid: vid,
+                    video_name: vn
+                }
+                playlist.add_to_play_list(addplaylist)
                 rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
-                res.redirect(`/rating${results.data[0].id}`)
+                alert('Added to Playlist')
+                // rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
+                // res.redirect(`/rating${results.data[0].id}`)
             });
 
             app.get('/signout', function(req, res) {
@@ -287,9 +292,6 @@ app.post('/login', function(req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
 });
-
-// app.post('/edit', function(req, res) {
-// });
 
 app.post('/signup', function(req, res) {
     var id = req.body.email;
