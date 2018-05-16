@@ -134,7 +134,6 @@ app.post('/login', function(req, res) {
                 uid: `${results.data[0].id}`
             }
             req.session.user = results.data[0].id;
-
             app.post(`/data${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
                     return res.status(401).send()
@@ -150,10 +149,8 @@ app.post('/login', function(req, res) {
                 playlist.add_to_play_list(addplaylist)
                 rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
                 alert('Added to Playlist')
-                // rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
-                // res.redirect(`/rating${results.data[0].id}`)
+                res.redirect(`/rating${results.data[0].id}`)
             });
-
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');
@@ -276,15 +273,30 @@ app.post('/login', function(req, res) {
                 if (!req.session.user) {
                     return res.status(401).send()
                 }
-                res.render('ranking.hbs', {
-                    info: info
+                rating.top_songs((err, results) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log(results);
+                        let dat = [];
+                        for (let i = 0; i < results.vid.length; i++) {
+                            dat.push({
+                                avg: results.songavg[i],
+                                vid: results.vid[i],
+                                vn: results.name[i]
+                            });
+                        }
+                        console.log(dat);
+                        res.render('ranking.hbs', {
+                            info: info,
+                            topsongs: dat
+                        });
+                    }
                 });
             });
             res.redirect(`/index${results.data[0].id}`)
-            return res.status(200).send();
         }
     });
-
 
 });
 
@@ -351,8 +363,25 @@ app.get('/discover', function(req, res) {
 });
 
 app.get('/ranking', function(req, res) {
-    res.render('ranking.hbs', {
-        info: info
+    rating.top_songs((err, results) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(results);
+            let dat = [];
+            for (let i = 0; i < results.vid.length; i++) {
+                dat.push({
+                    avg: results.songavg[i],
+                    vid: results.vid[i],
+                    vn: results.name[i]
+                });
+            }
+            console.log(dat);
+            res.render('ranking.hbs', {
+                info: info,
+                topsongs: dat
+            });
+        }
     });
 });
 
