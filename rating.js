@@ -9,7 +9,14 @@ var mysql = require('mysql'); //mysql module
   port     : key.RDS_PORT,
   database : key.RDS_DB_NAME
 });
-
+ 
+connection.connect(function(err) {
+    if (err) { //if database fail connecting
+        console.error('Database connection failed: ' + err.stack);
+        return;
+    } //if database connected
+    console.log('Connected to Rating database.');
+});
 //Get rating of Video
 function get_rating(vid,callback){
 
@@ -34,10 +41,10 @@ function get_rating(vid,callback){
 //Add rating for video
 function add_rating(user){ //require data: userID, videoID, Rating
   let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
-  connection.connect(function(err){
-    if(err){
-      return err
-    }else{
+  // connection.connect(function(err){
+  //   if(err){
+  //     return err
+  //   }else{
       connection.query(sql, function (error, results, fields) {
         if (error) {
           console.log("error ocurred",error);
@@ -45,8 +52,8 @@ function add_rating(user){ //require data: userID, videoID, Rating
           console.log('Result: ', results);
         }
       });
-    }
-  });
+    // }
+  // });
 
 }
 
