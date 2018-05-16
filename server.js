@@ -277,14 +277,16 @@ app.post('/login', function(req, res) {
                     if (err) {
                         console.log(err);
                     } else {
+                        console.log(results);
                         let dat = [];
                         for (let i = 0; i < results.vid.length; i++) {
                             dat.push({
-                                avg: results.avg[i],
+                                avg: results.songavg[i],
                                 vid: results.vid[i],
-                                vn: results.video_name[i]
+                                vn: results.name[i]
                             });
                         }
+                        console.log(dat);
                         res.render('ranking.hbs', {
                             info: info,
                             topsongs: dat
