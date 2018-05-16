@@ -4,9 +4,7 @@
 <head>
     <title>Ranking Page</title>
     <link href="ranking.css" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
 </head>
 
@@ -151,42 +149,50 @@
             "Ph54wQG8ynk",
             "_I_D_8Z4sJE",
             "VDndE432GpU"];
+        
         for (let i = 0; i < 10; i++) {
             let sss = (i + 1).toString();
-            document.getElementById("r" + sss).addEventListener("mouseover", function () {
-                document.getElementById("r" + sss).style.cursor = "pointer";
-                /*document.getElementById("pi" + sss).style.top = (30 + 101 * i).toString() + "px";*/
-                document.getElementById("pi" + sss).style.left = "10px";
-            });
 
-            document.getElementById("r" + sss).addEventListener("mouseout", function () {
+            /** Mouseover on the div, the cursor will have style pointer, and play button will transition from off the screen to within the div*/
+            function rmouseover(){
+                document.getElementById("r" + sss).style.cursor = "pointer";
+                document.getElementById("pi" + sss).style.left = "10px";
+            } 
+
+            /** Mouseout from div will move the play button of the div back to its initial offscreen position */
+            function rmouseout(){
                 document.getElementById("r" + sss).style.cursor = "pointer";
                 document.getElementById("pi" + sss).style.left = "-50px";
-            });
-            document.getElementById("r" + sss).addEventListener("click", function () {
+            } 
+
+            /** Change display of player style to block upon clicking the div */
+            function rclick(){
                 player.style.display = "block";
                 youtubeVideo.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
+                document.getElementById("bgImage").style.zIndex = "3";
+            }
+
+            /** Changes the display of player to none upon clicking the background image; Changes the z index of the background image to initial value (back of other divs) */
+            function bgclick(){
+                document.getElementById("player").style.display = "none";
+                document.getElementById("bgImage").style.zIndex = "initial";
+            }
+
+            document.getElementById("r" + sss).addEventListener("mouseover", function () {
+                rmouseover();
             });
+            document.getElementById("r" + sss).addEventListener("mouseout", function () {
+                rmouseout();
+            });
+            document.getElementById("r" + sss).addEventListener("click", function () {
+                rclick();
+            });
+            document.getElementById("bgImage").addEventListener("click", function(){
+                bgclick();
+            });
+
         }
-
-    var x = document.getElementsByClassName("rc");
-    console.log(x);
-    for(i=0; i < x.length; i++){
-        x[i].addEventListener("click", function(){
-        document.getElementById("bgImage").style.zIndex = "3";
-    });
-
-    }
-    
-
-    document.getElementById("bgImage").addEventListener("click", function(){
-        document.getElementById("player").style.display = "none";
-        document.getElementById("bgImage").style.zIndex = "initial";
-    });
-    document.getElementById("musicWorldImage").addEventListener("click", function(){
-        document.getElementById("bgImage").style.zIndex = "3";
-        document.getElementById("player").style.display = "block";
-    });
+        
     </script>
 </body>
 
