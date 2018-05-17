@@ -3,6 +3,7 @@ var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
 const alert = require('alert-node'); //use to alert users
 
+
 //random unique id generator
 var uniqueID = function() {
     return Math.random().toString(36).substr(2, 8);
