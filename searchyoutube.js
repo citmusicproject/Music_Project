@@ -9,7 +9,7 @@ var password = secret.key;
 
 // parameters for youtube search
 var opts = {
-    maxResults: 10,
+    // maxResults: 10,
     key: password,
     type: "video",
     videoCategoryId: "10",
@@ -23,7 +23,7 @@ function gpassword() {
 
 //This function used to search song from youtube and return links,img,title, and possible errors
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} songs`
+    var song = `${keyword} VEVO`
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];
