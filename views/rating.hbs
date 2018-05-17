@@ -88,6 +88,8 @@
            songlink = document.getElementById("songlink"),
            songname = document.getElementById("songname"),
            num = document.getElementsByClassName('thumbnailtitle');
+        
+        
 
         console.log(elements.length);
         // for (var i=0;i < elements.length; i++){
@@ -98,6 +100,8 @@
         //         title.innerHTML = "{{title}}";
         //     });
         // }
+        
+        /**Change the video on search**/
         {{#each data}}
         document.getElementById('box' + {{@index}}).addEventListener('click', function () {
             youtube.src = "https://www.youtube.com/embed/{{this.link}}?autoplay=1";
@@ -107,7 +111,7 @@
             songname.value = "{{this.title}}";
         });
         {{/each}}
-        document.getElementById('nextPage').addEventListener('click', function(){
+       /**Change the video on search**/ document.getElementById('nextPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
@@ -123,7 +127,7 @@
 
         })
 
-        document.getElementById('prevPage').addEventListener('click', function(){
+       /**Change the video on search**/ document.getElementById('prevPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
