@@ -1,4 +1,4 @@
-const key = require('./dbkeys.json') //File that stores database credentials
+const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 
  //create connection with MySQL
