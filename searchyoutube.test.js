@@ -33,10 +33,10 @@ test('Test if result contain 10 link/title/img', done => {
     su2b.searchYoutube("Drake", callback);
 });
 
-test("Test if key is avaliable", done =>{
-        expect(su2b.gpassword()).toBe(password); 
-        done();
-    });
+test("Test if key is avaliable", done => {
+    expect(su2b.gpassword()).toBe(password);
+    done();
+});
 
 
 test('Test if result contain <= 5 link/title/img', done => {
