@@ -172,10 +172,16 @@ app.post('/login', function(req, res) {
                     if (errorMessage) {
                         console.log(errorMessage);
                     } else {
+                        let dat = []
+                        for (let i = 0; i < results.vid.length; i++) {
+                            dat.push({
+                                vid: results.vid[i],
+                                vn: results.name[i],
+                            });
+                        }
                         res.render('Playlist.hbs', {
                             info: info,
-                            vid: results.vid,
-                            name: results.name
+                            songs: dat
                         });
                     }
                 })
