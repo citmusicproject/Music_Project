@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>My Playlist</title>
     <link href="playlist.css" type="text/css" rel="stylesheet" />
-    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,68 +13,70 @@
 </head>
 
 <body>
-	{{>headbar}}
+    {{>headbar}}
     <div id="bg"></div>
     <div id="title">My Playlist</div>
     <div class="container-fluid">
         <div class="row">
             <div id="playlist" class="col-sm-5 col-sm-pull-6">
-                <div id="songdiv" class="songdiv" onclick="myFunction()">{{name}}</div>
-                <div id="songdiv2" class="songdiv" onclick="myFunction()">{{name1}}</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
-                <div class="songdiv">Song Name</div>
+                {{#each songs as |song|}}
+                <div id="songdiv{{@index}}" class="songdiv" onclick="myFunction()">{{song.vn}}</div>
+                {{/each}}
             </div>
             <div id="myModal" class="modal">
-
-                  <!-- Modal content -->
-                  <div class="modal-content">
+                <!-- Modal content -->
+                <div class="modal-content">
                     <span class="close">&times;</span>
-                    <iframe id="youtube" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                  </div>
-
+                    <!-- This going to be the delete from playlist button, find a better button if you can-->
+                    <span class="close" style="position: relative; right: 48%;">&bemptyv;</span> 
+                    <iframe id='youtubesong' width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
+            </div>
         </div>
     </div>
-        <script>
-              function myFunction(){
-            document.getElementById('youtube').src="https://www.youtube.com/embed/{{vid}}";
-            }
-            
+    <script>
+    // Get the modal
+     let tlist = []
+    {{#each songs as |song|}}
+        tlist.push('{{song.vid}}')
+    {{/each}}
 
-                        // Get the modal
-            var modal = document.getElementById('myModal');
+    console.log(tlist);
+    for (let i = 0; i < 1000; i++) {
+        let sss = (i).toString();
+        var modal = document.getElementById('myModal');
 
-            // Get the button that opens the modal
-            var btn = document.getElementById("songdiv");
+        // Get the button that opens the modal
+        var btn = document.getElementById("songdiv"+sss);
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+        // Used to get src for song
+        var youtubevid = document.getElementById('youtubesong')
 
-            // When the user clicks on the button, open the modal 
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+            youtubevid.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
+        }
+
+        document.getElementById("title").addEventListener("click", function() {
+            modal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
+        }
+    }
     </script>
 </body>
 </html>
