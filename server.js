@@ -142,7 +142,7 @@ app.post('/login', function(req, res) {
                 playlist.add_to_play_list(addplaylist)
                 rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
                 alert('Added to Playlist')
-                res.redirect(`/rating${results.data[0].id}`)
+                res.redirect(`/playlist${results.data[0].id}`)
             });
             app.get('/signout', function(req, res) {
                 req.session.destroy();
