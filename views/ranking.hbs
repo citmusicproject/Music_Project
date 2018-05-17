@@ -66,6 +66,8 @@
         /** Changes the display of player to none upon clicking the background image; Changes the z index of the background image to initial value (back of other divs) */
         function bgclick() {
             document.getElementById("player").style.display = "none";
+            
+            youtubeVideo.src = "";
             document.getElementById("bgImage").style.zIndex = "initial";
         }
 
