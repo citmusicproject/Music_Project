@@ -41,10 +41,6 @@ function get_rating(vid, callback) {
 //Add rating for video
 function add_rating(user) { //require data: userID, videoID, Rating
     let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
-    // connection.connect(function(err){
-    //   if(err){
-    //     return err
-    //   }else{
     connection.query(sql, function(error, results, fields) {
         if (error) {
             console.log("error ocurred", error);
@@ -52,13 +48,11 @@ function add_rating(user) { //require data: userID, videoID, Rating
             console.log('Result: ', results);
         }
     });
-    // }
-    // });
-
 }
 
+//This function gets the top songs from the database
 function top_songs(callback) {
-    let topsong = `select video_name, vid, avg(rating) as 'avg' from playlist where rating is not null group by vid order by avg(rating) DESC limit 25; `
+    let topsong = `select video_name, vid, avg(rating) as 'avg' from playlist where rating is not null group by vid order by avg(rating) DESC limit 10;`
     connection.query(topsong, function(error, results, fields) {
       let vid = []
           name = []
@@ -66,7 +60,6 @@ function top_songs(callback) {
         if (error) {
             console.log('Error', error);
         } else {
-            // console.log('Result', results);
             for (i = 0; i < results.length; i++) {
                 vid.push(results[i].vid);
                 name.push(results[i].video_name)
@@ -81,16 +74,9 @@ function top_songs(callback) {
     });
 }
 
+//export functions
 module.exports = {
     add_rating,
     get_rating,
     top_songs
 }
-
-// topsongs((err, results) => {
-//   if (err){
-//     console.log(err);
-//   } else{
-//     console.log(results);
-//   }
-// })
