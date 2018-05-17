@@ -3,7 +3,9 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const app = express();
-const login = require('./login.js');
+const login = require('./login');
+const playlist = require('./playlist');
+const rating = require('./rating');
 const alert = require('alert-node');
 
 const port = process.env.port || 8080;
