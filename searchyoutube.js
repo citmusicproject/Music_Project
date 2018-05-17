@@ -18,12 +18,12 @@ var opts = {
 
 // This function return api key for youtube api
 function gpassword() {
-    return password
+    return password;
 }
 
 //This function used to search song from youtube and return links,img,title, and possible errors
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} VEVO`
+    var song = `${keyword} VEVO`;
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];
@@ -37,10 +37,10 @@ function searchYoutube(keyword, callback) {
             title.push(results[i].title);
         }
         if (img.length == 0 && links.length == 0 && title.length == 0) {
-            error = true
+            error = true;
         }
         else if (img.length <= 5 && links.length <= 5 && title.length <= 5){
-            lessthanfiveerror = true
+            lessthanfiveerror = true;
         }
         callback(undefined, {
             links: links,
