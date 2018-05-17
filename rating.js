@@ -58,7 +58,7 @@ function add_rating(user) { //require data: userID, videoID, Rating
 }
 
 function top_songs(callback) {
-    let topsong = `select video_name, vid, avg(rating) as 'avg' from playlist where rating is not null group by vid order by avg(rating) DESC limit 10`
+    let topsong = `select video_name, vid, avg(rating) as 'avg' from playlist where rating is not null group by vid order by avg(rating) DESC limit 25; `
     connection.query(topsong, function(error, results, fields) {
       let vid = []
           name = []
