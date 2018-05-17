@@ -82,7 +82,7 @@ app.post('/rating', function(req, res) {
                     img: results.img[i],
                     title: results.title[i],
                     error: results.error,
-                    styletype: i < 5 ? "searches" : "searches2"
+                    styletype: i < results.img.length/2 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
