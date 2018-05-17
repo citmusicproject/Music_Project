@@ -9,6 +9,7 @@ function getRandomUniqueNumber(amount, max, offset) {
     }
     return arr;
 }
+// Exporting Functions
 module.exports = {
     getRandomUniqueNumber
 };

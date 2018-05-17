@@ -12,8 +12,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title>Search</title>
     <link rel="stylesheet" type="text/css" href="searchresults.css">
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg">
 </head>
 
 <body style="overflow: hidden;">
@@ -26,9 +27,7 @@
             </div>
         </form>
          {{#if error}}
-        <div id="error" style="color: white;
-    position: absolute;
-    left: 12.5%;;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
+        <div id="error" style="color: white;position: absolute; left: 0; right: 0; margin: auto; height: 10%; width: 26%;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
         {{else}}
     <div class="container-fluid">
         <div class="row">
@@ -39,7 +38,6 @@
             <form method="POST" action="/data{{info.uid}}">
                 {{#if info.login1}}
                 <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
-                <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
                <fieldset class="rating">
                     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                     <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -66,10 +64,6 @@
             <div class="thumbnailtitle">{{this.title}}</div>
         </div>
         {{/each}}
-        <!-- <div id ='navBar'> 
-            <button class="pagebuttons" id='prevPage'> Back </button>
-            <button class="pagebuttons" id='nextPage'> Next </button>
-        </div> -->
     </div>
     {{#if lessthanfiveerror}}
     {{else}}
@@ -89,18 +83,8 @@
            songname = document.getElementById("songname"),
            num = document.getElementsByClassName('thumbnailtitle');
         
-        
-
         console.log(elements.length);
-        // for (var i=0;i < elements.length; i++){
-        //     const element = elements[i];
-        //     element.addEventListener("click", function(){
-        //         youtube.src = "https://www.youtube.com/embed/{{links}}";
-        //         player.style.display = "block";
-        //         title.innerHTML = "{{title}}";
-        //     });
-        // }
-        
+    
         /**Change the video on search**/
         {{#each data}}
         document.getElementById('box' + {{@index}}).addEventListener('click', function () {
@@ -110,8 +94,10 @@
             songlink.value = "{{this.link}}";
             songname.value = "{{this.title}}";
         });
-        {{/each}}
-       /**Change the video on search**/ document.getElementById('nextPage').addEventListener('click', function(){
+        {{/each}} //
+
+       /**Switch pages**/ 
+       document.getElementById('nextPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
@@ -127,7 +113,8 @@
 
         })
 
-       /**Change the video on search**/ document.getElementById('prevPage').addEventListener('click', function(){
+       /**Switch pages**/ 
+       document.getElementById('prevPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
