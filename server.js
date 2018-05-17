@@ -5,6 +5,7 @@ const hbs = require('hbs'); // This will render .hbs files
 const bodyParser = require('body-parser');
 var sessions = require('express-session'); //session for users
 const alert = require('alert-node'); // use to alert users
+var swal = require('sweetalert2');
 const app = express();
 var sessions;
 
