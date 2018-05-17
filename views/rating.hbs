@@ -40,19 +40,19 @@
                 {{#if info.login1}}
                 <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
                <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Okay - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Bad - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
+                    <input type="radio" id="star5" name="rating" value="5" onclick="document.getElementById('submit').click();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="document.getElementById('submit').click();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="document.getElementById('submit').click();"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star2half" title="Okay - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="document.getElementById('submit').click();"/><label class = "full" for="star2" title="Bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star1half" title="Bad - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="document.getElementById('submit').click();"/><label class = "full" for="star1" title="Terrible - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" onclick="document.getElementById('submit').click();"/><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
-                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
-                <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;" >
+                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite" onclick="document.getElementById('submit').click();" /><label for="heart" id="heart1" style="position: absolute;left: 22%;">❤</label></div>
+                <button id="submit" type="submit"style="position: absolute;left: 31%;bottom: 2%; display: none">Submit</button>
                 {{else}}
                 {{/if}}
             </form>
@@ -112,7 +112,7 @@
             }
             document.getElementById('nextPage').style.display = 'none';
 
-        })
+        });
 
        /**Switch pages**/ 
        document.getElementById('prevPage').addEventListener('click', function(){
@@ -128,7 +128,10 @@
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'none';
             }
-        })
+        });
+        function submit() {
+            document.getElementById('submit').click();
+        }
     </script>
 </body>
 </html>
