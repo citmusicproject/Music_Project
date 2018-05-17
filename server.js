@@ -1,16 +1,19 @@
+const port = process.env.port || 8080; //port 8080
 const fs = require('fs');
 const express = require('express');
-const hbs = require('hbs');
+const hbs = require('hbs'); // This will render .hbs files
 const bodyParser = require('body-parser');
+var sessions = require('express-session'); //session for users
+const alert = require('alert-node'); // use to alert users
 const app = express();
+var sessions;
+
 const login = require('./login.js');
-const alert = require('alert-node');
 const playlist = require('./playlist.js');
 const rating = require('./rating.js');
+const helper = require('./helper.js'); 
+var youtube = require('./searchyoutube.js');
 
-const port = process.env.port || 8080;
-
-const helper = require('./helper.js');
 const info = {
     login: "Login/Signup",
     link: "login",
@@ -19,11 +22,8 @@ const info = {
     ranking: "/ranking",
     playlist: "/login",
     index: "-1",
-    search: "/rating"
-}
-var sessions = require('express-session');
-var youtube = require('./searchyoutube.js');
-var sessions;
+    search: "/rating",
+    } // info for header
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -38,17 +38,10 @@ app.use(sessions({
     saveUninitialized: true
 }));
 
-String.prototype.format = function() {
-    a = this;
-    for (k in arguments) {
-        a = a.replace("{" + k + "}", arguments[k]);
-    }
-    return a;
-};
-
 app.get('/', function(req, res) {
     res.render('index.hbs', {
-        info: info
+        info: info,
+        color: "red"
     });
 });
 
@@ -149,7 +142,7 @@ app.post('/login', function(req, res) {
                 playlist.add_to_play_list(addplaylist)
                 rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
                 alert('Added to Playlist')
-                res.redirect(`/rating${results.data[0].id}`)
+                res.redirect(`/playlist${results.data[0].id}`)
             });
             app.get('/signout', function(req, res) {
                 req.session.destroy();
@@ -161,7 +154,8 @@ app.post('/login', function(req, res) {
                     return res.status(401).send()
                 }
                 res.render('index.hbs', {
-                    info: info
+                    info: info,
+                    color: "red"
                 });
             });
             app.get(`/playlist${results.data[0].id}`, function(req, res) {
@@ -181,7 +175,8 @@ app.post('/login', function(req, res) {
                         }
                         res.render('Playlist.hbs', {
                             info: info,
-                            songs: dat
+                            songs: dat,
+                            color2: "red"
                         });
                     }
                 })
@@ -207,7 +202,9 @@ app.post('/login', function(req, res) {
                             info: info,
                             data: dat,
                             error: results.error,
-                            lessthanfiveerror: results.lessthanfiveerror
+                            lessthanfiveerror: results.lessthanfiveerror,
+                            search: true,
+                            color4: 'red'
                         });
                     }
                 });
@@ -233,7 +230,9 @@ app.post('/login', function(req, res) {
                             info: info,
                             data: dat,
                             error: results.error,
-                            lessthanfiveerror: results.lessthanfiveerror
+                            lessthanfiveerror: results.lessthanfiveerror,
+                            search: true,
+                            color4: 'red'
                         });
                     }
                 });
@@ -271,7 +270,8 @@ app.post('/login', function(req, res) {
                     });
                     res.render('discover.hbs', {
                         data: randomk,
-                        info: info
+                        info: info,
+                        color1: 'red'
                     });
                 });
             });
@@ -295,7 +295,8 @@ app.post('/login', function(req, res) {
                         console.log(dat);
                         res.render('ranking.hbs', {
                             info: info,
-                            topsongs: dat
+                            topsongs: dat,
+                            color3: "red"
                         });
                     }
                 });
@@ -303,9 +304,7 @@ app.post('/login', function(req, res) {
             res.redirect(`/index${results.data[0].id}`)
         }
     });
-
 });
-
 
 app.get('/signup', function(req, res) {
     res.render('signup.hbs');
@@ -330,7 +329,6 @@ app.post('/signup', function(req, res) {
         alert('Sign Up Successful');
         res.redirect('/login')
     }
-
 });
 
 app.get('/discover', function(req, res) {
@@ -363,7 +361,8 @@ app.get('/discover', function(req, res) {
         });
         res.render('discover.hbs', {
             data: randomk,
-            info: info
+            info: info,
+            color1: 'red'
         });
     });
 });
@@ -385,7 +384,8 @@ app.get('/ranking', function(req, res) {
             console.log(dat);
             res.render('ranking.hbs', {
                 info: info,
-                topsongs: dat
+                topsongs: dat,
+                color3: "red"
             });
         }
     });

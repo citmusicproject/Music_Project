@@ -1,41 +1,50 @@
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" text="text/css" href="..\\headbar.css">
+    <!--    <script type="text/javascript">
+    document.getElementById('ranking').style.color = 'red';
+    </script> -->
 </head>
+
 <body>
-<nav class="navbar navbar-default" style="z-index: 1">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-
-      <a class="navbar-brand" href="{{info.home}}"><div id="headbar_icon"></div><div id="headbar_text">Music World</div></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li>
-        <a href="{{info.discover}}">Discover</a></li>
-        <li><a href="{{info.ranking}}">Ranking</a></li>
-        {{#if info.login1}}
-        <li><a href="{{info.playlist}}">Playlist</a></li>
-        {{else}}
-        {{/if}}
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">  
-        <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;color:white;border:none;background-color:red;width:auto;font-size:15px; position:relative; bottom:20%;" onclick="location.href = '{{info.link}}';">{{info.login}}</button>
-        {{#if info.login1}}
-        <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);position:relative; bottom:20%; height:40px;border-radius:5px;border:none;background-color:red;position:relative; z-index:{{info.index}};color:white;width:auto;font-size:15px;" onclick="location.href = '{{info.signout}}';">Log Out</button>
-        {{else}}
-        {{/if}}
-      </ul>
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-default" style="z-index: 1">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{info.home}}">
+                    <div id="headbar_icon"></div>
+                    <div id="headbar_text" style="color:{{color}}">Music World</div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{info.discover}}" style="color:{{color1}}">Discover</a></li>
+                    {{#if info.login1}}
+                    <li><a href="{{info.playlist}}" style="color:{{color2}}">Playlist</a></li>
+                    <li><a href="{{info.ranking}}" style="color:{{color3}}"> Ranking</a></li>
+                    {{#if search}}
+                    <!-- <li><a style="color:{{color4}}">Search</a></li> -->
+                    {{else}}
+                    {{/if}}
+                    {{else}}
+                    <li><a href="{{info.ranking}}" style="color:{{color3}}">Ranking</a></li>
+                    {{/if}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <button id="headbar_login" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);height:40px;border-radius:5px;color:white;border:none;background-color:red;width:auto;font-size:15px; position:relative; bottom:20%;" onclick="location.href = '{{info.link}}';">{{info.login}}</button>
+                    {{#if info.login1}}
+                    <button id="headbar_logout" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);position:relative; bottom:20%; height:40px;border-radius:5px;border:none;background-color:red;position:relative; z-index:{{info.index}};color:white;width:auto;font-size:15px;" onclick="location.href = '{{info.signout}}';">Log Out</button>
+                    {{else}} {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>

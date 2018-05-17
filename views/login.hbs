@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Login</title>
-        <link href ="login.css" rel="stylesheet" type="text/css" />
-        <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
-    </head>
-    <body>
+
+<head>
+    <title>Login</title>
+    <link href="login.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
+</head>
+
+<body>
     <div id="main">
-        <div id= "loginContainer">
+        <div id="loginContainer">
             <div id="mwLogo"></div>
             <div id="mwTitle">Music World</div>
-            <button id="closeButton" onclick="location.href = '/'";></button>
+            <button id="closeButton" onclick="location.href = '/'" ;></button>
             <div id="loginInputs">
-               <form id="logindata" action='/login' method='post' name='login'>
-                    <input type="email" id="signInEmail" name="email" placeholder="Email Address" class="signInCredentials"/>
+                <form id="logindata" action='/login' method='post' name='login'>
+                    <input type="email" id="signInEmail" name="email" placeholder="Email Address" class="signInCredentials" />
                     <input type="password" id="signInPassword" name="pw" placeholder="Password" class="signInCredentials" />
                     <button id="logInButton" type="submit">LOG IN</button>
                     <div id="orSeparator">- or -</div>
                 </form>
-                <form action = '/signup' method="get" name="regie">
+                <form action='/signup' method="get" name="regie">
                     <button id="signUpButton" type="submit">SIGN UP</button>
                 </form>
             </div>
         </div>
     </div>
     <script>
-    closeButton.addEventListener("mouseover", function(){
-    closeButton.style.cursor = "pointer";
-    closeButton.style.backgroundColor = "rgba(19, 12, 2, 1)";
+    closeButton.addEventListener("mouseover", function() {
+        closeButton.style.cursor = "pointer";
+        closeButton.style.backgroundColor = "rgba(19, 12, 2, 1)";
     });
-    closeButton.addEventListener("mouseout", function(){
-    closeButton.style.backgroundColor = "rgba(133,139,255,0)";
-    
+    closeButton.addEventListener("mouseout", function() {
+        closeButton.style.backgroundColor = "rgba(133,139,255,0)";
+
     });
-    logInButton.addEventListener("mouseover", function(){
-    logInButton.style.cursor ="pointer";
-    logInButton.style.backgroundColor = "rgba(17,15, 40, 1)";
+    logInButton.addEventListener("mouseover", function() {
+        logInButton.style.cursor = "pointer";
+        logInButton.style.backgroundColor = "rgba(17,15, 40, 1)";
     });
-    
-    logInButton.addEventListener("mouseout", function(){
-    logInButton.style.backgroundColor = "rgba(17,15,40,0.5)";
+
+    logInButton.addEventListener("mouseout", function() {
+        logInButton.style.backgroundColor = "rgba(17,15,40,0.5)";
     });
-    
-    signUpButton.addEventListener("mouseover", function(){
-    signUpButton.style.cursor = "pointer";
-    signUpButton.style.backgroundColor = "rgba(255,0,0,1)";
+
+    signUpButton.addEventListener("mouseover", function() {
+        signUpButton.style.cursor = "pointer";
+        signUpButton.style.backgroundColor = "rgba(255,0,0,1)";
     });
-    
-    signUpButton.addEventListener("mouseout", function(){
-    signUpButton.style.backgroundColor = "rgba(255,0,0,0.5)";
+
+    signUpButton.addEventListener("mouseout", function() {
+        signUpButton.style.backgroundColor = "rgba(255,0,0,0.5)";
     });
-    
     </script>
-    </body>
+</body>
+
 </html>
