@@ -20,11 +20,6 @@ var mysql = require('mysql'); //mysql module
 
 //Removing Video from favourite List
 function remove_from_list(user){ //Require Data: userID, VideoID
-
-    // connection.connect(function(err){
-    //   if(err){
-    //     return err
-    //   }else{//If connected, delete user's selected item.
         connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
@@ -32,9 +27,6 @@ function remove_from_list(user){ //Require Data: userID, VideoID
             console.log('Result: ', results);
           }
         });
-//       }
-//     });
-
 }
 
 //Add video into favourite List
@@ -45,11 +37,6 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
         vid:user.vid,
         video_name:user.video_name
     }
-
-    // connection.connect(function(err){
-    //   if(err){
-    //     return err
-    //   }else{
         connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
@@ -57,9 +44,6 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
             console.log('Result: ', results);
           }
         });
-      // }
-    // });
-
   }
 
 //Get list of songs in the favourite list
@@ -85,22 +69,9 @@ function get_song_list(id,callback){ //Require Data: UserID
             }
         }
     });
-
 }
 
-// add_to_play_list({'id':'7g62dh9k','vid':'kOkQd4T5WkjO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
-// add_to_play_list({'id':'7g62dh9k','vid':'kOkQd4T5WdO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
-// add_to_play_list({'id':'7g62dh9k','vid':'kOkQd4T5WdO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
-// add_to_play_list({'id':'7g62dh9k','vid':'kOkQdd4T5WO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
-// add_to_play_list({'id':'7g62dh9k','vid':'kOkQd4T5dWO9E','video_name':'Calvin Harris - This Is What You Came For (Official Video) ft. Rihanna'})
-// get_song_list('7g62dh9k',(err,results) =>{
-//   if (err){
-//     console.log(err);
-//   } else{
-//     console.log(results.name);
-//   }
-// })
-
+// exporting functions
 module.exports={
   add_to_play_list,
   get_song_list,
