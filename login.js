@@ -2,7 +2,7 @@ const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
 const alert = require('alert-node'); //use to alert users
-
+const swal = require('sweetalert2');
 
 //random unique id generator
 var uniqueID = function() {
@@ -46,6 +46,7 @@ function register(user) {
         } else {
             console.log('Result: ', results);
             console.log(users.password);
+            swal('Sign up Successful')
         }
     });
 
@@ -71,7 +72,7 @@ function login(user, callback) {
                 }
             } else {
                 console.log("email does not exist")
-                alert(`Invaild Email`)
+                alert("Invaild Password");
             }
         }
     });
