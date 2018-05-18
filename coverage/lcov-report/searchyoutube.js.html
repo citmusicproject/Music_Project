@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/28</span>
+        <span class='fraction'>26/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>10/10</span>
+        <span class='fraction'>11/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>28/28</span>
+        <span class='fraction'>26/26</span>
       </div>
     </div>
     <p class="quiet">
@@ -105,19 +105,17 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,19 +129,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,16 +164,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var search = require('youtube-search');
-var keyWord = '';
-var secret = require('./keys');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var search = require('youtube-search'); // easy way use to search youtube
+var secret = require('./keys');//get api key from json file
 var fs = require('fs');
-var list = [];
-var alert = require('alert-node');
-&nbsp;
+var alert = require('alert-node'); //creates an alert for website
 const request = require('request');
 &nbsp;
+// api key from keys.json
 var password = secret.key;
+&nbsp;
+// parameters for youtube search
 var opts = {
     maxResults: 10,
     key: password,
@@ -184,14 +182,14 @@ var opts = {
     chart: "mostPopular"
 };
 &nbsp;
-&nbsp;
-&nbsp;
+// This function return api key for youtube api
 function gpassword() {
-    return password
+    return password;
 }
 &nbsp;
+//This function used to search song from youtube and return links,img,title, and possible errors
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} VEVO`
+    var song = `${keyword} VEVO`;
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];
@@ -199,17 +197,16 @@ function searchYoutube(keyword, callback) {
         var title = [];
         var error = false;
         var lessthanfiveerror = false;
-        // console.log(results);
         for (var i = 0; i &lt; results.length; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);
         }
-        if (img.length == 0 &amp;&amp; links.length == 0 &amp;&amp; title.length == 0) {
-            error = true
+        if (img.length == 0 &amp;&amp; links.length == 0 &amp;&amp; title.length == 0 || song == ' VEVO') {
+            error = true;
         }
-        else if (img.length &lt;= 5 &amp;&amp; links.length &lt;= 5 &amp;&amp; title.length &lt;= 5){
-            lessthanfiveerror = true
+        else if (img.length &lt; 10 &amp;&amp; links.length &lt; 10 &amp;&amp; title.length &lt; 10){
+            lessthanfiveerror = true;
         }
         callback(undefined, {
             links: links,
@@ -221,7 +218,7 @@ function searchYoutube(keyword, callback) {
     });
 };
 &nbsp;
-&nbsp;
+//exporting functions
 module.exports = {
     searchYoutube,
     gpassword
@@ -232,7 +229,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 16 2018 15:17:24 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri May 18 2018 11:39:44 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>
