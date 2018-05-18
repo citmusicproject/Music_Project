@@ -24,7 +24,7 @@ const info = {
     playlist: "/login",
     index: "-1",
     search: "/rating",
-    } // info for header
+    }; // info for header
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -104,13 +104,13 @@ app.post('/login', function(req, res) {
     var users = {
         email: req.body.email,
         pw: req.body.pw
-    }
-    const login1 = true
+    };
+    const login1 = true;
     login.login(users, (errorMessage, results) => {
         if (errorMessage) {
             console.log(errorMessage);
         } else if (results) {
-            alert('Login Successful')
+            alert('Login Successful');
             if (!results) {
                 return res.status(404).send();
             }
@@ -126,11 +126,11 @@ app.post('/login', function(req, res) {
                 signout: '/signout',
                 login1: true,
                 uid: `${results.data[0].id}`
-            }
+            };
             req.session.user = results.data[0].id;
             app.post(`/data${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 var id = req.body.uid;
                 var vid = req.body.songlink;
@@ -139,20 +139,22 @@ app.post('/login', function(req, res) {
                     id: id,
                     vid: vid,
                     video_name: vn
-                }
-                playlist.add_to_play_list(addplaylist)
-                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating })
-                alert('Added to Playlist')
-                res.redirect(`/playlist${results.data[0].id}`)
+                };
+                playlist.add_to_play_list(addplaylist);
+                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating });
+                // alert('Added to Playlist');
+                setTimeout(function (err) {
+                    res.redirect(`/playlist${results.data[0].id}`);
+                },750);
             });
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');
                 // return res.status(200).send();
-            })
+            });
             app.get(`/index${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 res.render('index.hbs', {
                     info: info,
@@ -161,13 +163,13 @@ app.post('/login', function(req, res) {
             });
             app.get(`/playlist${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 playlist.get_song_list(`${results.data[0].id}`, (errorMessage, results) => {
                     if (errorMessage) {
                         console.log(errorMessage);
                     } else {
-                        let dat = []
+                        let dat = [];
                         for (let i = 0; i < results.vid.length; i++) {
                             dat.push({
                                 vid: results.vid[i],
@@ -180,11 +182,11 @@ app.post('/login', function(req, res) {
                             color2: "red"
                         });
                     }
-                })
+                });
             });
             app.get(`/rating${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 youtube.searchYoutube(req.body.song, (errorMessage, results) => {
                     if (errorMessage) {
@@ -212,7 +214,7 @@ app.post('/login', function(req, res) {
             });
             app.post(`/rating${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 youtube.searchYoutube(req.body.song, (errorMessage, results) => {
                     if (errorMessage) {
@@ -240,7 +242,7 @@ app.post('/login', function(req, res) {
             });
             app.get(`/discover${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 var xhr = require('xhr');
                 if (!xhr.open) xhr = require('request');
@@ -278,7 +280,7 @@ app.post('/login', function(req, res) {
             });
             app.get(`/ranking${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
-                    return res.status(401).send()
+                    return res.status(401).send();
                 }
                 rating.top_songs((err, results) => {
                     if (err) {
@@ -302,7 +304,7 @@ app.post('/login', function(req, res) {
                     }
                 });
             });
-            res.redirect(`/index${results.data[0].id}`)
+            res.redirect(`/index${results.data[0].id}`);
         }
     });
 });
@@ -325,10 +327,10 @@ app.post('/signup', function(req, res) {
             pw: pw,
             first: fname,
             last: lname
-        }
-        login.register(user)
+        };
+        login.register(user);
         alert('Sign Up Successful');
-        res.redirect('/login')
+        res.redirect('/login');
     }
 });
 
