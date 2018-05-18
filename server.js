@@ -13,6 +13,7 @@ const playlist = require('./playlist.js');
 const rating = require('./rating.js'); 
 var youtube = require('./searchyoutube.js');
 var sessions;
+//
 
 const helper = require('./helper.js'); //Setting helper for hbs
 const info = { //Setting for menubar
