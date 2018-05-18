@@ -9,7 +9,7 @@ var password = secret.key;
 
 // parameters for youtube search
 var opts = {
-    // maxResults: 10,
+    maxResults: 10,
     key: password,
     type: "video",
     videoCategoryId: "10",
@@ -36,10 +36,10 @@ function searchYoutube(keyword, callback) {
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);
         }
-        if (img.length == 0 && links.length == 0 && title.length == 0) {
+        if (img.length == 0 && links.length == 0 && title.length == 0 || song == ' VEVO') {
             error = true;
         }
-        else if (img.length <= 5 && links.length <= 5 && title.length <= 5){
+        else if (img.length < 10 && links.length < 10 && title.length < 10){
             lessthanfiveerror = true;
         }
         callback(undefined, {

@@ -5,6 +5,7 @@ const hbs = require('hbs'); // This will render .hbs files
 const bodyParser = require('body-parser');
 var sessions = require('express-session'); //session for users
 const alert = require('alert-node'); // use to alert users
+var swal = require('sweetalert2');
 const app = express();
 var sessions;
 
@@ -81,7 +82,7 @@ app.post('/rating', function(req, res) {
                     img: results.img[i],
                     title: results.title[i],
                     error: results.error,
-                    styletype: i < 5 ? "searches" : "searches2"
+                    styletype: i < results.img.length/2 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
@@ -141,8 +142,10 @@ app.post('/login', function(req, res) {
                 };
                 playlist.add_to_play_list(addplaylist);
                 rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating });
-                alert('Added to Playlist');
-                res.redirect(`/playlist${results.data[0].id}`);
+                // alert('Added to Playlist');
+                setTimeout(function (err) {
+                    res.redirect(`/playlist${results.data[0].id}`);
+                },750);
             });
             app.get('/signout', function(req, res) {
                 req.session.destroy();
