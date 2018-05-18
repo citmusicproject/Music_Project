@@ -1,6 +1,6 @@
+//variables
 const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
-
 
  var connection = mysql.createConnection({ 
   host     : key.RDS_HOSTNAME,
