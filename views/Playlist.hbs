@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Project Theme</title>
-    <link href="project.css" type="text/css" rel="stylesheet" />
-    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
+    <title>My Playlist</title>
+    <link href="playlist.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	{{>headbar}}
+    {{>headbar}}
     <div id="bg"></div>
-    <div id="title">
-        My Playlists
-        <button id="addbutton">+♪</button>
-    </div>
-    <div id="display">
-        <div id="playlistcontent"></div>
-        {{> newplaylist }}
+    <div id="title">My Playlist</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="playlist" class="col-sm-5 col-sm-pull-6">
+                {{#each songs as |song|}}
+                <div id="songdiv{{@index}}" class="songdiv" onclick="myFunction()">{{song.vn}}</div>
+                {{/each}}
+            </div>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <!-- This going to be the delete from playlist button, find a better button if you can-->
+                    <span class="close" style="position: relative; right: 48%;">&bemptyv;</span> 
+                    <iframe id='youtubesong' width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-        displayDetails = -1;
-        function addDetailEvent(index) {
-            let idd = index;
-            let element = document.getElementsByClassName("playlist")[index];
-            element.addEventListener("mouseover", function () {
-                element.style.filter = "brightness(80%)";
-            });
-            element.addEventListener("mouseout", function () {
-                element.style.filter = "brightness(100%)";
-            });
-            element.addEventListener("click", function () {
-                if (displayDetails == idd) {
-                    element.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
-                    playlistcontent.style.cssText = "";
-                    playlistcontent.innerHTML = "";
-                    displayDetails = false;
-                } else {
-                    displayDetails = idd;
-                    element.style.boxShadow = "0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19)";
-                    playlistcontent.style.left = parseInt(element.getBoundingClientRect().right).toString() + "px";
-                    playlistcontent.style.top = parseInt(element.getBoundingClientRect().top).toString() + "px";
-                    playlistcontent.style.height = "60vh";
-                    playlistcontent.style.width = "30vw";
-                    playlistcontent.style.display = "block";
-                    playlistcontent.style.transition = "1s";
-                    playlistcontent.innerHTML = element.children[1].innerHTML;
-                }
-            });
+    // Get the modal
+     let tlist = []
+    {{#each songs as |song|}}
+        tlist.push('{{song.vid}}')
+    {{/each}}
+
+    // Loop to get Id of div
+    for (let i = 0; i < 1000; i++) {
+        let sss = (i).toString();
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("songdiv"+sss);
+
+        // Used to get src for song
+        var youtubevid = document.getElementById('youtubesong')
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+            youtubevid.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
         }
-        var bg = document.getElementById("bg"),
-            display = document.getElementById("display"),
-            playlistcontent = document.getElementById("playlistcontent"),
-            addbutton = document.getElementById("addbutton");
-        for (let index = 0; index < document.getElementsByClassName("playlist").length; index++) {
-            addDetailEvent(index);
-        }
-        addbutton.addEventListener("click", function () {
-            var newplaylist = document.createElement("div");
-            newplaylist.innerHTML = `{{>newplaylist}}`;
-            display.appendChild(newplaylist.f   irstChild);
-            addDetailEvent(document.getElementsByClassName("playlist").length - 1);
+
+        document.getElementById("title").addEventListener("click", function() {
+            modal.style.display = "block";
         });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            youtubevid.src = "";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                youtubevid.src = "";
+            }
+        }
+    }
     </script>
 </body>
 </html>

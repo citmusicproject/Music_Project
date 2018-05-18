@@ -10,13 +10,16 @@ var mysql = require('mysql'); //mysql module
   database : key.RDS_DB_NAME
 });
 
+ connection.connect(function(err) {
+        if (err) { //if database fail connecting
+          console.error('Database connection failed: ' + err.stack);
+          return
+        } //if database connected
+        console.log('Connected to Playlist database.');
+      });
+
 //Removing Video from favourite List
 function remove_from_list(user){ //Require Data: userID, VideoID
-
-    connection.connect(function(err){
-      if(err){
-        throw err
-      }else{//If connected, delete user's selected item.
         connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
@@ -24,9 +27,6 @@ function remove_from_list(user){ //Require Data: userID, VideoID
             console.log('Result: ', results);
           }
         });
-      }
-    });
-
 }
 
 //Add video into favourite List
@@ -37,11 +37,6 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
         vid:user.vid,
         video_name:user.video_name
     }
-
-    connection.connect(function(err){
-      if(err){
-        throw error
-      }else{
         connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
@@ -49,21 +44,10 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
             console.log('Result: ', results);
           }
         });
-      }
-    });
-
   }
 
 //Get list of songs in the favourite list
 function get_song_list(id,callback){ //Require Data: UserID
-
-    connection.connect(function(err) {
-        if (err) { //if database fail connecting
-          console.error('Database connection failed: ' + err.stack);
-          return
-        } //if database connected
-        console.log('Connected to database.');
-      });
 
     connection.query(`SELECT * FROM playlist WHERE id = ?`,[id], function(error, results, fields){
         if(error){
@@ -85,12 +69,11 @@ function get_song_list(id,callback){ //Require Data: UserID
             }
         }
     });
-
 }
 
+// exporting functions
 module.exports={
   add_to_play_list,
   get_song_list,
   remove_from_list,
-
 }
