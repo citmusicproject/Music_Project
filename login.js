@@ -1,10 +1,10 @@
-const key = require('./dbkeys.js') //File that stores database credentials
+const key = require('./dbkeys.js'); //File that stores database credentials
 var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
 const alert = require('alert-node'); //use to alert users
 
 //random unique id generator
-var uniqueID = function() {
+var uniqueID = function () {
     return Math.random().toString(36).substr(2, 8);
 };
 
@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
     database: key.RDS_DB_NAME
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
     if (err) { //if database fail connecting
         console.error('Database connection failed: ' + err.stack);
         return;
@@ -27,7 +27,7 @@ connection.connect(function(err) {
 
 //creates accounts
 function register(user) {
-    console.log('user data', user)
+    console.log('user data', user);
     const today = new Date();
     const id = uniqueID();
     const users = {
@@ -38,8 +38,8 @@ function register(user) {
         "password": bcrypt.hashSync(user.pw, bcrypt.genSaltSync(10)),
         "created": today,
         "modified": today
-    }
-    connection.query('INSERT INTO users SET ?', users, function(error, results, fields) {
+    };
+    connection.query('INSERT INTO users SET ?', users, function (error, results, fields) {
         if (error) {
             console.log("error ocurred", error);
         } else {
@@ -53,24 +53,24 @@ function register(user) {
 //login feature
 function login(user, callback) {
     const email = user.email;
-    const password = user.pw
-    connection.query('SELECT * FROM users WHERE email = ?', [email], function(error, results, fields) {
+    const password = user.pw;
+    connection.query('SELECT * FROM users WHERE email = ?', [email], function (error, results, fields) {
         if (error) {
             console.log("error ocurred", error);
         } else {
             if (results.length > 0) {
                 if (bcrypt.compareSync(password, results[0].password)) {
-                    console.log("successful")
+                    console.log("successful");
                     callback(undefined, {
                         data: results
                     });
                 } else {
-                    console.log("password not match")
-                    alert('Incorrect Password')
+                    console.log("password not match");
+                    alert('Incorrect Password');
                 }
             } else {
-                console.log("email does not exist")
-                alert(`Invaild Email`)
+                console.log("email does not exist");
+                alert(`Invaild Email`);
             }
         }
     });
@@ -80,4 +80,4 @@ function login(user, callback) {
 module.exports = {
     register,
     login
-}
+};
