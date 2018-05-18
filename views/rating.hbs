@@ -4,10 +4,17 @@
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg"/>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="searchresults.css">
+    <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
     <link rel="stylesheet" type="text/css" href="searchresults.css">
 </head>
 
@@ -21,37 +28,37 @@
             </div>
         </form>
          {{#if error}}
-        <div id="error" style="color: white;
-    position: absolute;
-    left: 12.5%;;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
+        <div id="error" style="color: white;position: absolute; left: 0; right: 0; margin: auto; height: 10%; width: 26%;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
         {{else}}
-    <div id="display">
-        <div id="player">
+    <div class="container-fluid">
+        <div class="row">
+        <div id="player" class="col-sm-6 col-sm-push-6">
             <iframe id="youtube" style="border:none;" width="100%" height="42.5%" src="">
             </iframe>
             <h1 id="title"></h1>
-            <form method="POST" action="/">
-                <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/></div>
-                <!-- <input type="hidden" name="acct" value="{{data.acct}}"> -->
+            <form method="POST" action="/data{{info.uid}}">
+                {{#if info.login1}}
+                <div id="title"><input id="songlink" type="hidden" name="songlink"/><input id="songname" type="hidden" name="songname"/><input id="uid" type="hidden" name="uid" value='{{info.uid}}'/></div>
                <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Okay - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Bad - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Terrible - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
+                    <input type="radio" id="star5" name="rating" value="5" onclick="document.getElementById('submit').click();"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="document.getElementById('submit').click();"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="document.getElementById('submit').click();"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star2half" title="Okay - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="document.getElementById('submit').click();"/><label class = "full" for="star2" title="Bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" onclick="document.getElementById('submit').click();"/><label class="half" for="star1half" title="Bad - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="document.getElementById('submit').click();"/><label class = "full" for="star1" title="Terrible - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" onclick="document.getElementById('submit').click();"/><label class="half" for="starhalf" title="Terrible - 0.5 stars"></label>
                 </fieldset>
-                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite"/><label for="heart" style="position: absolute;left: 22%;">❤</label></div>
-                <input type="submit" value="Submit" style="position: absolute;left: 31%;bottom: 2%;}" >
+                <div id="favouritetab"><input type="checkbox" id="heart" name="favourite" onclick="document.getElementById('submit').click();" /><label for="heart" id="heart1" style="position: absolute;left: 22%;">❤</label></div>
+                <button id="submit" type="submit"style="position: absolute;left: 31%;bottom: 2%; display: none">Submit</button>
+                {{else}}
+                {{/if}}
             </form>
 
         </div>
-    </div>
-    <div id="searchdisplay">
+    <div id="searchdisplay" class="col-sm-5 col-sm-pull-6" >
         {{#each data}}
         <div class="{{this.styletype}}" id='box{{@index}}'>
             <img class="thumbnails" id='thumb{{@index}}' src="{{this.img}}" />
@@ -59,11 +66,14 @@
         </div>
         {{/each}}
     </div>
+    {{#if lessthanfiveerror}}
+    {{else}}
     <div id ='navBar'> 
         <button class="pagebuttons" id='prevPage'> Back </button>
         <button class="pagebuttons" id='nextPage' style="position: absolute;
     right: 0%;" > Next </button>
     </div>
+    {{/if}}
     {{/if}}
     <script>
        var elements = document.getElementsByClassName("thumbnails"),
@@ -73,26 +83,22 @@
            songlink = document.getElementById("songlink"),
            songname = document.getElementById("songname"),
            num = document.getElementsByClassName('thumbnailtitle');
-
+        
         console.log(elements.length);
-        // for (var i=0;i < elements.length; i++){
-        //     const element = elements[i];
-        //     element.addEventListener("click", function(){
-        //         youtube.src = "https://www.youtube.com/embed/{{links}}";
-        //         player.style.display = "block";
-        //         title.innerHTML = "{{title}}";
-        //     });
-        // }
+    
+        /**Change the video on search**/
         {{#each data}}
         document.getElementById('box' + {{@index}}).addEventListener('click', function () {
             youtube.src = "https://www.youtube.com/embed/{{this.link}}?autoplay=1";
-            player.style.display = "block";
+            player.style.visibility = "visible";
             title.innerHTML = "{{this.title}}";
             songlink.value = "{{this.link}}";
             songname.value = "{{this.title}}";
         });
-        {{/each}}
-        document.getElementById('nextPage').addEventListener('click', function(){
+        {{/each}} //
+
+       /**Switch pages**/ 
+       document.getElementById('nextPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
@@ -104,9 +110,12 @@
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'block';
             }
-        })
+            document.getElementById('nextPage').style.display = 'none';
 
-        document.getElementById('prevPage').addEventListener('click', function(){
+        });
+
+       /**Switch pages**/ 
+       document.getElementById('prevPage').addEventListener('click', function(){
 
             var elems = document.getElementsByClassName('searches');
             for (var i=0;i<elems.length;i+=1){
@@ -114,11 +123,15 @@
             }
 
             document.getElementById('prevPage').style.display = 'none';
+            document.getElementById('nextPage').style.display = 'block';
             var elems2 = document.getElementsByClassName('searches2');
             for (var i=0;i<elems2.length;i+=1){
                 elems2[i].style.display = 'none';
             }
-        })
+        });
+        function submit() {
+            document.getElementById('submit').click();
+        }
     </script>
 </body>
 </html>
