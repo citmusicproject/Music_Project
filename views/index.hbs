@@ -8,36 +8,17 @@
     <!-- <link rel="stylesheet" type="text/css" href="..\\rating_music.css"> -->
     <link href="searchpage.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-    <script>
-
-        function validateForm() {
-            var x = document.forms["orange"]["song"].value
-            if (x == "") {
-                alert("Name must be filled out");
-                return false;
-            }
-        };
-
-    </script>
 </head>
 
 <body>
     <div id="bg_index" style="position:absolute;left:0;top:0;width:100vw;height:100vh;background-image:url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);background-size:cover;background-repeat:no-repeat;"></div>
-
     <form class="example" method="POST" action={{info.search}}>
         <div id="searchbardiv">
             <input type="text" placeholder="Search.." name="song">
             <button type="submit"><i class="fa fa-search"></i></button>
         </div>
     </form>
-
-       
-
     {{>headbar}}
-
-
 
 
 </body>
