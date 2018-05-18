@@ -1,14 +1,14 @@
-const fs = require('fs'); //file system module
-const express = require('express'); //web framework for node
-const hbs = require('hbs'); // Handlebars module
-const bodyParser = require('body-parser'); // Node.js Body parsing middleware
-const app = express(); 
-const login = require('./login'); //login function module
-const playlist = require('./playlist'); //playlist function module
-const rating = require('./rating'); //rating function module
-const alert = require('alert-node'); //Popup screen
 
-const port = process.env.port || 8080; //Setting default port
+const port = process.env.port || 8080; //port 8080
+const fs = require('fs');
+const express = require('express');
+const hbs = require('hbs'); // This will render .hbs files
+const bodyParser = require('body-parser');
+var sessions = require('express-session'); //session for users
+const alert = require('alert-node'); // use to alert users
+var swal = require('sweetalert2');
+const app = express();
+var sessions;
 
 const helper = require('./helper.js'); //Setting helper for hbs
 const info = { //Setting for menubar
@@ -93,7 +93,7 @@ app.post('/rating', function(req, res) {
                     img: results.img[i],
                     title: results.title[i],
                     error: results.error,
-                    styletype: i < 5 ? "searches" : "searches2"
+                    styletype: i < results.img.length/2 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
@@ -139,9 +139,30 @@ app.post('/login', function(req, res) {
                 search: `/rating${results.data[0].id}`,
                 index: "1",
                 signout: '/signout',
-                login1: true
-            }
-            req.session.user = results;
+                login1: true,
+                uid: `${results.data[0].id}`
+            };
+            req.session.user = results.data[0].id;
+            app.post(`/data${results.data[0].id}`, function(req, res) {
+                if (!req.session.user) {
+                    return res.status(401).send();
+                }
+                var id = req.body.uid;
+                var vid = req.body.songlink;
+                var vn = req.body.songname;
+                var addplaylist = {
+                    id: id,
+                    vid: vid,
+                    video_name: vn
+                };
+                playlist.add_to_play_list(addplaylist);
+                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating });
+                // alert('Added to Playlist');
+                setTimeout(function (err) {
+                    res.redirect(`/playlist${results.data[0].id}`);
+                },750);
+            });
+          
             app.get('/signout', function(req, res) {
                 req.session.destroy();
                 res.redirect('/');

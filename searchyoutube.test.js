@@ -23,7 +23,7 @@ test('Test if result is empty', done => {
     su2b.searchYoutube("Dffldsh", callback);
 });
 
-test('Test if result contain 10 link/title/img', done => {
+test('Test if result contain = 10 link/title/img', done => {
     function callback(something, data) {
         expect(data.img.length).toBe(number);
         expect(data.links.length).toBe(number);
@@ -39,11 +39,12 @@ test("Test if key is avaliable", done => {
 });
 
 
-test('Test if result contain <= 5 link/title/img', done => {
+test('Test if result contain < 10 link/title/img', done => {
     function callback(something, data) {
-        expect(data.img.length).toBeLessThanOrEqual(5);
-        expect(data.links.length).toBeLessThanOrEqual(5);
-        expect(data.title.length).toBeLessThanOrEqual(5);
+        expect(data.img.length).toBeLessThanOrEqual(number);
+        expect(data.links.length).toBeLessThanOrEqual(number);
+        expect(data.title.length).toBeLessThanOrEqual(number);
+        expect(data.lessthanfiveerror).toBeTruthy();
         done();
     }
     su2b.searchYoutube("dfas", callback);
