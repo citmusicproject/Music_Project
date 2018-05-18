@@ -53,7 +53,6 @@ function get_song_list(id,callback){ //Require Data: UserID
         if(error){
             console.log("error",error)
         }else{
-            return true;
             let vid = []
             let name = []
             if(results.length >0){
