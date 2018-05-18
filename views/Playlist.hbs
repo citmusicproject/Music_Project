@@ -15,7 +15,14 @@
 <body>
     {{>headbar}}
     <div id="bg"></div>
-    <div id="title">My Playlist</div>
+    <input class="form-control" id="myInput" type="text" style="    position: relative;
+    z-index: 1;
+    width: 60%;
+    left: 0;
+    right: 0;
+    margin: auto;" placeholder="Search..">
+    <div id="title" style="margin-top: 10px;    position: absolute;
+    top: 11%;">My Playlist</div>
     <div class="container-fluid">
         <div class="row">
             <div id="playlist" class="col-sm-5 col-sm-pull-6">
@@ -25,10 +32,15 @@
             </div>
             <div id="myModal" class="modal">
                 <!-- Modal content -->
-                <div class="modal-content">
+                <div class="modal-content" style="position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;">
                     <span class="close">&times;</span>
                     <!-- This going to be the delete from playlist button, find a better button if you can-->
-                    <span class="close" style="position: relative; right: 48%;">&bemptyv;</span> 
+                    <span class="close" style="position: relative; right: 48%;">&bemptyv;</span>
                     <iframe id='youtubesong' width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
@@ -36,18 +48,25 @@
     </div>
     <script>
     // Get the modal
+    $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#playlist div").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
      let tlist = []
     {{#each songs as |song|}}
         tlist.push('{{song.vid}}')
     {{/each}}
-
     // Loop to get Id of div
     for (let i = 0; i < 1000; i++) {
         let sss = (i).toString();
         var modal = document.getElementById('myModal');
 
         // Get the button that opens the modal
-        var btn = document.getElementById("songdiv"+sss);
+        var btn = document.getElementById("songdiv" + sss);
 
         // Used to get src for song
         var youtubevid = document.getElementById('youtubesong')
@@ -60,10 +79,6 @@
             modal.style.display = "block";
             youtubevid.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
         }
-
-        document.getElementById("title").addEventListener("click", function() {
-            modal.style.display = "block";
-        });
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -81,4 +96,5 @@
     }
     </script>
 </body>
+
 </html>
