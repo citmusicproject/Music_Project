@@ -1,5 +1,6 @@
 const key = require('./dbkeys.js') //File that stores database credentials
 var mysql = require('mysql'); //mysql module
+//
 
 //create connection with MySQL
 var connection = mysql.createConnection({
