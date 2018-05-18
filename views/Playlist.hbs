@@ -35,6 +35,12 @@
         </div>
     </div>
     <script>
+        var songdiv = document.getElementsByClassName("songdiv");
+        for (let i=0; i<songdiv.length; i++){
+            console.log(i);
+            console.log('{{song.vid}}')
+        }
+        
     // Get the modal
      let tlist = []
     {{#each songs as |song|}}

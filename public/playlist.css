@@ -71,7 +71,7 @@
 
 /* Modal Content/Box */
 .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 8% auto; /* 15% from the top and centered */
     width: 62vw; /* Could be more or less, depending on screen size */
     height:35vw;
     border-radius:0px !important;
