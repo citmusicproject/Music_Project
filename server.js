@@ -9,6 +9,7 @@ const alert = require('alert-node'); // use to alert users
 var swal = require('sweetalert2');
 const app = express();
 var sessions;
+//
 
 const helper = require('./helper.js'); //Setting helper for hbs
 const info = { //Setting for menubar
