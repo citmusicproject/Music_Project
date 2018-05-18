@@ -48,10 +48,9 @@
     </div>
     <script>
         var songdiv = document.getElementsByClassName("songdiv");
-        for (let i=0; i<songdiv.length; i++){
-            console.log(i);
-            console.log('{{song.vid}}')
-        }
+        songdiv.addEventListener("mouseover", function(){
+            alert('hi');
+        });
         
     // Get the modal
     $(document).ready(function() {
