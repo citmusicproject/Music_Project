@@ -1,22 +1,16 @@
-//variables
-const key = require('./dbkeys.js') //File that stores database credentials
-var mysql = require('mysql'); //mysql module
 
- var connection = mysql.createConnection({ 
-  host     : key.RDS_HOSTNAME,
-  user     : key.RDS_USERNAME,
-  password : key.RDS_PASSWORD,
-  port     : key.RDS_PORT,
-  database : key.RDS_DB_NAME
-});
+const db = require('./database.js')
+
+//Removing Video from favourite List
 
 /**
 * Removing Video from favourite List
 * Require Data: userID, VideoID
 * @param {array} user - Gets userID and VideoID
 */
+
 function remove_from_list(user){ //Require Data: userID, VideoID
-        connection.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
+        db.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
           }else{
@@ -37,7 +31,7 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
         vid:user.vid,
         video_name:user.video_name
     }
-        connection.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
+        db.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
           if (error) {
             console.log("error ocurred",error);
           }else{
@@ -55,7 +49,7 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
 */
 function get_song_list(id,callback){ //Require Data: UserID
 
-    connection.query(`SELECT * FROM playlist WHERE id = ?`,[id], function(error, results, fields){
+    db.query(`SELECT * FROM playlist WHERE id = ?`,[id], function(error, results, fields){
         if(error){
             console.log("error",error)
         }else{
