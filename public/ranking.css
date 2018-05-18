@@ -94,14 +94,25 @@
 #player{
     position: fixed;
     display: none;
-    height: 315px;
-    width: 560px;
+    height: 480px;
+    width: 100vw;
     top: 0px;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin: auto;
     z-index: 5;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#youtubeVideo{
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    position: absolute;
+
+
+
 }
 
 .playImage{
