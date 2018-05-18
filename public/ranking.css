@@ -50,7 +50,7 @@
 #bannerTitle{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: 0 0 10px black;
     font-weight: bold;
     font-size: 300%;
     display: inline-block;
@@ -86,7 +86,10 @@
     position: relative;
 }
 
-.rc:hover{opacity: 1}
+.rc:hover{
+    opacity: 1;
+    background-color: rgba(31, 26, 20, 0.5);
+    }
 
 #player{
     position: fixed;
@@ -106,6 +109,7 @@
     height: 40px;
     position: absolute;
     left: -50px;
+    top: 30px;
     transition: 0.2s;
     
 }
@@ -116,12 +120,13 @@
     width: 5%;
     height: 75px;
     position: absolute;
-    top: 0px;
+    /*top: 0px;
     bottom: 0px;
-    margin: auto;
+    margin: auto;*/
     left: 3%;
     text-align: center;
     color: white;
+    top:38%;
  
 }
 
@@ -130,17 +135,16 @@
     height: 75px;
     left: 10%;
     position: absolute;
-    
+    top: 13%;
 }
 
 
 .description{
     position:relative;
     left: 20%;
-    top: 5%;
+    top: 22%;
     display: inline-block;
     width: 100%;
-
 
 }
 
@@ -148,7 +152,7 @@
     position: relative;
     font-size: 150%;
     color: white;
-    
+    text-shadow: 0 0 0.7px black;
 }
 
 .songArtist{
