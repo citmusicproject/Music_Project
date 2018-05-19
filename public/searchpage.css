@@ -104,10 +104,8 @@ form.example::after {
 
 /* Standard syntax */
 @keyframes fire2 {
-    from {width: 0%;
-    display:none;}
-    to {width: 20%;
-    display:block;}
+    from {width: 0%;}
+    to {width: 20%;}
 }
 
 #loginText{
