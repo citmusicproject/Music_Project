@@ -28,7 +28,12 @@
             <div id="playlist" class="col-sm-5 col-sm-pull-6">
                 {{#each songs as |song|}}
                 <div id="songdiv{{@index}}" class="songdiv" onclick="myFunction()">
-                {{song.vn}}
+                    <div class="marquee">
+                      <div>
+                        <span id="marqueesong">{{song.vn}}</span>
+                        <span>{{song.vn}}</span>
+                      </div>
+                    </div>
             </div>
                 {{/each}}
             </div>
@@ -49,6 +54,7 @@
         </div>
     </div>
     <script>
+       
     // Get the modal
     $(document).ready(function() {
         $("#myInput").on("keyup", function() {
@@ -62,8 +68,25 @@
     {{#each songs as |song|}}
         tlist.push('{{song.vid}}')
     {{/each}}
+    function textWidth(text, fontProp) {
+    var tag = document.createElement("div");
+    tag.style.position = "absolute";
+    tag.style.left = "-999em";
+    tag.style.whiteSpace = "nowrap";
+    tag.style.font = fontProp;
+    tag.innerHTML = text;
+
+    document.body.appendChild(tag);
+
+    var result = tag.clientWidth;
+
+    document.body.removeChild(tag);
+
+    return result;
+}
     // Loop to get Id of div
     for (let i = 0; i < 1000; i++) {
+
         let sss = (i).toString();
         var modal = document.getElementById('myModal');
 

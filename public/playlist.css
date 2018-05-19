@@ -27,15 +27,27 @@
     right:0;
     position:relative;
     top:10px;
+    animation-name: slide;
+    animation-duration:2s;
 }
+@keyframes slide{
+    from{left:-100vw;}
+    to{left:0px;}
+}
+
 .songdiv{
     height:15%;
     width: 31vw;
-    background-color:white;
+    background-color:red;
+    color:white;
     margin:5px;
     display:inline-grid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     align-content:center;
+    padding:10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
 }
 
 .playbutton{
@@ -49,8 +61,8 @@
 .songdiv:hover{
     filter:brightness(80%);
     cursor:pointer;
+    
 }
-
 .songtitle{
     position:absolute;
 }
@@ -71,7 +83,7 @@
 
 /* Modal Content/Box */
 .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 8% auto; /* 15% from the top and centered */
     width: 62vw; /* Could be more or less, depending on screen size */
     height:35vw;
     border-radius:0px !important;
@@ -99,4 +111,33 @@
     margin:auto;
     left:0;
     right:0;
+}
+
+.marquee {
+  height: 25px;
+  width: 420px;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee div {
+  display: block;
+  width: 200%;
+  height: 30px;
+
+  position: absolute;
+  overflow: hidden;
+
+  animation: marquee 5s linear infinite;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
 }
