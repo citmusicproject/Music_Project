@@ -23,7 +23,7 @@ function gpassword() {
 
 //This function used to search song from youtube and return links,img,title, and possible errors
 function searchYoutube(keyword, callback) {
-    var song = `${keyword}`
+    var song = `${keyword} VEVO`
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];
