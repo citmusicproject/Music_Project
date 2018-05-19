@@ -47,7 +47,7 @@ function login(user, callback) {
             if (results.length > 0) {
                 if (bcrypt.compareSync(password, results[0].password)) {
                     console.log("successful");
-                    callback("S", {
+                    callback(undefined, {
                         data: results
                     });
                 } else {

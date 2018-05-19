@@ -21,7 +21,7 @@ test('Verify key file contains data', () => {
 
 test('Connect to database', done => {
     function callback(err) {
-        expect(err).toBe(false);
+        expect(err).toBe(null);
         done();
     }
 
@@ -43,7 +43,7 @@ test('Try to register again', () => {
         last: "lastname",
         email: nemail,
         pw: "passwordut"
-    })).toBe(false);
+    })).toBe(undefined);
 });
 
 test('Try login with wrong username', done => {
@@ -72,7 +72,7 @@ test('Test login with wrong password', done => {
 
 test('Test login with correct password', done => {
     function callback(ud, data) {
-        expect(ud).toEqual("P");
+        expect(ud).toEqual(undefined);
         done();
     }
 
