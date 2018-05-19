@@ -1,4 +1,3 @@
-
 const db = require('./database.js')
 
 //Removing Video from favourite List
