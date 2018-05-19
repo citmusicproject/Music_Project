@@ -1,9 +1,8 @@
-var mysql = require('mysql'); //mysql module
 const bcrypt = require('bcrypt'); // used to encrypt passwords
 const alert = require('alert-node'); //use to alert users
 
-const db = require('./database.js')
-const swal = require('sweetalert2')
+const db = require('./database.js');
+const swal = require('sweetalert2');
 
 //random unique id generator
 var uniqueID = function () {
@@ -27,6 +26,7 @@ function register(user) {
     db.query('INSERT INTO users SET ?', users, function (error, results, fields) {
         if (error) {
             console.log("error ocurred", error);
+            return false;
         } else {
             // console.log('Result: ', results);
             // console.log(users.password);
@@ -47,16 +47,18 @@ function login(user, callback) {
             if (results.length > 0) {
                 if (bcrypt.compareSync(password, results[0].password)) {
                     console.log("successful");
-                    callback(undefined, {
+                    callback("S", {
                         data: results
                     });
                 } else {
                     console.log("password not match");
                     alert('Incorrect Password');
+                    callback("P", {});
                 }
             } else {
                 console.log("email does not exist")
                 alert("Invaild Password");
+                callback("E", {});
             }
         }
     });
