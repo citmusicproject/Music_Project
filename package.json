@@ -11,11 +11,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "alert-node": "^1.2.1",
+    "bcrypt": "^2.0.1",
     "dotenv": "^5.0.1",
     "jest": "^22.4.4",
     "jsdoc": "^3.5.5",
+    "mysql": "^2.15.0",
     "npm": "^6.0.1",
     "sweetalert": "^2.1.0",
-    "sweetalert2": "^7.20.5"
+    "sweetalert2": "^7.20.5",
+    "youtube-search": "^1.1.1"
   }
 }
