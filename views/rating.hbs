@@ -29,7 +29,7 @@
             </div>
         </form>
          {{#if error}}
-        <div id="error" style="color: white;position: absolute; left: 0; right: 0; margin: auto; height: 10%; width: 26%;"><h1 style="font-weight:bold; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">NO SEARCH RESULTS</h1></div>
+        <div id="error" style="color: white;position: absolute; left: 0; right: 0; margin: auto; height: 10%; width: 26%;"><h1 style="font-weight:bold;text-shadow: 0 0 10px black;">NO SEARCH RESULTS</h1></div>
         {{else}}
     <div class="container-fluid">
         <div class="row">
@@ -61,7 +61,7 @@
         </div>
     <div id="searchdisplay" class="col-sm-5 col-sm-pull-6" >
         {{#each data}}
-        <div class="{{this.styletype}}" id='box{{@index}}'>
+        <div class="searches" id='box{{@index}}'>
             <img class="thumbnails" id='thumb{{@index}}' src="{{this.img}}" />
             <div class="thumbnailtitle">{{this.title}}</div>
         </div>

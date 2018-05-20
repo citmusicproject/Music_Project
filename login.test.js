@@ -1,22 +1,15 @@
 const userUtils = require("./login");
-const mysql = require('mysql');
-const key = require('./dbkeys.js');
-var connection = mysql.createConnection({
-    host: key.RDS_HOSTNAME,
-    user: key.RDS_USERNAME,
-    password: key.RDS_PASSWORD,
-    port: key.RDS_PORT,
-    database: key.RDS_DB_NAME
-});
+const db = require('./database.js')
+require('dotenv').config();
 
 let nemail = `unittest${Math.round(Math.random() * 2147483647)}@gmail.com`;
 
 test('Verify key file contains data', () => {
-    expect(key.RDS_HOSTNAME).toBeDefined();
-    expect(key.RDS_USERNAME).toBeDefined();
-    expect(key.RDS_PASSWORD).toBeDefined();
-    expect(key.RDS_PORT).toBeDefined();
-    expect(key.RDS_DB_NAME).toBeDefined();
+    expect(process.env.RDS_HOSTNAME).toBeDefined();
+    expect(process.env.RDS_USERNAME).toBeDefined();
+    expect(process.env.RDS_PASSWORD).toBeDefined();
+    expect(process.env.RDS_PORT).toBeDefined();
+    expect(process.env.RDS_DB_NAME).toBeDefined();
 });
 
 test('Connect to database', done => {
@@ -25,7 +18,7 @@ test('Connect to database', done => {
         done();
     }
 
-    connection.connect(callback);
+    db.connect(callback);
 });
 
 test('Try to register a user', () => {

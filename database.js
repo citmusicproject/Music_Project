@@ -1,7 +1,10 @@
 require('dotenv').config();
 var mysql = require('mysql'); //mysql module
 
-//create connection with MySQL
+
+/**
+* This function create connection with the MySQL database.
+*/
 var connection = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
     user: process.env.RDS_USERNAME,

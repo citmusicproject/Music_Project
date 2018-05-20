@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">31.58% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/22</span>
+        <span class='fraction'>6/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">31.58% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/22</span>
+        <span class='fraction'>6/19</span>
       </div>
     </div>
     <p class="quiet">
@@ -136,7 +136,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,25 +157,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -210,12 +210,12 @@
 * @param {array} user - Gets userID and VideoID
 */
 &nbsp;
-function remove_from_list(user){ //Require Data: userID, VideoID
-        db.query(`DELETE FROM playlist WHERE idx = '${user.vid}' &amp;&amp; id = '${user.id}'`,<span class="fstat-no" title="function not covered" >fu</span>nction (error, results, fields) {
+function remove_from_list(user, callback){ //Require Data: userID, VideoID
+        db.query(`DELETE FROM playlist WHERE vid = '${user.vid}' &amp;&amp; id = '${user.id}'`,<span class="fstat-no" title="function not covered" >fu</span>nction (error, results, fields) {
 <span class="cstat-no" title="statement not covered" >          if (error) {</span>
-<span class="cstat-no" title="statement not covered" >            console.log("error ocurred",error);</span>
+            // console.log("error ocurred",error);s
           }else{
-<span class="cstat-no" title="statement not covered" >            console.log('Result: ', results);</span>
+<span class="cstat-no" title="statement not covered" >            callback('remove', results)</span>
           }
         });
 }
@@ -225,7 +225,7 @@ function remove_from_list(user){ //Require Data: userID, VideoID
 * Require Data: UserID, VideoID, Video Name
 * @param {array} user - Gets userID, VideoID and Video Name
 */
-function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
+function add_to_play_list(user,callback){ //Require Data: UserID, VideoID, Video Name
 &nbsp;
     const users = {
         id:user.id,
@@ -234,9 +234,9 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
     }
         db.query('INSERT INTO playlist SET ?',users, <span class="fstat-no" title="function not covered" >fu</span>nction (error, results, fields) {
 <span class="cstat-no" title="statement not covered" >          if (error) {</span>
-<span class="cstat-no" title="statement not covered" >            console.log("error ocurred",error);</span>
+            // console.log("error ocurred",error);
           }else{
-<span class="cstat-no" title="statement not covered" >            console.log('Result: ', results);</span>
+<span class="cstat-no" title="statement not covered" >            callback('added', results)</span>
           }
         });
   }
@@ -252,7 +252,7 @@ function get_song_list(id,callback){ //Require Data: UserID
 &nbsp;
     db.query(`SELECT * FROM playlist WHERE id = ?`,[id], <span class="fstat-no" title="function not covered" >fu</span>nction(error, results, fields){
 <span class="cstat-no" title="statement not covered" >        if(error){</span>
-<span class="cstat-no" title="statement not covered" >            console.log("error",error)</span>
+            // console.log("error",error)
         }else{
             let vid = <span class="cstat-no" title="statement not covered" >[]</span>
             let name = <span class="cstat-no" title="statement not covered" >[]</span>
@@ -266,7 +266,7 @@ function get_song_list(id,callback){ //Require Data: UserID
                   name: name
                 });
             }else{
-<span class="cstat-no" title="statement not covered" >                console.log("error2")</span>
+<span class="cstat-no" title="statement not covered" >                callback("No_song",{error: true})</span>
             }
         }
     });
@@ -283,7 +283,7 @@ module.exports={
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri May 18 2018 20:13:26 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun May 20 2018 13:07:06 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>
