@@ -6,3 +6,4 @@ accdata.json
 dbkeys.js
 dbkeys.json
 .env
+database.js

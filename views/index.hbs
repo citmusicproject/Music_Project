@@ -26,14 +26,16 @@
         <span class="text2">Music World</span>
     </div>
 </body>
-<!-- <script type="text/javascript">
-    {{#if info.login1}}
-    swal({
-  title: "Login Successful!",
-  icon: "success",
-});
+<script type="text/javascript">
+    {{#if loginsuccess}}
+        swal({ title: "Login Successful!", icon: "success", });
     {{else}}
     {{/if}}
-</script> -->
+    //
+    {{#if signout}}
+        swal({ title: "Sign Out", icon: "success", });
+    {{else}}
+    {{/if}}
+</script>
 
 </html>
