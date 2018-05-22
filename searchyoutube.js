@@ -1,13 +1,16 @@
 var search = require('youtube-search'); // easy way use to search youtube
-var secret = require('./keys');//get api key from json file
+// var secret = require('./keys');//get api key from json file
 var fs = require('fs');
 var alert = require('alert-node'); //creates an alert for website
 const request = require('request');
+require('dotenv').config();
 
 // api key from keys.json
-var password = secret.key;
+var password = process.env.key
 
-// parameters for youtube search
+/**
+* Parameters for Youtube Search
+*/
 var opts = {
     maxResults: 10,
     key: password,
@@ -16,14 +19,22 @@ var opts = {
     chart: "mostPopular"
 };
 
-// This function return api key for youtube api
+/**
+* This function returns API key for Youtube API.
+*/
 function gpassword() {
     return password;
 }
 
-//This function used to search song from youtube and return links,img,title, and possible errors
+/**
+* This function used to search song from youtube and return links, imgs, titles, and possible errors
+* Require Data: keyword
+* @param {string} keyword - Song Name
+* @param {function} callback - Returns an object
+*/
 function searchYoutube(keyword, callback) {
-    var song = `${keyword}`
+    var song = `${keyword} VEVO`
+    // var song = `${keyword} song`
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];
@@ -31,7 +42,7 @@ function searchYoutube(keyword, callback) {
         var title = [];
         var error = false;
         var lessthanfiveerror = false;
-        for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < 10; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);

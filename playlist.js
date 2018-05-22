@@ -8,12 +8,12 @@ const db = require('./database.js')
 * @param {array} user - Gets userID and VideoID
 */
 
-function remove_from_list(user){ //Require Data: userID, VideoID
-        db.query(`DELETE FROM playlist WHERE idx = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
+function remove_from_list(user, callback){ //Require Data: userID, VideoID
+        db.query(`DELETE FROM playlist WHERE vid = '${user.vid}' && id = '${user.id}'`,function (error, results, fields) {
           if (error) {
-            console.log("error ocurred",error);
+            // console.log("error ocurred",error);s
           }else{
-            console.log('Result: ', results);
+            callback('remove', results)
           }
         });
 }
@@ -23,7 +23,7 @@ function remove_from_list(user){ //Require Data: userID, VideoID
 * Require Data: UserID, VideoID, Video Name
 * @param {array} user - Gets userID, VideoID and Video Name
 */
-function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
+function add_to_play_list(user,callback){ //Require Data: UserID, VideoID, Video Name
 
     const users = {
         id:user.id,
@@ -32,9 +32,9 @@ function add_to_play_list(user){ //Require Data: UserID, VideoID, Video Name
     }
         db.query('INSERT INTO playlist SET ?',users, function (error, results, fields) {
           if (error) {
-            console.log("error ocurred",error);
+            // console.log("error ocurred",error);
           }else{
-            console.log('Result: ', results);
+            callback('added', results)
           }
         });
   }
@@ -50,11 +50,11 @@ function get_song_list(id,callback){ //Require Data: UserID
 
     db.query(`SELECT * FROM playlist WHERE id = ?`,[id], function(error, results, fields){
         if(error){
-            console.log("error",error)
+            // console.log("error",error)
         }else{
             let vid = []
             let name = []
-            if(results.length >0){
+            if(results.length > 0){
                 for(i = 0; i <results.length;i++){
                    vid.push(results[i].vid);
                    name.push(results[i].video_name)
@@ -64,7 +64,7 @@ function get_song_list(id,callback){ //Require Data: UserID
                   name: name
                 });
             }else{
-                console.log("error2")
+                callback(undefined,{error: true})
             }
         }
     });

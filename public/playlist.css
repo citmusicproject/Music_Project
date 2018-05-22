@@ -38,7 +38,7 @@
 .songdiv{
     height:15%;
     width: 31vw;
-    background-color:red;
+    background-color: rgba(255,0,0,0.5);
     color:white;
     margin:5px;
     display:inline-grid;

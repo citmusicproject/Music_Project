@@ -28,6 +28,16 @@
         </div>
     </div>
     <script>
+        {{#if signup}}
+        swal({ title: "Registration Successfully", icon: "success", });
+        {{else}}
+        {{/if}}
+        //
+        {{#if loginfail}}
+        swal({ title: "Login Failed", icon: "error", });
+        {{else}}
+        {{/if}}
+        //
     closeButton.addEventListener("mouseover", function() {
         closeButton.style.cursor = "pointer";
         closeButton.style.backgroundColor = "rgba(19, 12, 2, 1)";

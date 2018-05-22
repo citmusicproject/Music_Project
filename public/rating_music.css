@@ -77,7 +77,9 @@
     display:block;
     z-index:50;
     background-color:white;
-    padding:0;
+    padding-top: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
     visibility:hidden;
 }
 #searchbardiv{
