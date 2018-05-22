@@ -42,7 +42,7 @@ function searchYoutube(keyword, callback) {
         var title = [];
         var error = false;
         var lessthanfiveerror = false;
-        for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < 10; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);
