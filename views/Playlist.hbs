@@ -16,12 +16,7 @@
 <body>
     {{>headbar}}
     <div id="bg"></div>
-    <input class="form-control" id="myInput" type="text" style="    position: relative;
-    z-index: 1;
-    width: 60%;
-    left: 0;
-    right: 0;
-    margin: auto;" placeholder="Search..">
+    <input class="form-control" id="myInput" type="text" style="position: relative; z-index: 1; width: 60%; left: 0; right: 0; margin: auto;" placeholder="Search..">
     <div id="title" style="margin-top: 10px;    position: absolute;
     top: 11%;">My Playlist</div>
     <div class="container-fluid">
@@ -46,7 +41,7 @@
                         <form action='/delete' method='post' name='delete'>
                             <input id='delvid' type="hidden" value="" name="vid">
                             <input id='uid' type= 'hidden' value="{{info.uid}}" name="uid">
-                            <button id='deletesong' type="submit" onclick='swal({title: "Song Removed From Playlist", icon: "success", button:true})'class="btn btn-default btn-sm">
+                            <button id='deletesong' type="submit" onclick='swal({text: "Song Removed From Playlist", icon: "success", button:false})'class="btn btn-default btn-sm">
                               <span class="glyphicon glyphicon-trash"></span> 
                             </button>
                         </form>
@@ -58,7 +53,7 @@
     </div>
     <script>
         {{#if nosong}}
-            swal({title: "Empty Playlist", text: 'Want to add a song?', icon: "warning", buttons:['No', 'Sure'] }).then(sure => {if(sure){ window.location.href = "{{info.home}}"; }});
+            swal({title: "Empty Playlist", text: 'Want to add a song?', icon: "warning", buttons:['No', 'Yes'] }).then(sure => {if(sure){ window.location.href = "{{info.home}}"; }});
         {{else}}
         {{/if}}
     // Get the modal
