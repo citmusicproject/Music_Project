@@ -20,7 +20,7 @@ var opts = {
 };
 
 /**
-* This function returns API key for Youtube API
+* This function returns API key for Youtube API.
 */
 function gpassword() {
     return password;
