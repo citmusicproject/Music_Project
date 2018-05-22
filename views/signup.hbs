@@ -31,6 +31,10 @@
         </div>
     </div>
     <script>
+        {{#if wrong}}
+        swal({title: "Invaild Password", text: "Minimum Eight Characters", icon: "error", })
+        {{else}}
+        {{/if}}
     //styling
     closeButton.addEventListener("mouseover", function() {
         closeButton.style.cursor = "pointer";

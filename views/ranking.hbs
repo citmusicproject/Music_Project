@@ -6,6 +6,7 @@
     <link href="ranking.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -13,8 +14,11 @@
     <div id="main">
         {{>headbar}}
         <div id="banner">
+            {{#if notop}}
+            {{else}}
             <div id="musicWorldImage"></div>
-            <div id="bannerTitle">Top Songs</div>
+            <div id="bannerTitle">Top 10</div>
+            {{/if}}
         </div>
         <div id="player">
             <iframe id="youtubeVideo" width="853" height="480" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -34,6 +38,10 @@
             {{/each}}
     </div>
     <script>
+    {{#if notop}}
+    swal({title: "Top 10 List will be back shortly!", icon: "error"}).then(sure => {if(sure){ window.location.href = "{{info.home}}"; }});
+    {{else}}
+    {{/if}}
     // Create a list that with all the songs vid
     let tlist = []
     {{#each topsongs as |song|}}

@@ -6,19 +6,16 @@ const bodyParser = require('body-parser');
 var sessions = require('express-session'); //session for users
 const alert = require('alert-node'); // use to alert users
 var swal = require('sweetalert2');
-const app = express();
-const login = require('./login.js');
-const playlist = require('./playlist.js');
-const rating = require('./rating.js'); 
-var youtube = require('./searchyoutube.js');
-var sessions;
-//
-
 const login = require('./login.js');
 const playlist = require('./playlist.js');
 const rating = require('./rating.js');
-const helper = require('./helper.js'); 
 var youtube = require('./searchyoutube.js');
+const Entities = require('html-entities').AllHtmlEntities;
+const helper = require('./helper.js');
+
+const app = express();
+const entities = new Entities();
+var sessions;
 
 const info = {
     login: "Login/Signup",
@@ -29,7 +26,7 @@ const info = {
     playlist: "/login",
     index: "-1",
     search: "/rating",
-    }; // info for header
+}; // info for header
 
 hbs.registerPartials(__dirname + '/views/partial');
 app.set('views', './views');
@@ -63,7 +60,7 @@ app.get('/rating', function(req, res) {
                     link: results.links[i],
                     img: results.img[i],
                     title: results.title[i],
-                    styletype: i < 5 ? "searches" : "searches2"
+                    styletype: i < 10 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
@@ -87,7 +84,6 @@ app.post('/rating', function(req, res) {
                     img: results.img[i],
                     title: results.title[i],
                     error: results.error,
-                    styletype: i < results.img.length/2 ? "searches" : "searches2"
                 });
             }
             res.render('rating.hbs', {
@@ -114,15 +110,13 @@ app.post('/login', function(req, res) {
     login.login(users, (errorMessage, results) => {
         if (errorMessage) {
             console.log(errorMessage);
-        } else if (results) {
-            alert('Login Successful');
+        } else if (results.data) {
             if (!results) {
                 return res.status(404).send();
             }
             const info = {
                 login: `Hi, ${results.data[0].first_name} ${results.data[0].last_name}`,
                 home: `/index${results.data[0].id}`,
-                link: "",
                 discover: `/discover${results.data[0].id}`,
                 ranking: `/ranking${results.data[0].id}`,
                 playlist: `/playlist${results.data[0].id}`,
@@ -133,6 +127,30 @@ app.post('/login', function(req, res) {
                 uid: `${results.data[0].id}`
             };
             req.session.user = results.data[0].id;
+            app.post('/delete', function(req,res) {
+                 if (!req.session.user) {
+                    return res.status(401).send();
+                }
+                else{
+                    var id = req.body.uid;
+                    var vid = req.body.vid;
+                    var user = {
+                        vid: vid,
+                        id: id
+                    }
+                    playlist.remove_from_list(user, (errorMessage, results) => {
+                        if (errorMessage){
+                            errorMessage
+                        }
+                        else{
+                            results
+                        }
+                    })
+                    setTimeout(function(err) {
+                        res.redirect(`/playlist${results.data[0].id}`);
+                     }, 750);
+                    }
+            });
             app.post(`/data${results.data[0].id}`, function(req, res) {
                 if (!req.session.user) {
                     return res.status(401).send();
@@ -145,16 +163,44 @@ app.post('/login', function(req, res) {
                     vid: vid,
                     video_name: vn
                 };
-                playlist.add_to_play_list(addplaylist);
-                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating });
+                playlist.add_to_play_list(addplaylist, (errorMessage, results) => {
+                    if (errorMessage){
+                        errorMessage
+                    } else{
+                        results
+                    }
+
+                });
+
+                rating.add_rating({ 'id': req.body.uid, 'vid': req.body.songlink, 'rating': req.body.rating }, (errorMessage, results) => {
+                     if (errorMessage){
+                        errorMessage
+                    } else{
+                        results
+                    }
+                });
                 // alert('Added to Playlist');
-                setTimeout(function (err) {
+                setTimeout(function(err) {
                     res.redirect(`/playlist${results.data[0].id}`);
-                },750);
+                }, 750);
             });
             app.get('/signout', function(req, res) {
                 req.session.destroy();
-                res.redirect('/');
+                // res.redirect('/');
+                res.render('index.hbs', {
+                    info: {
+                         login: "Login/Signup",
+                         link: "login",
+                         home: "/",
+                         discover: "/discover",
+                         ranking: "/ranking",
+                         playlist: "/login",
+                         index: "-1",
+                         search: "/rating",
+                     },
+                    color: "red",
+                    signout: true
+                }); 
                 // return res.status(200).send();
             });
             app.get(`/index${results.data[0].id}`, function(req, res) {
@@ -174,18 +220,26 @@ app.post('/login', function(req, res) {
                     if (errorMessage) {
                         console.log(errorMessage);
                     } else {
-                        let dat = [];
-                        for (let i = 0; i < results.vid.length; i++) {
-                            dat.push({
-                                vid: results.vid[i],
-                                vn: results.name[i],
+                        if (results.error == true) {
+                            res.render('Playlist.hbs', {
+                                info: info,
+                                color2: "red",
+                                nosong: true
+                            });
+                        } else {
+                            let dat = [];
+                            for (let i = 0; i < results.vid.length; i++) {
+                                dat.push({
+                                    vid: results.vid[i],
+                                    vn: entities.decode(results.name[i]),
+                                });
+                            }
+                            res.render('Playlist.hbs', {
+                                info: info,
+                                songs: dat,
+                                color2: "red"
                             });
                         }
-                        res.render('Playlist.hbs', {
-                            info: info,
-                            songs: dat,
-                            color2: "red"
-                        });
                     }
                 });
             });
@@ -203,7 +257,6 @@ app.post('/login', function(req, res) {
                                 link: results.links[i],
                                 img: results.img[i],
                                 title: results.title[i],
-                                styletype: i < 5 ? "searches" : "searches2"
                             });
                         }
                         res.render('rating.hbs', {
@@ -297,19 +350,35 @@ app.post('/login', function(req, res) {
                             dat.push({
                                 avg: results.songavg[i],
                                 vid: results.vid[i],
-                                vn: results.name[i]
+                                vn: entities.decode(results.name[i])
                             });
                         }
-                        console.log(dat);
-                        res.render('ranking.hbs', {
+                        if (results.vid.length == 0) {
+                         res.render(`ranking.hbs`,{
                             info: info,
-                            topsongs: dat,
-                            color3: "red"
-                        });
+                            color3: "red",
+                            notop: true
+                         })
+                        }
+                         else{
+                             res.render('ranking.hbs', {
+                                info: info,
+                                topsongs: dat,
+                                color3: "red"
+                            });
+                        }
                     }
                 });
             });
-            res.redirect(`/index${results.data[0].id}`);
+            res.render('index.hbs',{
+                info: info,
+                color: "red",
+                loginsuccess: true
+            })
+        } else {
+            res.render('login.hbs', {
+                loginfail: true
+            });
         }
     });
 });
@@ -323,9 +392,10 @@ app.post('/signup', function(req, res) {
     var pw = req.body.pass;
     var fname = req.body.fname;
     var lname = req.body.lname;
-    if (id.length <= 8 || pw.length < 8 || fname.length <= 0 || lname.length <= 0) {
-        res.redirect('/signup');
-        alert('Invaild Input(s)');
+    if (pw.length <= 7 || fname.length == 0 || lname.length == 0 || id.length < 0) {
+            res.render('signup.hbs',{
+                wrong: true
+            });
     } else {
         var user = {
             email: id,
@@ -334,8 +404,9 @@ app.post('/signup', function(req, res) {
             last: lname
         };
         login.register(user);
-        alert('Sign Up Successful');
-        res.redirect('/login');
+        res.render('login.hbs', {
+            signup: true
+        });
     }
 });
 
@@ -380,21 +451,28 @@ app.get('/ranking', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log(results);
             let dat = [];
             for (let i = 0; i < results.vid.length; i++) {
                 dat.push({
                     avg: results.songavg[i],
                     vid: results.vid[i],
-                    vn: results.name[i]
+                    vn: entities.decode(results.name[i])
                 });
             }
-            console.log(dat);
-            res.render('ranking.hbs', {
-                info: info,
-                topsongs: dat,
-                color3: "red"
-            });
+            if (results.vid.length == 0) {
+                res.render(`ranking.hbs`,{
+                            info: info,
+                            color3: "red",
+                            notop: true
+                         })
+            } else {
+                res.render('ranking.hbs', {
+                    info: info,
+                    topsongs: dat,
+                    color3: "red"
+                });
+            }
+
         }
     });
 });

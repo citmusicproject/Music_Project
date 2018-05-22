@@ -10,17 +10,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
     {{>headbar}}
     <div id="bg"></div>
-    <input class="form-control" id="myInput" type="text" style="    position: relative;
-    z-index: 1;
-    width: 60%;
-    left: 0;
-    right: 0;
-    margin: auto;" placeholder="Search..">
+    <input class="form-control" id="myInput" type="text" style="position: relative; z-index: 1; width: 60%; left: 0; right: 0; margin: auto;" placeholder="Search..">
     <div id="title" style="margin-top: 10px;    position: absolute;
     top: 11%;">My Playlist</div>
     <div class="container-fluid">
@@ -29,32 +25,37 @@
                 {{#each songs as |song|}}
                 <div id="songdiv{{@index}}" class="songdiv" onclick="myFunction()">
                     <div class="marquee">
-                      <div>
-                        <span id="marqueesong">{{song.vn}}</span>
+                      <!-- <div> -->
+                        <!-- <span id="marqueesong">{{song.vn}}</span> -->
                         <span>{{song.vn}}</span>
-                      </div>
+                      <!-- </div> -->
                     </div>
             </div>
                 {{/each}}
             </div>
             <div id="myModal" class="modal">
                 <!-- Modal content -->
-                <div class="modal-content" style="position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;">
+                <div class="modal-content" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;">
                     <span class="close">&times;</span>
-                    <!-- This going to be the delete from playlist button, find a better button if you can-->
-                    <span class="close" style="position: relative; right: 48%;">&bemptyv;</span>
+                    <span style="position: absolute; top:1%; right: -5%; z-index: 100000;">
+                        <form action='/delete' method='post' name='delete'>
+                            <input id='delvid' type="hidden" value="" name="vid">
+                            <input id='uid' type= 'hidden' value="{{info.uid}}" name="uid">
+                            <button id='deletesong' type="submit" onclick='swal({text: "Song Removed From Playlist", icon: "success", button:false})'class="btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-trash"></span> 
+                            </button>
+                        </form>
+                    </span>
                     <iframe id='youtubesong' width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
     <script>
-       
+        {{#if nosong}}
+            swal({title: "Empty Playlist", text: 'Want to add a song?', icon: "warning", buttons:['No', 'Yes'] }).then(sure => {if(sure){ window.location.href = "{{info.home}}"; }});
+        {{else}}
+        {{/if}}
     // Get the modal
     $(document).ready(function() {
         $("#myInput").on("keyup", function() {
@@ -68,6 +69,7 @@
     {{#each songs as |song|}}
         tlist.push('{{song.vid}}')
     {{/each}}
+    //
     function textWidth(text, fontProp) {
     var tag = document.createElement("div");
     tag.style.position = "absolute";
@@ -95,6 +97,7 @@
 
         // Used to get src for song
         var youtubevid = document.getElementById('youtubesong')
+        var delvid = document.getElementById('delvid')
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
@@ -102,7 +105,8 @@
         // When the user clicks on the button, open the modal 
         btn.onclick = function() {
             modal.style.display = "block";
-            youtubevid.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1";
+            youtubevid.src = "https://www.youtube.com/embed/" + tlist[i] + "?autoplay=1&&cc_load_policy=1";
+            delvid.value = tlist[i]
         }
 
         // When the user clicks on <span> (x), close the modal
