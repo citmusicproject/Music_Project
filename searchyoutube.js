@@ -12,7 +12,7 @@ var password = process.env.key
 * Parameters for Youtube Search
 */
 var opts = {
-    maxResults: 10,
+    // maxResults: 10,
     key: password,
     type: "video",
     videoCategoryId: "10",
@@ -33,7 +33,8 @@ function gpassword() {
 * @param {function} callback - Returns an object
 */
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} VEVO`
+    // var song = `${keyword} VEVO`
+    var song = `${keyword} song`
     search(song, opts, function(err, results) {
         var i = 0;
         var links = [];

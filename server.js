@@ -6,18 +6,16 @@ const bodyParser = require('body-parser');
 var sessions = require('express-session'); //session for users
 const alert = require('alert-node'); // use to alert users
 var swal = require('sweetalert2');
-const app = express();
 const login = require('./login.js');
 const playlist = require('./playlist.js');
 const rating = require('./rating.js');
 var youtube = require('./searchyoutube.js');
 const Entities = require('html-entities').AllHtmlEntities;
-
-const entities = new Entities();
-var sessions;
-
 const helper = require('./helper.js');
 
+const app = express();
+const entities = new Entities();
+var sessions;
 
 const info = {
     login: "Login/Signup",
