@@ -1,5 +1,5 @@
 language: node_js
 node_js:
- - "secure"
- install: 
-  - npm i youtube-search
+ - "node"
+before_install:
+  - npm i -g youtube-search
