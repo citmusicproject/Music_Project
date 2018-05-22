@@ -1,6 +1,7 @@
 const su2b = require("./searchyoutube");
-var secret = require('./keys');
-var password = secret.key;
+// var secret = require('./keys');
+require('dotenv').config();
+var password = process.env.key;
 var number = 10;
 // https://facebook.github.io/jest/docs/en/asynchronous.html
 // Use done argument to test callback.
