@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527023812461" clover="3.2.0">
-  <project timestamp="1527023812462" name="All files">
-    <metrics statements="85" coveredstatements="68" conditionals="29" coveredconditionals="16" methods="15" coveredmethods="12" elements="129" coveredelements="96" complexity="0" loc="85" ncloc="85" packages="1" files="5" classes="5">
+<coverage generated="1527024775062" clover="3.2.0">
+  <project timestamp="1527024775062" name="All files">
+    <metrics statements="85" coveredstatements="67" conditionals="29" coveredconditionals="13" methods="15" coveredmethods="12" elements="129" coveredelements="92" complexity="0" loc="85" ncloc="85" packages="1" files="5" classes="5">
       <file name="database.js" path="C:\Users\alexp\OneDrive\Desktop\Music_Project\Music_Project-1\database.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
@@ -13,8 +13,8 @@
         <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="21" type="stmt"/>
-        <line num="15" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="23" type="stmt"/>
+        <line num="15" count="23" type="cond" truecount="2" falsecount="0"/>
         <line num="16" count="20" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
@@ -74,7 +74,7 @@
         <line num="73" count="1" type="stmt"/>
       </file>
       <file name="searchyoutube.js" path="C:\Users\alexp\OneDrive\Desktop\Music_Project\Music_Project-1\searchyoutube.js">
-        <metrics statements="26" coveredstatements="25" conditionals="11" coveredconditionals="8" methods="3" coveredmethods="3"/>
+        <metrics statements="26" coveredstatements="24" conditionals="11" coveredconditionals="5" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -85,21 +85,21 @@
         <line num="26" count="1" type="stmt"/>
         <line num="36" count="3" type="stmt"/>
         <line num="38" count="3" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
-        <line num="41" count="3" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
-        <line num="43" count="3" type="stmt"/>
-        <line num="44" count="3" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="46" count="20" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="46" count="22" type="stmt"/>
         <line num="47" count="20" type="stmt"/>
         <line num="48" count="20" type="stmt"/>
-        <line num="50" count="3" type="cond" truecount="6" falsecount="0"/>
-        <line num="51" count="1" type="stmt"/>
+        <line num="50" count="2" type="cond" truecount="3" falsecount="3"/>
+        <line num="51" count="0" type="stmt"/>
         <line num="53" count="2" type="cond" truecount="2" falsecount="3"/>
         <line num="54" count="0" type="stmt"/>
-        <line num="56" count="3" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
       </file>
     </metrics>
