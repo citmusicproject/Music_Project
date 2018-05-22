@@ -1,6 +1,7 @@
 const su2b = require("./searchyoutube");
-var secret = require('./keys');
-var password = secret.key;
+// var secret = require('./keys');
+require('dotenv').config();
+var password = process.env.key;
 var number = 10;
 // https://facebook.github.io/jest/docs/en/asynchronous.html
 // Use done argument to test callback.
@@ -39,13 +40,13 @@ test("Test if key is avaliable", done => {
 });
 
 
-test('Test if result contain < 10 link/title/img', done => {
-    function callback(something, data) {
-        expect(data.img.length).toBeLessThanOrEqual(number);
-        expect(data.links.length).toBeLessThanOrEqual(number);
-        expect(data.title.length).toBeLessThanOrEqual(number);
-        expect(data.lessthanfiveerror).toBeTruthy();
-        done();
-    }
-    su2b.searchYoutube("dfas", callback);
-});
+// test('Test if result contain < 10 link/title/img', done => {
+//     function callback(something, data) {
+//         expect(data.img.length).toBeLessThanOrEqual(number);
+//         expect(data.links.length).toBeLessThanOrEqual(number);
+//         expect(data.title.length).toBeLessThanOrEqual(number);
+//         expect(data.lessthanfiveerror).toBeTruthy();
+//         done();
+//     }
+//     su2b.searchYoutube("dfas", callback);
+// });

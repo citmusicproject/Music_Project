@@ -1,6 +1,11 @@
 const db = require('./database.js')
 
-//Get rating of Video
+/**
+* This function get the rating of Video from 0.5 to 5 for video from the sql database.
+* Requires: video id 
+* @param {string} vid - Youtube Video id 
+* @param {function} callback - Returns an object
+*/
 function get_rating(vid, callback) {
 
     db.query(`SELECT * FROM playlist WHERE vid = ?`, [vid], function(error, results, fields) {
@@ -21,7 +26,11 @@ function get_rating(vid, callback) {
     });
 }
 
-//Add rating for video
+
+/**
+* This function add a rating from 0.5 to 5 for video from the sql database.
+* @param {function} callback - Returns an object
+*/
 function add_rating(user) { //require data: userID, videoID, Rating
     let sql = `update playlist set rating = ${user.rating} WHERE id = '${user.id}' && vid = '${user.vid}'`
     db.query(sql, function(error, results, fields) {
@@ -33,7 +42,11 @@ function add_rating(user) { //require data: userID, videoID, Rating
     });
 }
 
-//This function gets the top songs from the database
+
+/**
+* This function gets the top songs from the sql database.
+* @param {function} callback - Returns an object
+*/
 function top_songs(callback) {
     let topsong = `select video_name, vid, avg(rating) as 'avg' from playlist where rating is not null group by vid order by avg(rating) DESC limit 10;`
     db.query(topsong, function(error, results, fields) {
