@@ -1,5 +1,6 @@
-const lgin = require("./login");
+const userUtils = require("./login");
 const mysql = require('mysql');
+const key = require('./dbkeys.js');
 var connection = mysql.createConnection({
     host: key.RDS_HOSTNAME,
     user: key.RDS_USERNAME,
@@ -8,23 +9,75 @@ var connection = mysql.createConnection({
     database: key.RDS_DB_NAME
 });
 
-connection.connect(function (err) {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
+let nemail = `unittest${Math.round(Math.random() * 2147483647)}@gmail.com`;
+
+test('Verify key file contains data', () => {
+    expect(key.RDS_HOSTNAME).toBeDefined();
+    expect(key.RDS_USERNAME).toBeDefined();
+    expect(key.RDS_PASSWORD).toBeDefined();
+    expect(key.RDS_PORT).toBeDefined();
+    expect(key.RDS_DB_NAME).toBeDefined();
+});
+
+test('Connect to database', done => {
+    function callback(err) {
+        expect(err).toBe(false);
+        done();
     }
-    console.log('Connected to database.');
+
+    connection.connect(callback);
+});
+
+test('Try to register a user', () => {
+    expect(userUtils.register({
+        first: "firstname",
+        last: "lastname",
+        email: nemail,
+        pw: "passwordut"
+    })).not.toBe(false);
+});
+
+test('Try to register again', () => {
+    expect(userUtils.register({
+        first: "firstname",
+        last: "lastname",
+        email: nemail,
+        pw: "passwordut"
+    })).toBe(false);
+});
+
+test('Try login with wrong username', done => {
+    function callback(ud, data) {
+        expect(ud).toEqual("E");
+        done();
+    }
+
+    userUtils.login({
+        email: nemail + "_W",
+        pw: "passwordutwrong"
+    }, callback);
 });
 
 test('Test login with wrong password', done => {
     function callback(ud, data) {
-        expect(data.length).not.toEqual(1);
+        expect(ud).toEqual("P");
         done();
     }
-    lgin.login({ email: "unittest@gmail.com", pw: "passwordut"}, callback);
+
+    userUtils.login({
+        email: nemail,
+        pw: "passwordut" + "_W"
+    }, callback);
 });
 
-// Register do not return anything or use callback
-test('Test if console.log is called', () => {
-    lgin.register({first: "firstname", last: "lastname", email: "unittest@gmail.com", pw: "passwordut"}).expect(console.log).toBeCalled();
+test('Test login with correct password', done => {
+    function callback(ud, data) {
+        expect(ud).toEqual("P");
+        done();
+    }
+
+    userUtils.login({
+        email: nemail,
+        pw: "passwordut"
+    }, callback);
 });

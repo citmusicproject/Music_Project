@@ -1,7 +1,8 @@
 node_modules/
-package/
-package-lock/
+package.json
+package-lock.json
 keys.json
 accdata.json
 dbkeys.js
 dbkeys.json
+.env

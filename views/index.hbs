@@ -7,17 +7,33 @@
     <link rel="icon" type="image/jpg" href="https://i.ytimg.com/i/-9-kyTW8ZkZNDHQJ6FgpwQ/1.jpg" />
     <link href="searchpage.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
     <div id="bg_index" style="position:absolute;left:0;top:0;width:100vw;height:100vh;background-image:url(http://www.setster.com/blog/wp-content/uploads/concert-audience-stock1214.jpg);background-size:cover;background-repeat:no-repeat;"></div>
+   
+    
     <form class="example" method="POST" action={{info.search}}>
         <div id="searchbardiv">
-            <input type="text" placeholder="Search.." name="song">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input id="searchbar" type="text" autocomplete="off" placeholder="Search.." name="song">
+            <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
         </div>
     </form>
     {{>headbar}}
+    <div class="container">
+        <span class="text1">WELCOME TO</span>
+        <span class="text2">Music World</span>
+    </div>
 </body>
+<!-- <script type="text/javascript">
+    {{#if info.login1}}
+    swal({
+  title: "Login Successful!",
+  icon: "success",
+});
+    {{else}}
+    {{/if}}
+</script> -->
 
 </html>

@@ -50,7 +50,7 @@
 #bannerTitle{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: 0 0 10px black;
     font-weight: bold;
     font-size: 300%;
     display: inline-block;
@@ -94,14 +94,25 @@
 #player{
     position: fixed;
     display: none;
-    height: 315px;
-    width: 560px;
+    height: 480px;
+    width: 100vw;
     top: 0px;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin: auto;
     z-index: 5;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#youtubeVideo{
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    position: absolute;
+
+
+
 }
 
 .playImage{
@@ -152,7 +163,7 @@
     position: relative;
     font-size: 150%;
     color: white;
-    
+    text-shadow: 0 0 0.7px black;
 }
 
 .songArtist{
