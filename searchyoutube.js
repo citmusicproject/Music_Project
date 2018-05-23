@@ -36,12 +36,12 @@ function searchYoutube(keyword, callback) {
     let song = `${keyword} VEVO`
     // var song = `${keyword} song`
     search(song, opts, function(err, results) {
-        let i = 0;
         let links = [];
         let img = [];
         let title = [];
         let error = false;
-        for (var i = 0; i < results.length; i++) {
+        let lessthanfiveerror = false;
+        for (let i = 0;; i < results.length; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);
@@ -49,12 +49,15 @@ function searchYoutube(keyword, callback) {
         if (img.length == 0 && links.length == 0 && title.length == 0 || song == ' VEVO') {
             error = true;
         }
-        
+        else if (img.length < 10 && links.length < 10 && title.length < 10){
+            lessthanfiveerror = true;
+        }
         callback(undefined, {
             links: links,
             img: img,
             title: title,
             error: error,
+            lessthanfiveerror: lessthanfiveerror
         });
     });
 };
