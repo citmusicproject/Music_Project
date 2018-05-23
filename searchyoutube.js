@@ -33,15 +33,14 @@ function gpassword() {
 * @param {function} callback - Returns an object
 */
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} VEVO`
+    let song = `${keyword} VEVO`
     // var song = `${keyword} song`
     search(song, opts, function(err, results) {
-        var i = 0;
-        var links = [];
-        var img = [];
-        var title = [];
-        var error = false;
-        var lessthanfiveerror = false;
+        let i = 0;
+        let links = [];
+        let img = [];
+        let title = [];
+        let error = false;
         for (var i = 0; i < results.length; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
@@ -50,15 +49,12 @@ function searchYoutube(keyword, callback) {
         if (img.length == 0 && links.length == 0 && title.length == 0 || song == ' VEVO') {
             error = true;
         }
-        else if (img.length < 10 && links.length < 10 && title.length < 10){
-            lessthanfiveerror = true;
-        }
+        
         callback(undefined, {
             links: links,
             img: img,
             title: title,
             error: error,
-            lessthanfiveerror: lessthanfiveerror
         });
     });
 };
