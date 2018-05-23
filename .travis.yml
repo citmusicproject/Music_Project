@@ -4,4 +4,4 @@ node_js:
 before_script:
   - npm i -g youtube-search
 env:
- - key=AIzaSyBp87n2oJkeilJ9AgyLzL99g98nkxsvXcQ
+ - NODE_ENV="development"
