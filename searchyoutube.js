@@ -6,7 +6,7 @@ const request = require('request');
 require('dotenv').config();
 
 // api key from keys.json
-var password = "AIzaSyBp87n2oJkeilJ9AgyLzL99g98nkxsvXcQ"
+var password = key
 
 /**
 * Parameters for Youtube Search
