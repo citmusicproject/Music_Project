@@ -3,3 +3,6 @@ node_js:
  - "node"
 before_script:
   - npm i -g youtube-search
+env:
+ - key=EverythignIsAwesome
+ - NODE_ENV=TEST
