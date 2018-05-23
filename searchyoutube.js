@@ -33,16 +33,15 @@ function gpassword() {
 * @param {function} callback - Returns an object
 */
 function searchYoutube(keyword, callback) {
-    var song = `${keyword} VEVO`
+    let song = `${keyword} VEVO`
     // var song = `${keyword} song`
     search(song, opts, function(err, results) {
-        var i = 0;
-        var links = [];
-        var img = [];
-        var title = [];
-        var error = false;
-        var lessthanfiveerror = false;
-        for (var i = 0; i < 10; i++) {
+        let links = [];
+        let img = [];
+        let title = [];
+        let error = false;
+        let lessthanfiveerror = false;
+        for (let i = 0; i < results.length; i++) {
             links.push(results[i].id);
             img.push(results[i].thumbnails.high.url);
             title.push(results[i].title);
